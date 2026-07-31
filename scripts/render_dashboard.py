@@ -354,12 +354,27 @@ def render_actions_section(acoes: list[dict]) -> str:
     """
 
 
+_STATUS_BADGE = {
+    "Encontrada": "status-badge--neutro",
+    "Em análise": "status-badge--neutro",
+    "Currículo otimizado": "status-badge--preparo",
+    "Carta criada": "status-badge--preparo",
+    "Aguardando aprovação": "status-badge--preparo",
+    "Candidatura enviada": "status-badge--enviada",
+    "Entrevista": "status-badge--entrevista",
+    "Aprovado": "status-badge--aprovado",
+    "Rejeitado": "status-badge--rejeitado",
+}
+
+
 def _job_card(job: dict) -> str:
     score = job.get("match_score")
     score_txt = f"{score}%" if isinstance(score, (int, float)) else "—"
     destaque = " job-card--favorita" if job.get("empresa_favorita") else ""
     salario = job.get("salario") or (f'~{job.get("salario_estimado")}' if job.get("salario_estimado") else "não informado")
     link = job.get("url") or "#"
+    status = job.get("status") or "Encontrada"
+    status_class = _STATUS_BADGE.get(status, "status-badge--neutro")
     return f"""
     <a class="job-card{destaque}" href="{html.escape(link)}" target="_blank" rel="noopener">
       <div class="job-card-top">
@@ -370,6 +385,7 @@ def _job_card(job: dict) -> str:
       <span class="job-card-empresa">{html.escape(job.get('empresa', ''))}{' ★' if job.get('empresa_favorita') else ''}</span>
       <span class="job-card-local">{html.escape(job.get('cidade') or '')} · {html.escape(job.get('modalidade') or '')}</span>
       <span class="job-card-salario">{html.escape(str(salario))}</span>
+      <span class="status-badge {status_class}">{html.escape(status)}</span>
     </a>
     """
 
@@ -567,6 +583,16 @@ def render_html(jobs: list[dict], stats: dict) -> str:
   .job-card-cargo {{ font-size: 13px; }}
   .job-card-empresa {{ color: var(--text-secondary); }}
   .job-card-local, .job-card-salario {{ color: var(--text-muted); font-size: 11px; }}
+  .status-badge {{
+    align-self: flex-start; margin-top: 4px; font-size: 10px; font-weight: 700;
+    padding: 2px 7px; border-radius: 999px; letter-spacing: 0.02em;
+  }}
+  .status-badge--neutro {{ background: rgba(137,135,129,0.18); color: var(--text-secondary); }}
+  .status-badge--preparo {{ background: var(--status-warning-bg); color: var(--status-warning-text); }}
+  .status-badge--enviada {{ background: rgba(42,120,214,0.16); color: var(--series-1); }}
+  .status-badge--entrevista {{ background: rgba(74,58,167,0.18); color: var(--series-6); }}
+  .status-badge--aprovado {{ background: rgba(12,163,12,0.15); color: var(--status-good-text); }}
+  .status-badge--rejeitado {{ background: rgba(208,59,59,0.15); color: var(--status-critical-text); }}
 
   footer {{ color: var(--text-muted); font-size: 12px; margin-top: 32px; }}
 </style>

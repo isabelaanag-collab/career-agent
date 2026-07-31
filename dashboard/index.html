@@ -158,6 +158,16 @@
   .job-card-cargo { font-size: 13px; }
   .job-card-empresa { color: var(--text-secondary); }
   .job-card-local, .job-card-salario { color: var(--text-muted); font-size: 11px; }
+  .status-badge {
+    align-self: flex-start; margin-top: 4px; font-size: 10px; font-weight: 700;
+    padding: 2px 7px; border-radius: 999px; letter-spacing: 0.02em;
+  }
+  .status-badge--neutro { background: rgba(137,135,129,0.18); color: var(--text-secondary); }
+  .status-badge--preparo { background: var(--status-warning-bg); color: var(--status-warning-text); }
+  .status-badge--enviada { background: rgba(42,120,214,0.16); color: var(--series-1); }
+  .status-badge--entrevista { background: rgba(74,58,167,0.18); color: var(--series-6); }
+  .status-badge--aprovado { background: rgba(12,163,12,0.15); color: var(--status-good-text); }
+  .status-badge--rejeitado { background: rgba(208,59,59,0.15); color: var(--status-critical-text); }
 
   footer { color: var(--text-muted); font-size: 12px; margin-top: 32px; }
 </style>
@@ -167,7 +177,7 @@
     <div class="page-header-top">
       <div>
         <h1>Painel de recolocação</h1>
-        <p>Gerado em 31/07/2026 17:00 UTC · 10 vagas no histórico</p>
+        <p>Gerado em 31/07/2026 17:03 UTC · 10 vagas no histórico</p>
       </div>
       <button type="button" class="action-btn action-btn--primary" data-copy="Rode uma busca agora no Career Agent AI, sem esperar a próxima execução agendada da rotina em nuvem (rotina &quot;career-agent-busca-vagas&quot;) — dispare a rotina via RemoteTrigger (action: run) ou, se preferir, execute a lógica de agent/prompts/routine_search_and_score.md diretamente nesta sessão local.">🔄 Forçar busca agora</button>
     </div>
@@ -197,6 +207,7 @@
       <span class="job-card-empresa">ESAB ★</span>
       <span class="job-card-local">Contagem · presencial</span>
       <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--enviada">Candidatura enviada</span>
     </a>
     
     <a class="job-card" href="https://belgo.gupy.io/candidates/applications/740733326" target="_blank" rel="noopener">
@@ -208,6 +219,7 @@
       <span class="job-card-empresa">Belgo Arames</span>
       <span class="job-card-local">Contagem · híbrido</span>
       <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--enviada">Candidatura enviada</span>
     </a>
     
     <a class="job-card" href="https://grupoboticario.gupy.io/candidates/applications/733749594" target="_blank" rel="noopener">
@@ -219,6 +231,7 @@
       <span class="job-card-empresa">Grupo Boticário</span>
       <span class="job-card-local"> · remoto</span>
       <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--enviada">Candidatura enviada</span>
     </a>
     
     <a class="job-card" href="https://to.indeed.com/aa9j897b9lvr" target="_blank" rel="noopener">
@@ -230,6 +243,7 @@
       <span class="job-card-empresa">Grupo Artesanal</span>
       <span class="job-card-local">Belo Horizonte · presencial</span>
       <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--enviada">Candidatura enviada</span>
     </a>
     
     <a class="job-card" href="https://grupoboticario.gupy.io/candidates/applications/732339632" target="_blank" rel="noopener">
@@ -241,6 +255,7 @@
       <span class="job-card-empresa">Grupo Boticário</span>
       <span class="job-card-local">Curitiba · híbrido</span>
       <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--enviada">Candidatura enviada</span>
     </a>
     </div>
         </div>
@@ -262,6 +277,7 @@
       <span class="job-card-empresa">ESAB ★</span>
       <span class="job-card-local">Contagem · presencial</span>
       <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--enviada">Candidatura enviada</span>
     </a>
     
     <a class="job-card" href="https://belgo.gupy.io/candidates/applications/740733326" target="_blank" rel="noopener">
@@ -273,6 +289,7 @@
       <span class="job-card-empresa">Belgo Arames</span>
       <span class="job-card-local">Contagem · híbrido</span>
       <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--enviada">Candidatura enviada</span>
     </a>
     
     <a class="job-card" href="https://grupoboticario.gupy.io/candidates/applications/733749594" target="_blank" rel="noopener">
@@ -284,6 +301,7 @@
       <span class="job-card-empresa">Grupo Boticário</span>
       <span class="job-card-local"> · remoto</span>
       <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--enviada">Candidatura enviada</span>
     </a>
     
     <a class="job-card" href="https://to.indeed.com/aa9j897b9lvr" target="_blank" rel="noopener">
@@ -295,6 +313,7 @@
       <span class="job-card-empresa">Grupo Artesanal</span>
       <span class="job-card-local">Belo Horizonte · presencial</span>
       <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--enviada">Candidatura enviada</span>
     </a>
     
     <a class="job-card" href="https://grupoboticario.gupy.io/candidates/applications/732339632" target="_blank" rel="noopener">
@@ -306,6 +325,7 @@
       <span class="job-card-empresa">Grupo Boticário</span>
       <span class="job-card-local">Curitiba · híbrido</span>
       <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--enviada">Candidatura enviada</span>
     </a>
     
     <a class="job-card" href="https://belgo.gupy.io/candidates/applications/738139340" target="_blank" rel="noopener">
@@ -317,6 +337,7 @@
       <span class="job-card-empresa">Belgo Arames</span>
       <span class="job-card-local">Contagem · híbrido</span>
       <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--enviada">Candidatura enviada</span>
     </a>
     
     <a class="job-card job-card--favorita" href="https://vli-vagas-externas.gupy.io/candidates/applications/738146636" target="_blank" rel="noopener">
@@ -328,6 +349,7 @@
       <span class="job-card-empresa">VLI ★</span>
       <span class="job-card-local">Belo Horizonte · presencial</span>
       <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--enviada">Candidatura enviada</span>
     </a>
     
     <a class="job-card" href="https://selpe.gupy.io/candidates/applications/740744012" target="_blank" rel="noopener">
@@ -339,6 +361,7 @@
       <span class="job-card-empresa">SELPE Gente &amp; Gestão</span>
       <span class="job-card-local">Betim · híbrido</span>
       <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--enviada">Candidatura enviada</span>
     </a>
     
     <a class="job-card job-card--favorita" href="https://vagas-mrveco.gupy.io/candidates/applications/740370663" target="_blank" rel="noopener">
@@ -350,6 +373,7 @@
       <span class="job-card-empresa">MRV&amp;Co ★</span>
       <span class="job-card-local">Belo Horizonte · presencial</span>
       <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--enviada">Candidatura enviada</span>
     </a>
     
     <a class="job-card job-card--favorita" href="https://vagas-mrveco.gupy.io/candidates/applications/735979321" target="_blank" rel="noopener">
@@ -361,6 +385,7 @@
       <span class="job-card-empresa">MRV&amp;Co ★</span>
       <span class="job-card-local">Belo Horizonte · presencial</span>
       <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--enviada">Candidatura enviada</span>
     </a>
     </div>
         </div>

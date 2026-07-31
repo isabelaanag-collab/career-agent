@@ -157,3 +157,11 @@ def test_render_html_tem_botao_forcar_busca_agora(fixture_jobs):
     output = render_html(fixture_jobs, stats)
     assert "Forçar busca agora" in output
     assert 'class="action-btn action-btn--primary"' in output
+
+
+def test_job_card_mostra_tag_de_status(fixture_jobs):
+    stats = aggregate(fixture_jobs)
+    output = render_html(fixture_jobs, stats)
+    assert 'class="status-badge status-badge--enviada"' in output  # Bosch, Candidatura enviada
+    assert 'class="status-badge status-badge--preparo"' in output  # Vale, Aguardando aprovação
+    assert 'class="status-badge status-badge--neutro"' in output  # LinkedIn, Encontrada
