@@ -9,21 +9,31 @@
   "cidade": "Betim",
   "estado": "MG",
   "modalidade": "híbrido",
-  "data_publicacao": null,
+  "data_publicacao": "2026-05-29",
   "data_candidatura": "2026-07-31",
-  "match_score": 76,
+  "match_score": 72,
   "probabilidade_estimada_entrevista": {
     "nivel": "média",
-    "justificativa": "Candidatura já em andamento no processo seletivo"
+    "justificativa": "Vaga pede vivência robusta em compras diretas para produção (setor automotivo); a candidata tem experiência em compras mas seu foco mais recente é S&OE/Planejamento, não compras operacional pura. Ainda na 1ª de 6 etapas (triagem de currículo)."
   },
   "motivos_score": [
-    "Cargo (Compras Pleno) e área totalmente alinhados ao perfil de Supply Chain/Compras da candidata"
+    "Área (Compras) aderente, mas foco recente da candidata é mais S&OE/Planejamento do que compras operacional do dia a dia",
+    "Senioridade pedida (pleno) compatível",
+    "Excel avançado da candidata supera o requisito (intermediário/PROCV), mas vaga não pede ERP/SAP que ela domina",
+    "Responsabilidades (cotações, follow-up de fornecedores, emissão de pedidos) alinham com experiência prévia em Compras e Suprimentos (Negociação com Fornecedores, Procurement)",
+    "Contrato temporário de 6 meses e foco automotivo/produção reduzem um pouco a aderência de longo prazo",
+    "Formação exigida (Administração/Economia/Eng. Produção/Eng. Mecânica) não verificável no currículo — tratado como não confirmado"
   ],
-  "palavras_chave_encontradas": [],
-  "tecnologias_exigidas": [],
+  "palavras_chave_encontradas": ["Compras", "Fornecedores", "Cotações", "Negociação com Fornecedores"],
+  "tecnologias_exigidas": ["Excel (PROCV e fórmulas básicas)", "GST"],
   "idiomas_exigidos": [],
-  "beneficios": [],
-  "requisitos_obrigatorios": [],
+  "beneficios": ["Fretado para dias presenciais", "Alimentação no local para dias presenciais"],
+  "requisitos_obrigatorios": [
+    "Ensino Superior Completo em Administração, Economia, Engenharia de Produção, Engenharia Mecânica ou áreas correlatas",
+    "Vivência com compras em geral, preferencialmente compras diretas para produção",
+    "Experiência robusta na área de compras",
+    "Conhecimento intermediário em Excel (PROCV e fórmulas básicas)"
+  ],
   "requisitos_desejaveis": [],
   "status": "Candidatura enviada",
   "empresa_favorita": false,
