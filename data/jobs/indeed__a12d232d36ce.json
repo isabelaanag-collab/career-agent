@@ -10,7 +10,7 @@
   "estado": "MG",
   "modalidade": "presencial",
   "data_publicacao": "2026-06-29",
-  "data_candidatura": null,
+  "data_candidatura": "2026-07-31",
   "match_score": 82,
   "probabilidade_estimada_entrevista": {
     "nivel": "média",
@@ -50,7 +50,7 @@
     "Boas Práticas de Fabricação (BPF)",
     "PDCA, MASP, Lean, 5W2H"
   ],
-  "status": "Aguardando aprovação",
+  "status": "Candidatura enviada",
   "empresa_favorita": false,
   "versao_curriculo": null,
   "versao_carta": null,
@@ -59,6 +59,10 @@
     {
       "status": "Aguardando aprovação",
       "data": "2026-07-31T13:16:27+00:00"
+    },
+    {
+      "status": "Candidatura enviada",
+      "data": "2026-07-31T14:57:28+00:00"
     }
   ]
 }

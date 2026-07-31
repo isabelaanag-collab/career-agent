@@ -143,3 +143,10 @@ def test_action_card_preparo_pendente_so_tem_botao_reprovar():
     output = render_html([job], stats)
     assert 'class="action-btn action-btn--reject"' in output
     assert 'class="action-btn action-btn--approve"' not in output
+
+
+def test_action_card_sempre_tem_botao_ja_me_candidatei(fixture_jobs):
+    stats = aggregate(fixture_jobs)
+    output = render_html(fixture_jobs, stats)
+    assert 'class="action-btn action-btn--applied"' in output
+    assert "Já me candidatei" in output

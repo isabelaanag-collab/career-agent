@@ -302,8 +302,15 @@ def _action_card(item: dict) -> str:
     reprovar_texto = (
         f"Reprovar a vaga {id_externo} ({vaga_desc}) — marcar como Rejeitado, não candidatar."
     )
+    ja_candidatei_texto = (
+        f"Marcar a vaga {id_externo} ({vaga_desc}) como Candidatura enviada — já me candidatei "
+        f"manualmente pelo link (rode scripts/update_status.py {id_externo} \"Candidatura enviada\")."
+    )
 
-    botoes = f'<button type="button" class="action-btn action-btn--reject" data-copy="{html.escape(reprovar_texto)}">✕ Reprovar</button>'
+    botoes = (
+        f'<button type="button" class="action-btn action-btn--reject" data-copy="{html.escape(reprovar_texto)}">✕ Reprovar</button>'
+        f'<button type="button" class="action-btn action-btn--applied" data-copy="{html.escape(ja_candidatei_texto)}">✓ Já me candidatei</button>'
+    )
     if item["_tipo_acao"] == "pronta":
         botoes = (
             f'<button type="button" class="action-btn action-btn--approve" data-copy="{html.escape(aprovar_texto)}">✓ Aprovar</button>'
@@ -509,6 +516,7 @@ def render_html(jobs: list[dict], stats: dict) -> str:
   }}
   .action-btn--approve {{ border-color: var(--status-good-text); color: var(--status-good-text); }}
   .action-btn--reject {{ border-color: var(--status-critical-text); color: var(--status-critical-text); }}
+  .action-btn--applied {{ border-color: var(--series-1); color: var(--series-1); }}
   .action-btn:hover {{ filter: brightness(1.15); }}
   .action-btn:active {{ filter: brightness(0.9); }}
 

@@ -114,6 +114,7 @@
   }
   .action-btn--approve { border-color: var(--status-good-text); color: var(--status-good-text); }
   .action-btn--reject { border-color: var(--status-critical-text); color: var(--status-critical-text); }
+  .action-btn--applied { border-color: var(--series-1); color: var(--series-1); }
   .action-btn:hover { filter: brightness(1.15); }
   .action-btn:active { filter: brightness(0.9); }
 
@@ -160,29 +161,12 @@
 <body>
   <header class="page-header">
     <h1>Painel de recolocação</h1>
-    <p>Gerado em 31/07/2026 14:45 UTC · 1 vagas no histórico</p>
+    <p>Gerado em 31/07/2026 14:58 UTC · 1 vagas no histórico</p>
   </header>
 
-  <div class="kpi-grid"><div class="kpi-card"><span class="kpi-value">0</span><span class="kpi-label">Vagas encontradas hoje</span></div><div class="kpi-card"><span class="kpi-value">0</span><span class="kpi-label">Candidatadas hoje</span></div><div class="kpi-card"><span class="kpi-value">0</span><span class="kpi-label">Total de candidaturas</span></div><div class="kpi-card"><span class="kpi-value">82.0%</span><span class="kpi-label">Média de Match Score</span></div><div class="kpi-card"><span class="kpi-value">—</span><span class="kpi-label">Salário médio</span></div><div class="kpi-card"><span class="kpi-value">0</span><span class="kpi-label">Empresas favoritas com vaga</span></div></div>
+  <div class="kpi-grid"><div class="kpi-card"><span class="kpi-value">0</span><span class="kpi-label">Vagas encontradas hoje</span></div><div class="kpi-card"><span class="kpi-value">1</span><span class="kpi-label">Candidatadas hoje</span></div><div class="kpi-card"><span class="kpi-value">1</span><span class="kpi-label">Total de candidaturas</span></div><div class="kpi-card"><span class="kpi-value">82.0%</span><span class="kpi-label">Média de Match Score</span></div><div class="kpi-card"><span class="kpi-value">—</span><span class="kpi-label">Salário médio</span></div><div class="kpi-card"><span class="kpi-value">0</span><span class="kpi-label">Empresas favoritas com vaga</span></div></div>
 
-  
-    <section class="actions-section">
-      <h2>Ações pendentes <span class="actions-count">1</span></h2>
-      <div class="actions-grid">
-    <div class="action-card">
-      <div class="action-card-top">
-        <span class="action-badge action-badge--warning">Preparo pendente</span>
-        <span class="action-score">82% match</span>
-      </div>
-      <strong class="action-cargo">Analista de Planejamento de Materiais</strong>
-      <span class="action-empresa">Grupo Artesanal · Belo Horizonte</span>
-      <p class="action-label">Match bom, mas o preparo do currículo/carta ainda não foi concluído</p>
-      <a class="action-link" href="https://to.indeed.com/aa9j897b9lvr" target="_blank" rel="noopener">Ver vaga →</a>
-      <div class="action-buttons"><button type="button" class="action-btn action-btn--reject" data-copy="Reprovar a vaga indeed__a12d232d36ce (Analista de Planejamento de Materiais na Grupo Artesanal) — marcar como Rejeitado, não candidatar.">✕ Reprovar</button></div>
-    </div>
-    </div>
-    </section>
-    
+  <section class="actions-section"><h2>Ações pendentes</h2><p class="viz-empty">Nada esperando sua aprovação agora.</p></section>
 
   <section>
     <h2>Quadro Kanban</h2>
@@ -209,7 +193,12 @@
         </div>
         
         <div class="kanban-col">
-          <header class="kanban-col-header">Aguardando Aprovação <span class="kanban-count">1</span></header>
+          <header class="kanban-col-header">Aguardando Aprovação <span class="kanban-count">0</span></header>
+          <div class="kanban-col-body"><p class="viz-empty">Vazio</p></div>
+        </div>
+        
+        <div class="kanban-col">
+          <header class="kanban-col-header">Candidaturas Enviadas <span class="kanban-count">1</span></header>
           <div class="kanban-col-body">
     <a class="job-card" href="https://to.indeed.com/aa9j897b9lvr" target="_blank" rel="noopener">
       <div class="job-card-top">
@@ -222,11 +211,6 @@
       <span class="job-card-salario">não informado</span>
     </a>
     </div>
-        </div>
-        
-        <div class="kanban-col">
-          <header class="kanban-col-header">Candidaturas Enviadas <span class="kanban-count">0</span></header>
-          <div class="kanban-col-body"><p class="viz-empty">Vazio</p></div>
         </div>
         
         <div class="kanban-col">
@@ -252,17 +236,17 @@
       <div class="chart-card"><h3>Por cidade</h3><svg viewBox="0 0 560 44" width="100%" role="img" aria-label="Gráfico de barras"><text x="142" y="26.0" text-anchor="end" class="viz-axis-label">Belo Horizonte</text><path d="M150.0,12.0 H508.0 Q512.0,12.0 512.0,16.0 V28.0 Q512.0,32.0 508.0,32.0 H150.0 Z" fill="var(--series-1)"><title>Belo Horizonte: 1</title></path><text x="520.0" y="26.0" class="viz-value-label">1</text></svg><details class="viz-table"><summary>Ver como tabela</summary><table><tbody><tr><td>Belo Horizonte</td><td>1</td></tr></tbody></table></details></div>
       <div class="chart-card"><h3>Por empresa (top 8)</h3><svg viewBox="0 0 560 44" width="100%" role="img" aria-label="Gráfico de barras"><text x="142" y="26.0" text-anchor="end" class="viz-axis-label">Grupo Artesanal</text><path d="M150.0,12.0 H508.0 Q512.0,12.0 512.0,16.0 V28.0 Q512.0,32.0 508.0,32.0 H150.0 Z" fill="var(--series-1)"><title>Grupo Artesanal: 1</title></path><text x="520.0" y="26.0" class="viz-value-label">1</text></svg><details class="viz-table"><summary>Ver como tabela</summary><table><tbody><tr><td>Grupo Artesanal</td><td>1</td></tr></tbody></table></details></div>
       <div class="chart-card"><h3>Por plataforma</h3><svg viewBox="0 0 560 44" width="100%" role="img" aria-label="Gráfico de barras"><text x="142" y="26.0" text-anchor="end" class="viz-axis-label">indeed</text><path d="M150.0,12.0 H508.0 Q512.0,12.0 512.0,16.0 V28.0 Q512.0,32.0 508.0,32.0 H150.0 Z" fill="var(--series-1)"><title>indeed: 1</title></path><text x="520.0" y="26.0" class="viz-value-label">1</text></svg><details class="viz-table"><summary>Ver como tabela</summary><table><tbody><tr><td>indeed</td><td>1</td></tr></tbody></table></details></div>
-      <div class="chart-card"><h3>Por status</h3><svg viewBox="0 0 560 44" width="100%" role="img" aria-label="Gráfico de barras"><text x="142" y="26.0" text-anchor="end" class="viz-axis-label">Aguardando aprovação</text><path d="M150.0,12.0 H508.0 Q512.0,12.0 512.0,16.0 V28.0 Q512.0,32.0 508.0,32.0 H150.0 Z" fill="var(--series-1)"><title>Aguardando aprovação: 1</title></path><text x="520.0" y="26.0" class="viz-value-label">1</text></svg><details class="viz-table"><summary>Ver como tabela</summary><table><tbody><tr><td>Aguardando aprovação</td><td>1</td></tr></tbody></table></details></div>
+      <div class="chart-card"><h3>Por status</h3><svg viewBox="0 0 560 44" width="100%" role="img" aria-label="Gráfico de barras"><text x="142" y="26.0" text-anchor="end" class="viz-axis-label">Candidatura enviada</text><path d="M150.0,12.0 H508.0 Q512.0,12.0 512.0,16.0 V28.0 Q512.0,32.0 508.0,32.0 H150.0 Z" fill="var(--series-1)"><title>Candidatura enviada: 1</title></path><text x="520.0" y="26.0" class="viz-value-label">1</text></svg><details class="viz-table"><summary>Ver como tabela</summary><table><tbody><tr><td>Candidatura enviada</td><td>1</td></tr></tbody></table></details></div>
       <div class="chart-card"><h3>Por faixa salarial</h3><svg viewBox="0 0 560 172" width="100%" role="img" aria-label="Gráfico de barras"><text x="142" y="26.0" text-anchor="end" class="viz-axis-label">R$ 6-8k</text><path d="M150.0,12.0 H150.0 Q150.0,12.0 150.0,12.0 V32.0 Q150.0,32.0 150.0,32.0 H150.0 Z" fill="var(--series-1)"><title>R$ 6-8k: 0</title></path><text x="158.0" y="26.0" class="viz-value-label">0</text><text x="142" y="58.0" text-anchor="end" class="viz-axis-label">R$ 8-10k</text><path d="M150.0,44.0 H150.0 Q150.0,44.0 150.0,44.0 V64.0 Q150.0,64.0 150.0,64.0 H150.0 Z" fill="var(--series-1)"><title>R$ 8-10k: 0</title></path><text x="158.0" y="58.0" class="viz-value-label">0</text><text x="142" y="90.0" text-anchor="end" class="viz-axis-label">R$ 10-12k</text><path d="M150.0,76.0 H150.0 Q150.0,76.0 150.0,76.0 V96.0 Q150.0,96.0 150.0,96.0 H150.0 Z" fill="var(--series-1)"><title>R$ 10-12k: 0</title></path><text x="158.0" y="90.0" class="viz-value-label">0</text><text x="142" y="122.0" text-anchor="end" class="viz-axis-label">R$ 12-15k</text><path d="M150.0,108.0 H150.0 Q150.0,108.0 150.0,108.0 V128.0 Q150.0,128.0 150.0,128.0 H150.0 Z" fill="var(--series-1)"><title>R$ 12-15k: 0</title></path><text x="158.0" y="122.0" class="viz-value-label">0</text><text x="142" y="154.0" text-anchor="end" class="viz-axis-label">R$ 15k+</text><path d="M150.0,140.0 H150.0 Q150.0,140.0 150.0,140.0 V160.0 Q150.0,160.0 150.0,160.0 H150.0 Z" fill="var(--series-1)"><title>R$ 15k+: 0</title></path><text x="158.0" y="154.0" class="viz-value-label">0</text></svg><details class="viz-table"><summary>Ver como tabela</summary><table><tbody><tr><td>R$ 6-8k</td><td>0</td></tr><tr><td>R$ 8-10k</td><td>0</td></tr><tr><td>R$ 10-12k</td><td>0</td></tr><tr><td>R$ 12-15k</td><td>0</td></tr><tr><td>R$ 15k+</td><td>0</td></tr></tbody></table></details></div>
       <div class="chart-card"><h3>Evolução semanal</h3>
     <svg viewBox="0 0 560 220" width="100%" role="img" aria-label="Evolução semanal">
       <line x1="36" x2="544" y1="16.0" y2="16.0" class="viz-grid" /><line x1="36" x2="544" y1="104.0" y2="104.0" class="viz-grid" /><line x1="36" x2="544" y1="192.0" y2="192.0" class="viz-grid" />
       <polyline points="36.0,192.0 120.7,192.0 205.3,192.0 290.0,192.0 374.7,192.0 459.3,192.0 544.0,192.0" fill="none" stroke="var(--series-1)" stroke-width="2"
                 stroke-linejoin="round" stroke-linecap="round" />
-      <polyline points="36.0,192.0 120.7,192.0 205.3,192.0 290.0,192.0 374.7,192.0 459.3,192.0 544.0,192.0" fill="none" stroke="var(--series-2)" stroke-width="2"
+      <polyline points="36.0,192.0 120.7,192.0 205.3,192.0 290.0,192.0 374.7,192.0 459.3,192.0 544.0,16.0" fill="none" stroke="var(--series-2)" stroke-width="2"
                 stroke-linejoin="round" stroke-linecap="round" />
       <circle cx="36.0" cy="192.0" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-25: 0</title></circle><circle cx="120.7" cy="192.0" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-26: 0</title></circle><circle cx="205.3" cy="192.0" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-27: 0</title></circle><circle cx="290.0" cy="192.0" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-28: 0</title></circle><circle cx="374.7" cy="192.0" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-29: 0</title></circle><circle cx="459.3" cy="192.0" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-30: 0</title></circle><circle cx="544.0" cy="192.0" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-31: 0</title></circle>
-      <circle cx="36.0" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-25: 0</title></circle><circle cx="120.7" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-26: 0</title></circle><circle cx="205.3" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-27: 0</title></circle><circle cx="290.0" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-28: 0</title></circle><circle cx="374.7" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-29: 0</title></circle><circle cx="459.3" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-30: 0</title></circle><circle cx="544.0" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-31: 0</title></circle>
+      <circle cx="36.0" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-25: 0</title></circle><circle cx="120.7" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-26: 0</title></circle><circle cx="205.3" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-27: 0</title></circle><circle cx="290.0" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-28: 0</title></circle><circle cx="374.7" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-29: 0</title></circle><circle cx="459.3" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-30: 0</title></circle><circle cx="544.0" cy="16.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-31: 1</title></circle>
       <text x="36.0" y="214" text-anchor="middle" class="viz-axis-label">07-25</text><text x="120.7" y="214" text-anchor="middle" class="viz-axis-label">07-26</text><text x="205.3" y="214" text-anchor="middle" class="viz-axis-label">07-27</text><text x="290.0" y="214" text-anchor="middle" class="viz-axis-label">07-28</text><text x="374.7" y="214" text-anchor="middle" class="viz-axis-label">07-29</text><text x="459.3" y="214" text-anchor="middle" class="viz-axis-label">07-30</text><text x="544.0" y="214" text-anchor="middle" class="viz-axis-label">07-31</text>
     </svg>
     <div class="viz-legend">
