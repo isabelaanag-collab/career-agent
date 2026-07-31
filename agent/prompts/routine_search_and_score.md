@@ -48,6 +48,22 @@ Isso grava em `data/jobs/`, atualiza `data/seen_index.json` e aplica automaticam
 - `match_score < 70` → status inicial `"Encontrada"`
 - Se a empresa está em `empresas_favoritas`, marcar `empresa_favorita: true` (maior prioridade visual, não muda o score).
 
+## 6.1 Pré-preencher a candidatura (só para vagas do Indeed com match_score >= 70)
+
+A candidata quer abrir o painel e só precisar aprovar — não montar nada na hora. Então, para toda vaga do Indeed que ficou com status `"Aguardando aprovação"` nesta execução, **prepare tudo agora, ainda na rotina**:
+
+1. Siga `agent/prompts/resume_tailoring.md` à risca (nunca inventar experiência, ferramenta, curso ou data) para gerar:
+   - Um currículo adaptado em `data/resumes/<id_externo>__<timestamp>.md`
+   - Uma carta de apresentação em `data/cover_letters/<id_externo>__<timestamp>.md`
+2. Rode:
+   ```
+   python scripts/update_status.py <id_externo> "Aguardando aprovação" --curriculo data/resumes/<arquivo> --carta data/cover_letters/<arquivo>
+   ```
+   Isso anexa os arquivos gerados à vaga (o status continua `"Aguardando aprovação"`, mas agora significa "pronta, só falta o clique de aprovação da candidata").
+3. Se por qualquer motivo não for possível gerar currículo/carta (ex: descrição da vaga incompleta), deixe a vaga sem `versao_curriculo`/`versao_carta` — o painel vai sinalizar isso como pendência separada; nunca invente conteúdo só para não deixar em branco.
+
+Vagas de LinkedIn/Gupy/Sólides/carreira **não** passam por este passo — elas continuam só listadas com o link, para a candidata abrir e se candidatar manualmente (ver regra inegociável da seção 2). Automatizar preenchimento nessas plataformas foi avaliado e recusado pelo risco de violar os Termos de Uso e suspender a conta da candidata.
+
 ## 7. Regerar o dashboard
 
 ```
@@ -68,4 +84,4 @@ Se não houver nenhuma vaga nova nesta execução, não faça commit vazio — a
 
 ## Lembrete final
 
-Você nunca candidata, nunca preenche formulário, nunca envia nada nesta rotina — isso só acontece numa sessão local com a candidata presente, usando o navegador dela. Seu trabalho aqui é 100% busca, filtro, pontuação e registro.
+Você nunca candidata, nunca preenche formulário no navegador, nunca envia nada nesta rotina — isso só acontece numa sessão local com a candidata presente, usando o navegador dela. Seu trabalho aqui é busca, filtro, pontuação, registro e — só para Indeed — deixar o currículo e a carta já prontos, esperando 1 clique de aprovação.

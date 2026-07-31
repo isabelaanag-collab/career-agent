@@ -133,7 +133,27 @@ def aggregate(jobs: list[dict]) -> dict:
         "evolucao_semanal": [(dia, v["encontradas"], v["candidatadas"]) for dia, v in sorted(evolucao.items())],
         "total_empresas_favoritas": len(empresas_favoritas),
         "total_vagas": len(jobs),
+        "acoes_pendentes": pending_actions(jobs),
     }
+
+
+def pending_actions(jobs: list[dict]) -> list[dict]:
+    """Vagas que exigem uma ação da candidata agora, com o rótulo do que fazer."""
+    acoes = []
+    for job in jobs:
+        if job.get("status") != "Aguardando aprovação":
+            continue
+        plataforma = (job.get("plataforma") or "").strip().lower()
+        tem_pacote = bool(job.get("versao_curriculo")) and bool(job.get("versao_carta"))
+        if plataforma == "indeed" and tem_pacote:
+            tipo, label = "pronta", "Currículo e carta já prontos — revise e aprove o envio"
+        elif plataforma == "indeed":
+            tipo, label = "preparo_pendente", "Match bom, mas o preparo do currículo/carta ainda não foi concluído"
+        else:
+            tipo, label = "manual", f"Vaga em {job.get('plataforma') or 'outra plataforma'} — abra o link e candidate-se manualmente"
+        acoes.append({**job, "_tipo_acao": tipo, "_label_acao": label})
+    acoes.sort(key=lambda j: -(j.get("match_score") or 0))
+    return acoes
 
 
 # ---------------------------------------------------------------------------
@@ -258,6 +278,47 @@ def _kpi_card(label: str, value: str) -> str:
     return f'<div class="kpi-card"><span class="kpi-value">{value}</span><span class="kpi-label">{label}</span></div>'
 
 
+_ACAO_BADGE = {
+    "pronta": ("action-badge--ready", "Pronta para aprovar"),
+    "preparo_pendente": ("action-badge--warning", "Preparo pendente"),
+    "manual": ("action-badge--manual", "Candidatura manual"),
+}
+
+
+def _action_card(item: dict) -> str:
+    score = item.get("match_score")
+    score_txt = f"{score}% match" if isinstance(score, (int, float)) else "—"
+    badge_class, badge_text = _ACAO_BADGE[item["_tipo_acao"]]
+    link = item.get("url") or "#"
+    return f"""
+    <div class="action-card">
+      <div class="action-card-top">
+        <span class="action-badge {badge_class}">{badge_text}</span>
+        <span class="action-score">{score_txt}</span>
+      </div>
+      <strong class="action-cargo">{html.escape(item.get('cargo') or '')}</strong>
+      <span class="action-empresa">{html.escape(item.get('empresa') or '')}{' ★' if item.get('empresa_favorita') else ''} · {html.escape(item.get('cidade') or 'remoto')}</span>
+      <p class="action-label">{html.escape(item['_label_acao'])}</p>
+      <a class="action-link" href="{html.escape(link)}" target="_blank" rel="noopener">Ver vaga →</a>
+    </div>
+    """
+
+
+def render_actions_section(acoes: list[dict]) -> str:
+    if not acoes:
+        return (
+            '<section class="actions-section"><h2>Ações pendentes</h2>'
+            '<p class="viz-empty">Nada esperando sua aprovação agora.</p></section>'
+        )
+    cards = "".join(_action_card(a) for a in acoes)
+    return f"""
+    <section class="actions-section">
+      <h2>Ações pendentes <span class="actions-count">{len(acoes)}</span></h2>
+      <div class="actions-grid">{cards}</div>
+    </section>
+    """
+
+
 def _job_card(job: dict) -> str:
     score = job.get("match_score")
     score_txt = f"{score}%" if isinstance(score, (int, float)) else "—"
@@ -329,6 +390,9 @@ def render_html(jobs: list[dict], stats: dict) -> str:
     --border:         rgba(11,11,11,0.10);
     --series-1: #2a78d6; --series-2: #eb6834; --series-3: #1baf7a;
     --series-4: #eda100; --series-5: #e87ba4; --series-6: #4a3aa7;
+    --status-good-text: #0ca30c;
+    --status-warning-bg: rgba(250,178,25,0.18);
+    --status-warning-text: #a66b00;
   }}
   @media (prefers-color-scheme: dark) {{
     :root:where(:not([data-theme="light"])) {{
@@ -342,6 +406,9 @@ def render_html(jobs: list[dict], stats: dict) -> str:
       --border:         rgba(255,255,255,0.10);
       --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70;
       --series-4: #c98500; --series-5: #d55181; --series-6: #9085e9;
+      --status-good-text: #0ca30c;
+      --status-warning-bg: rgba(250,178,25,0.22);
+      --status-warning-text: #fab219;
     }}
   }}
   :root[data-theme="dark"] {{
@@ -355,6 +422,9 @@ def render_html(jobs: list[dict], stats: dict) -> str:
     --border:         rgba(255,255,255,0.10);
     --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70;
     --series-4: #c98500; --series-5: #d55181; --series-6: #9085e9;
+    --status-good-text: #0ca30c;
+    --status-warning-bg: rgba(250,178,25,0.22);
+    --status-warning-text: #fab219;
   }}
 
   * {{ box-sizing: border-box; }}
@@ -382,6 +452,32 @@ def render_html(jobs: list[dict], stats: dict) -> str:
 
   section {{ margin-bottom: 48px; }}
   section > h2 {{ font-size: 18px; font-weight: 600; margin: 0 0 16px; }}
+
+  .actions-section {{
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 14px;
+    padding: 20px 22px; margin-bottom: 40px;
+  }}
+  .actions-section h2 {{ font-size: 18px; font-weight: 600; margin: 0 0 16px; display: flex; align-items: center; gap: 8px; }}
+  .actions-count {{
+    font-size: 12px; font-weight: 700; background: var(--series-1); color: white;
+    border-radius: 999px; padding: 2px 9px;
+  }}
+  .actions-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }}
+  .action-card {{
+    background: var(--page-plane); border: 1px solid var(--border); border-radius: 12px;
+    padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; font-size: 13px;
+  }}
+  .action-card-top {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }}
+  .action-badge {{ font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; }}
+  .action-badge--ready {{ background: rgba(12,163,12,0.15); color: var(--status-good-text); }}
+  .action-badge--warning {{ background: var(--status-warning-bg); color: var(--status-warning-text); }}
+  .action-badge--manual {{ background: rgba(137,135,129,0.18); color: var(--text-secondary); }}
+  .action-score {{ font-size: 12px; color: var(--text-muted); font-weight: 600; }}
+  .action-cargo {{ font-size: 14px; }}
+  .action-empresa {{ color: var(--text-secondary); font-size: 12px; }}
+  .action-label {{ color: var(--text-secondary); font-size: 12px; margin: 4px 0 2px; }}
+  .action-link {{ font-size: 12px; font-weight: 600; color: var(--series-1); text-decoration: none; }}
+  .action-link:hover {{ text-decoration: underline; }}
 
   .charts-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }}
   .chart-card {{
@@ -430,6 +526,8 @@ def render_html(jobs: list[dict], stats: dict) -> str:
   </header>
 
   <div class="kpi-grid">{kpis}</div>
+
+  {render_actions_section(stats["acoes_pendentes"])}
 
   <section>
     <h2>Quadro Kanban</h2>

@@ -16,6 +16,9 @@
     --border:         rgba(11,11,11,0.10);
     --series-1: #2a78d6; --series-2: #eb6834; --series-3: #1baf7a;
     --series-4: #eda100; --series-5: #e87ba4; --series-6: #4a3aa7;
+    --status-good-text: #0ca30c;
+    --status-warning-bg: rgba(250,178,25,0.18);
+    --status-warning-text: #a66b00;
   }
   @media (prefers-color-scheme: dark) {
     :root:where(:not([data-theme="light"])) {
@@ -29,6 +32,9 @@
       --border:         rgba(255,255,255,0.10);
       --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70;
       --series-4: #c98500; --series-5: #d55181; --series-6: #9085e9;
+      --status-good-text: #0ca30c;
+      --status-warning-bg: rgba(250,178,25,0.22);
+      --status-warning-text: #fab219;
     }
   }
   :root[data-theme="dark"] {
@@ -42,6 +48,9 @@
     --border:         rgba(255,255,255,0.10);
     --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70;
     --series-4: #c98500; --series-5: #d55181; --series-6: #9085e9;
+    --status-good-text: #0ca30c;
+    --status-warning-bg: rgba(250,178,25,0.22);
+    --status-warning-text: #fab219;
   }
 
   * { box-sizing: border-box; }
@@ -69,6 +78,32 @@
 
   section { margin-bottom: 48px; }
   section > h2 { font-size: 18px; font-weight: 600; margin: 0 0 16px; }
+
+  .actions-section {
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 14px;
+    padding: 20px 22px; margin-bottom: 40px;
+  }
+  .actions-section h2 { font-size: 18px; font-weight: 600; margin: 0 0 16px; display: flex; align-items: center; gap: 8px; }
+  .actions-count {
+    font-size: 12px; font-weight: 700; background: var(--series-1); color: white;
+    border-radius: 999px; padding: 2px 9px;
+  }
+  .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .action-card {
+    background: var(--page-plane); border: 1px solid var(--border); border-radius: 12px;
+    padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; font-size: 13px;
+  }
+  .action-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
+  .action-badge { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; }
+  .action-badge--ready { background: rgba(12,163,12,0.15); color: var(--status-good-text); }
+  .action-badge--warning { background: var(--status-warning-bg); color: var(--status-warning-text); }
+  .action-badge--manual { background: rgba(137,135,129,0.18); color: var(--text-secondary); }
+  .action-score { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+  .action-cargo { font-size: 14px; }
+  .action-empresa { color: var(--text-secondary); font-size: 12px; }
+  .action-label { color: var(--text-secondary); font-size: 12px; margin: 4px 0 2px; }
+  .action-link { font-size: 12px; font-weight: 600; color: var(--series-1); text-decoration: none; }
+  .action-link:hover { text-decoration: underline; }
 
   .charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
   .chart-card {
@@ -113,10 +148,28 @@
 <body>
   <header class="page-header">
     <h1>Painel de recolocação</h1>
-    <p>Gerado em 31/07/2026 13:16 UTC · 1 vagas no histórico</p>
+    <p>Gerado em 31/07/2026 14:27 UTC · 1 vagas no histórico</p>
   </header>
 
   <div class="kpi-grid"><div class="kpi-card"><span class="kpi-value">0</span><span class="kpi-label">Vagas encontradas hoje</span></div><div class="kpi-card"><span class="kpi-value">0</span><span class="kpi-label">Candidatadas hoje</span></div><div class="kpi-card"><span class="kpi-value">0</span><span class="kpi-label">Total de candidaturas</span></div><div class="kpi-card"><span class="kpi-value">82.0%</span><span class="kpi-label">Média de Match Score</span></div><div class="kpi-card"><span class="kpi-value">—</span><span class="kpi-label">Salário médio</span></div><div class="kpi-card"><span class="kpi-value">0</span><span class="kpi-label">Empresas favoritas com vaga</span></div></div>
+
+  
+    <section class="actions-section">
+      <h2>Ações pendentes <span class="actions-count">1</span></h2>
+      <div class="actions-grid">
+    <div class="action-card">
+      <div class="action-card-top">
+        <span class="action-badge action-badge--warning">Preparo pendente</span>
+        <span class="action-score">82% match</span>
+      </div>
+      <strong class="action-cargo">Analista de Planejamento de Materiais</strong>
+      <span class="action-empresa">Grupo Artesanal · Belo Horizonte</span>
+      <p class="action-label">Match bom, mas o preparo do currículo/carta ainda não foi concluído</p>
+      <a class="action-link" href="https://to.indeed.com/aa9j897b9lvr" target="_blank" rel="noopener">Ver vaga →</a>
+    </div>
+    </div>
+    </section>
+    
 
   <section>
     <h2>Quadro Kanban</h2>

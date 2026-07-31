@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from render_dashboard import aggregate, render_html
+from render_dashboard import aggregate, pending_actions, render_html
 
 FIXTURES_DIR = Path(__file__).resolve().parent / "fixtures" / "jobs"
 
@@ -80,3 +80,42 @@ def test_render_html_com_lista_vazia_nao_quebra():
     output = render_html([], stats)
     assert "<html" in output
     assert "Sem dados ainda." in output
+
+
+def test_pending_actions_classifica_indeed_pronta_vs_pendente(fixture_jobs):
+    acoes = pending_actions(fixture_jobs)
+    # a vaga da Vale (indeed, "Aguardando aprovação") não tem versao_curriculo/versao_carta
+    vale = next(a for a in acoes if a["empresa"] == "Vale")
+    assert vale["_tipo_acao"] == "preparo_pendente"
+
+
+def test_pending_actions_indeed_com_pacote_completo_fica_pronta():
+    job = {
+        "empresa": "Vale", "cargo": "Analista", "plataforma": "indeed",
+        "status": "Aguardando aprovação", "match_score": 88,
+        "versao_curriculo": "data/resumes/x.md", "versao_carta": "data/cover_letters/x.md",
+    }
+    acoes = pending_actions([job])
+    assert acoes[0]["_tipo_acao"] == "pronta"
+
+
+def test_pending_actions_outra_plataforma_e_manual():
+    job = {
+        "empresa": "Empresa X", "cargo": "Analista", "plataforma": "linkedin",
+        "status": "Aguardando aprovação", "match_score": 75,
+    }
+    acoes = pending_actions([job])
+    assert acoes[0]["_tipo_acao"] == "manual"
+
+
+def test_pending_actions_ignora_vagas_sem_status_aguardando(fixture_jobs):
+    acoes = pending_actions(fixture_jobs)
+    empresas = {a["empresa"] for a in acoes}
+    assert "Bosch" not in empresas  # já está "Candidatura enviada"
+
+
+def test_render_html_mostra_secao_de_acoes_pendentes(fixture_jobs):
+    stats = aggregate(fixture_jobs)
+    output = render_html(fixture_jobs, stats)
+    assert "Ações pendentes" in output
+    assert "Preparo pendente" in output
