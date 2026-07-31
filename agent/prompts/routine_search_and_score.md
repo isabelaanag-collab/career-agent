@@ -22,7 +22,7 @@ Leia `agent/config/search_criteria.yaml` (áreas, cidades, piso salarial, empres
 
 ## 3. Deduplicar
 
-Para cada vaga encontrada, calcule um id externo estável = `plataforma + "__" + hash(url_ou_id_da_vaga)`. Rode `python scripts/ingest.py --check <id_externo>` (ou leia `data/seen_index.json` diretamente) para saber se já foi vista. Se sim, **pule** — não reprocessar nem duplicar.
+Antes de processar uma vaga, rode `python scripts/ingest.py check --plataforma <plataforma> --ref <url_ou_id_da_vaga>` (imprime `NEW` ou `SEEN`) para saber se ela já foi vista. Se `SEEN`, **pule** — não reprocessar nem duplicar.
 
 ## 4. Filtro duro
 
@@ -37,10 +37,10 @@ Para cada vaga que passou no filtro, siga `agent/prompts/scoring_rubric.md` à r
 
 ## 6. Persistir
 
-Monte o JSON da vaga com todos os campos do schema (ver `README.md` seção "Modelo de dado de uma vaga") e rode:
+Monte um JSON de rascunho da vaga (campos: `plataforma, url, empresa, cargo, salario, salario_estimado, cidade, estado, modalidade, data_publicacao, match_score, probabilidade_estimada_entrevista, motivos_score, palavras_chave_encontradas, tecnologias_exigidas, idiomas_exigidos, beneficios, requisitos_obrigatorios, requisitos_desejaveis` — ver `README.md` seção "Modelo de dado de uma vaga"), salve num arquivo temporário e rode:
 
 ```
-python scripts/ingest.py --write <caminho_do_json_temporario>
+python scripts/ingest.py write --input <caminho_do_json_temporario>
 ```
 
 Isso grava em `data/jobs/`, atualiza `data/seen_index.json` e aplica automaticamente:
