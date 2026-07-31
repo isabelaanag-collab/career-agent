@@ -1,0 +1,43 @@
+{
+  "id_externo": "gupy__2ad392efb7b2",
+  "plataforma": "gupy",
+  "url": "https://vagas-mrveco.gupy.io/candidates/applications/740370663",
+  "empresa": "MRV&Co",
+  "cargo": "Analista de Suprimentos Pleno | Gestão de Pagamentos",
+  "salario": null,
+  "salario_estimado": null,
+  "cidade": "Belo Horizonte",
+  "estado": "MG",
+  "modalidade": "presencial",
+  "data_publicacao": null,
+  "data_candidatura": "2026-07-31",
+  "match_score": 70,
+  "probabilidade_estimada_entrevista": {
+    "nivel": "média",
+    "justificativa": "Candidatura já em andamento no processo seletivo"
+  },
+  "motivos_score": [
+    "Suprimentos alinhado à experiência de Compras/Suprimentos, mas foco em pagamentos é mais tangencial"
+  ],
+  "palavras_chave_encontradas": [],
+  "tecnologias_exigidas": [],
+  "idiomas_exigidos": [],
+  "beneficios": [],
+  "requisitos_obrigatorios": [],
+  "requisitos_desejaveis": [],
+  "status": "Candidatura enviada",
+  "empresa_favorita": true,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Aguardando aprovação",
+      "data": "2026-07-31T15:18:24+00:00"
+    },
+    {
+      "status": "Candidatura enviada",
+      "data": "2026-07-31T15:18:35+00:00"
+    }
+  ]
+}

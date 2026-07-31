@@ -1,0 +1,43 @@
+{
+  "id_externo": "gupy__0d3618005a2a",
+  "plataforma": "gupy",
+  "url": "https://belgo.gupy.io/candidates/applications/740733326",
+  "empresa": "Belgo Arames",
+  "cargo": "Especialista de Planejamento - MRP",
+  "salario": null,
+  "salario_estimado": null,
+  "cidade": "Contagem",
+  "estado": "MG",
+  "modalidade": "híbrido",
+  "data_publicacao": null,
+  "data_candidatura": "2026-07-31",
+  "match_score": 88,
+  "probabilidade_estimada_entrevista": {
+    "nivel": "média",
+    "justificativa": "Candidatura já em andamento no processo seletivo"
+  },
+  "motivos_score": [
+    "MRP e Planejamento são núcleo da experiência da candidata (S&OE/Planejamento na Farmax)"
+  ],
+  "palavras_chave_encontradas": [],
+  "tecnologias_exigidas": [],
+  "idiomas_exigidos": [],
+  "beneficios": [],
+  "requisitos_obrigatorios": [],
+  "requisitos_desejaveis": [],
+  "status": "Candidatura enviada",
+  "empresa_favorita": false,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Aguardando aprovação",
+      "data": "2026-07-31T15:18:24+00:00"
+    },
+    {
+      "status": "Candidatura enviada",
+      "data": "2026-07-31T15:18:35+00:00"
+    }
+  ]
+}

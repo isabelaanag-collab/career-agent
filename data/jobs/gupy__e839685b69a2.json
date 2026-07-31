@@ -1,0 +1,43 @@
+{
+  "id_externo": "gupy__e839685b69a2",
+  "plataforma": "gupy",
+  "url": "https://esab.gupy.io/candidates/applications/740371407",
+  "empresa": "ESAB",
+  "cargo": "Analista de Planejamento de Demanda (MRP)",
+  "salario": null,
+  "salario_estimado": null,
+  "cidade": "Contagem",
+  "estado": "MG",
+  "modalidade": "presencial",
+  "data_publicacao": null,
+  "data_candidatura": "2026-07-31",
+  "match_score": 90,
+  "probabilidade_estimada_entrevista": {
+    "nivel": "média",
+    "justificativa": "Candidatura já em andamento no processo seletivo"
+  },
+  "motivos_score": [
+    "Planejamento de Demanda é um dos títulos preferidos da candidata no Indeed; forte aderência"
+  ],
+  "palavras_chave_encontradas": [],
+  "tecnologias_exigidas": [],
+  "idiomas_exigidos": [],
+  "beneficios": [],
+  "requisitos_obrigatorios": [],
+  "requisitos_desejaveis": [],
+  "status": "Candidatura enviada",
+  "empresa_favorita": true,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Aguardando aprovação",
+      "data": "2026-07-31T15:18:24+00:00"
+    },
+    {
+      "status": "Candidatura enviada",
+      "data": "2026-07-31T15:18:35+00:00"
+    }
+  ]
+}

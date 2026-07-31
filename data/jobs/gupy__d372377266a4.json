@@ -1,0 +1,43 @@
+{
+  "id_externo": "gupy__d372377266a4",
+  "plataforma": "gupy",
+  "url": "https://selpe.gupy.io/candidates/applications/740744012",
+  "empresa": "SELPE Gente & Gestão",
+  "cargo": "Analista de Compras Pleno",
+  "salario": null,
+  "salario_estimado": null,
+  "cidade": "Betim",
+  "estado": "MG",
+  "modalidade": "híbrido",
+  "data_publicacao": null,
+  "data_candidatura": "2026-07-31",
+  "match_score": 76,
+  "probabilidade_estimada_entrevista": {
+    "nivel": "média",
+    "justificativa": "Candidatura já em andamento no processo seletivo"
+  },
+  "motivos_score": [
+    "Cargo (Compras Pleno) e área totalmente alinhados ao perfil de Supply Chain/Compras da candidata"
+  ],
+  "palavras_chave_encontradas": [],
+  "tecnologias_exigidas": [],
+  "idiomas_exigidos": [],
+  "beneficios": [],
+  "requisitos_obrigatorios": [],
+  "requisitos_desejaveis": [],
+  "status": "Candidatura enviada",
+  "empresa_favorita": false,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Aguardando aprovação",
+      "data": "2026-07-31T15:18:24+00:00"
+    },
+    {
+      "status": "Candidatura enviada",
+      "data": "2026-07-31T15:18:34+00:00"
+    }
+  ]
+}

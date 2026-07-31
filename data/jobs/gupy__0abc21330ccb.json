@@ -1,0 +1,43 @@
+{
+  "id_externo": "gupy__0abc21330ccb",
+  "plataforma": "gupy",
+  "url": "https://vli-vagas-externas.gupy.io/candidates/applications/738146636",
+  "empresa": "VLI",
+  "cargo": "308494 - Analista Suprimentos Pleno",
+  "salario": null,
+  "salario_estimado": null,
+  "cidade": "Belo Horizonte",
+  "estado": "MG",
+  "modalidade": "presencial",
+  "data_publicacao": null,
+  "data_candidatura": "2026-07-31",
+  "match_score": 75,
+  "probabilidade_estimada_entrevista": {
+    "nivel": "média",
+    "justificativa": "Candidatura já em andamento no processo seletivo"
+  },
+  "motivos_score": [
+    "Suprimentos Pleno, empresa de logística (VLI) — área correlata forte"
+  ],
+  "palavras_chave_encontradas": [],
+  "tecnologias_exigidas": [],
+  "idiomas_exigidos": [],
+  "beneficios": [],
+  "requisitos_obrigatorios": [],
+  "requisitos_desejaveis": [],
+  "status": "Candidatura enviada",
+  "empresa_favorita": true,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Aguardando aprovação",
+      "data": "2026-07-31T15:18:24+00:00"
+    },
+    {
+      "status": "Candidatura enviada",
+      "data": "2026-07-31T15:18:35+00:00"
+    }
+  ]
+}

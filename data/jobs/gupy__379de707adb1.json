@@ -1,0 +1,43 @@
+{
+  "id_externo": "gupy__379de707adb1",
+  "plataforma": "gupy",
+  "url": "https://grupoboticario.gupy.io/candidates/applications/733749594",
+  "empresa": "Grupo Boticário",
+  "cargo": "Analista II - Planejamento de Demanda",
+  "salario": null,
+  "salario_estimado": null,
+  "cidade": null,
+  "estado": null,
+  "modalidade": "remoto",
+  "data_publicacao": null,
+  "data_candidatura": "2026-07-31",
+  "match_score": 85,
+  "probabilidade_estimada_entrevista": {
+    "nivel": "média",
+    "justificativa": "Candidatura já em andamento no processo seletivo"
+  },
+  "motivos_score": [
+    "Planejamento de Demanda em multinacional (Boticário) — forte aderência e prioridade"
+  ],
+  "palavras_chave_encontradas": [],
+  "tecnologias_exigidas": [],
+  "idiomas_exigidos": [],
+  "beneficios": [],
+  "requisitos_obrigatorios": [],
+  "requisitos_desejaveis": [],
+  "status": "Candidatura enviada",
+  "empresa_favorita": false,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Aguardando aprovação",
+      "data": "2026-07-31T15:18:24+00:00"
+    },
+    {
+      "status": "Candidatura enviada",
+      "data": "2026-07-31T15:18:35+00:00"
+    }
+  ]
+}

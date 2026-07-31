@@ -1,0 +1,43 @@
+{
+  "id_externo": "gupy__4077ce6844d8",
+  "plataforma": "gupy",
+  "url": "https://grupoboticario.gupy.io/candidates/applications/732339632",
+  "empresa": "Grupo Boticário",
+  "cargo": "Analista de Supply Chain II - Lançamentos de Novos Produtos",
+  "salario": null,
+  "salario_estimado": null,
+  "cidade": "Curitiba",
+  "estado": "PR",
+  "modalidade": "híbrido",
+  "data_publicacao": null,
+  "data_candidatura": "2026-07-31",
+  "match_score": 80,
+  "probabilidade_estimada_entrevista": {
+    "nivel": "média",
+    "justificativa": "Candidatura já em andamento no processo seletivo"
+  },
+  "motivos_score": [
+    "Supply Chain em multinacional (Boticário); vaga temporária 6 meses reduz um pouco a prioridade"
+  ],
+  "palavras_chave_encontradas": [],
+  "tecnologias_exigidas": [],
+  "idiomas_exigidos": [],
+  "beneficios": [],
+  "requisitos_obrigatorios": [],
+  "requisitos_desejaveis": [],
+  "status": "Candidatura enviada",
+  "empresa_favorita": false,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Aguardando aprovação",
+      "data": "2026-07-31T15:18:24+00:00"
+    },
+    {
+      "status": "Candidatura enviada",
+      "data": "2026-07-31T15:18:36+00:00"
+    }
+  ]
+}
