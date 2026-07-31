@@ -119,3 +119,27 @@ def test_render_html_mostra_secao_de_acoes_pendentes(fixture_jobs):
     output = render_html(fixture_jobs, stats)
     assert "Ações pendentes" in output
     assert "Preparo pendente" in output
+
+
+def test_action_card_pronta_tem_botao_aprovar_e_reprovar():
+    job = {
+        "id_externo": "indeed__abc123", "empresa": "Vale", "cargo": "Analista", "plataforma": "indeed",
+        "status": "Aguardando aprovação", "match_score": 88,
+        "versao_curriculo": "data/resumes/x.md", "versao_carta": "data/cover_letters/x.md",
+    }
+    stats = aggregate([job])
+    output = render_html([job], stats)
+    assert "action-btn--approve" in output
+    assert "action-btn--reject" in output
+    assert "indeed__abc123" in output  # id da vaga embutido no texto copiado
+
+
+def test_action_card_preparo_pendente_so_tem_botao_reprovar():
+    job = {
+        "id_externo": "indeed__def456", "empresa": "Vale", "cargo": "Analista", "plataforma": "indeed",
+        "status": "Aguardando aprovação", "match_score": 60,
+    }
+    stats = aggregate([job])
+    output = render_html([job], stats)
+    assert 'class="action-btn action-btn--reject"' in output
+    assert 'class="action-btn action-btn--approve"' not in output

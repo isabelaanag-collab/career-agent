@@ -19,6 +19,7 @@
     --status-good-text: #0ca30c;
     --status-warning-bg: rgba(250,178,25,0.18);
     --status-warning-text: #a66b00;
+    --status-critical-text: #d03b3b;
   }
   @media (prefers-color-scheme: dark) {
     :root:where(:not([data-theme="light"])) {
@@ -35,6 +36,7 @@
       --status-good-text: #0ca30c;
       --status-warning-bg: rgba(250,178,25,0.22);
       --status-warning-text: #fab219;
+      --status-critical-text: #d03b3b;
     }
   }
   :root[data-theme="dark"] {
@@ -51,6 +53,7 @@
     --status-good-text: #0ca30c;
     --status-warning-bg: rgba(250,178,25,0.22);
     --status-warning-text: #fab219;
+    --status-critical-text: #d03b3b;
   }
 
   * { box-sizing: border-box; }
@@ -104,6 +107,15 @@
   .action-label { color: var(--text-secondary); font-size: 12px; margin: 4px 0 2px; }
   .action-link { font-size: 12px; font-weight: 600; color: var(--series-1); text-decoration: none; }
   .action-link:hover { text-decoration: underline; }
+  .action-buttons { display: flex; gap: 8px; margin-top: 8px; }
+  .action-btn {
+    font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; border-radius: 8px;
+    padding: 6px 10px; border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary);
+  }
+  .action-btn--approve { border-color: var(--status-good-text); color: var(--status-good-text); }
+  .action-btn--reject { border-color: var(--status-critical-text); color: var(--status-critical-text); }
+  .action-btn:hover { filter: brightness(1.15); }
+  .action-btn:active { filter: brightness(0.9); }
 
   .charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
   .chart-card {
@@ -148,7 +160,7 @@
 <body>
   <header class="page-header">
     <h1>Painel de recolocação</h1>
-    <p>Gerado em 31/07/2026 14:27 UTC · 1 vagas no histórico</p>
+    <p>Gerado em 31/07/2026 14:45 UTC · 1 vagas no histórico</p>
   </header>
 
   <div class="kpi-grid"><div class="kpi-card"><span class="kpi-value">0</span><span class="kpi-label">Vagas encontradas hoje</span></div><div class="kpi-card"><span class="kpi-value">0</span><span class="kpi-label">Candidatadas hoje</span></div><div class="kpi-card"><span class="kpi-value">0</span><span class="kpi-label">Total de candidaturas</span></div><div class="kpi-card"><span class="kpi-value">82.0%</span><span class="kpi-label">Média de Match Score</span></div><div class="kpi-card"><span class="kpi-value">—</span><span class="kpi-label">Salário médio</span></div><div class="kpi-card"><span class="kpi-value">0</span><span class="kpi-label">Empresas favoritas com vaga</span></div></div>
@@ -166,6 +178,7 @@
       <span class="action-empresa">Grupo Artesanal · Belo Horizonte</span>
       <p class="action-label">Match bom, mas o preparo do currículo/carta ainda não foi concluído</p>
       <a class="action-link" href="https://to.indeed.com/aa9j897b9lvr" target="_blank" rel="noopener">Ver vaga →</a>
+      <div class="action-buttons"><button type="button" class="action-btn action-btn--reject" data-copy="Reprovar a vaga indeed__a12d232d36ce (Analista de Planejamento de Materiais na Grupo Artesanal) — marcar como Rejeitado, não candidatar.">✕ Reprovar</button></div>
     </div>
     </div>
     </section>
@@ -261,5 +274,26 @@
   </section>
 
   <footer>Career Agent AI — busca automática (Indeed) + listagem pública (LinkedIn/Gupy/Sólides/carreiras). Candidaturas sempre passam por aprovação manual antes do envio.</footer>
+
+  <script>
+    document.querySelectorAll('[data-copy]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var texto = btn.getAttribute('data-copy');
+        var original = btn.textContent;
+        var textarea = document.createElement('textarea');
+        textarea.value = texto;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        var copiado = false;
+        try { copiado = document.execCommand('copy'); } catch (e) { copiado = false; }
+        document.body.removeChild(textarea);
+        btn.textContent = copiado ? 'Copiado ✓' : 'Erro ao copiar';
+        setTimeout(function () { btn.textContent = original; }, 1500);
+      });
+    });
+  </script>
 </body>
 </html>

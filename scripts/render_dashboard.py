@@ -290,16 +290,37 @@ def _action_card(item: dict) -> str:
     score_txt = f"{score}% match" if isinstance(score, (int, float)) else "—"
     badge_class, badge_text = _ACAO_BADGE[item["_tipo_acao"]]
     link = item.get("url") or "#"
+    id_externo = item.get("id_externo") or ""
+    cargo = item.get("cargo") or ""
+    empresa = item.get("empresa") or ""
+    vaga_desc = f"{cargo} na {empresa}".strip()
+
+    aprovar_texto = (
+        f"Aprovar e processar o envio da candidatura para a vaga {id_externo} ({vaga_desc}) — "
+        f"pode preencher o formulário no Indeed, mas pare antes do envio final esperando minha confirmação."
+    )
+    reprovar_texto = (
+        f"Reprovar a vaga {id_externo} ({vaga_desc}) — marcar como Rejeitado, não candidatar."
+    )
+
+    botoes = f'<button type="button" class="action-btn action-btn--reject" data-copy="{html.escape(reprovar_texto)}">✕ Reprovar</button>'
+    if item["_tipo_acao"] == "pronta":
+        botoes = (
+            f'<button type="button" class="action-btn action-btn--approve" data-copy="{html.escape(aprovar_texto)}">✓ Aprovar</button>'
+            + botoes
+        )
+
     return f"""
     <div class="action-card">
       <div class="action-card-top">
         <span class="action-badge {badge_class}">{badge_text}</span>
         <span class="action-score">{score_txt}</span>
       </div>
-      <strong class="action-cargo">{html.escape(item.get('cargo') or '')}</strong>
-      <span class="action-empresa">{html.escape(item.get('empresa') or '')}{' ★' if item.get('empresa_favorita') else ''} · {html.escape(item.get('cidade') or 'remoto')}</span>
+      <strong class="action-cargo">{html.escape(cargo)}</strong>
+      <span class="action-empresa">{html.escape(empresa)}{' ★' if item.get('empresa_favorita') else ''} · {html.escape(item.get('cidade') or 'remoto')}</span>
       <p class="action-label">{html.escape(item['_label_acao'])}</p>
       <a class="action-link" href="{html.escape(link)}" target="_blank" rel="noopener">Ver vaga →</a>
+      <div class="action-buttons">{botoes}</div>
     </div>
     """
 
@@ -393,6 +414,7 @@ def render_html(jobs: list[dict], stats: dict) -> str:
     --status-good-text: #0ca30c;
     --status-warning-bg: rgba(250,178,25,0.18);
     --status-warning-text: #a66b00;
+    --status-critical-text: #d03b3b;
   }}
   @media (prefers-color-scheme: dark) {{
     :root:where(:not([data-theme="light"])) {{
@@ -409,6 +431,7 @@ def render_html(jobs: list[dict], stats: dict) -> str:
       --status-good-text: #0ca30c;
       --status-warning-bg: rgba(250,178,25,0.22);
       --status-warning-text: #fab219;
+      --status-critical-text: #d03b3b;
     }}
   }}
   :root[data-theme="dark"] {{
@@ -425,6 +448,7 @@ def render_html(jobs: list[dict], stats: dict) -> str:
     --status-good-text: #0ca30c;
     --status-warning-bg: rgba(250,178,25,0.22);
     --status-warning-text: #fab219;
+    --status-critical-text: #d03b3b;
   }}
 
   * {{ box-sizing: border-box; }}
@@ -478,6 +502,15 @@ def render_html(jobs: list[dict], stats: dict) -> str:
   .action-label {{ color: var(--text-secondary); font-size: 12px; margin: 4px 0 2px; }}
   .action-link {{ font-size: 12px; font-weight: 600; color: var(--series-1); text-decoration: none; }}
   .action-link:hover {{ text-decoration: underline; }}
+  .action-buttons {{ display: flex; gap: 8px; margin-top: 8px; }}
+  .action-btn {{
+    font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; border-radius: 8px;
+    padding: 6px 10px; border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary);
+  }}
+  .action-btn--approve {{ border-color: var(--status-good-text); color: var(--status-good-text); }}
+  .action-btn--reject {{ border-color: var(--status-critical-text); color: var(--status-critical-text); }}
+  .action-btn:hover {{ filter: brightness(1.15); }}
+  .action-btn:active {{ filter: brightness(0.9); }}
 
   .charts-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }}
   .chart-card {{
@@ -547,6 +580,27 @@ def render_html(jobs: list[dict], stats: dict) -> str:
   </section>
 
   <footer>Career Agent AI — busca automática (Indeed) + listagem pública (LinkedIn/Gupy/Sólides/carreiras). Candidaturas sempre passam por aprovação manual antes do envio.</footer>
+
+  <script>
+    document.querySelectorAll('[data-copy]').forEach(function (btn) {{
+      btn.addEventListener('click', function () {{
+        var texto = btn.getAttribute('data-copy');
+        var original = btn.textContent;
+        var textarea = document.createElement('textarea');
+        textarea.value = texto;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        var copiado = false;
+        try {{ copiado = document.execCommand('copy'); }} catch (e) {{ copiado = false; }}
+        document.body.removeChild(textarea);
+        btn.textContent = copiado ? 'Copiado ✓' : 'Erro ao copiar';
+        setTimeout(function () {{ btn.textContent = original; }}, 1500);
+      }});
+    }});
+  </script>
 </body>
 </html>
 """
