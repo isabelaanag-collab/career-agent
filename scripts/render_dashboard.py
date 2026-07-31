@@ -19,6 +19,13 @@ ROOT = Path(__file__).resolve().parent.parent
 DASHBOARD_DIR = ROOT / "dashboard"
 DASHBOARD_PATH = DASHBOARD_DIR / "index.html"
 
+BUSCAR_AGORA_TEXTO = (
+    "Rode uma busca agora no Career Agent AI, sem esperar a próxima execução agendada da rotina "
+    "em nuvem (rotina \"career-agent-busca-vagas\") — dispare a rotina via RemoteTrigger "
+    "(action: run) ou, se preferir, execute a lógica de "
+    "agent/prompts/routine_search_and_score.md diretamente nesta sessão local."
+)
+
 KANBAN_COLUNAS = [
     ("Vagas Encontradas", lambda j: j["status"] in {"Encontrada", "Em análise"}),
     ("Excelentes Matches", lambda j: (j.get("match_score") or 0) >= 80),
@@ -465,10 +472,14 @@ def render_html(jobs: list[dict], stats: dict) -> str:
     padding: 32px clamp(16px, 4vw, 48px) 64px;
   }}
   header.page-header {{ margin-bottom: 32px; }}
+  .page-header-top {{ display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }}
   header.page-header h1 {{
     font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.02em; margin: 0 0 4px;
   }}
   header.page-header p {{ color: var(--text-secondary); margin: 0; font-size: 14px; }}
+  .action-btn--primary {{
+    background: var(--series-1); border-color: var(--series-1); color: white; padding: 8px 14px; white-space: nowrap;
+  }}
 
   .kpi-grid {{
     display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -562,8 +573,13 @@ def render_html(jobs: list[dict], stats: dict) -> str:
 </head>
 <body>
   <header class="page-header">
-    <h1>Painel de recolocação</h1>
-    <p>Gerado em {gerado_em} · {stats["total_vagas"]} vagas no histórico</p>
+    <div class="page-header-top">
+      <div>
+        <h1>Painel de recolocação</h1>
+        <p>Gerado em {gerado_em} · {stats["total_vagas"]} vagas no histórico</p>
+      </div>
+      <button type="button" class="action-btn action-btn--primary" data-copy="{html.escape(BUSCAR_AGORA_TEXTO)}">🔄 Forçar busca agora</button>
+    </div>
   </header>
 
   <div class="kpi-grid">{kpis}</div>

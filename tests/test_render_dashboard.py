@@ -150,3 +150,10 @@ def test_action_card_sempre_tem_botao_ja_me_candidatei(fixture_jobs):
     output = render_html(fixture_jobs, stats)
     assert 'class="action-btn action-btn--applied"' in output
     assert "Já me candidatei" in output
+
+
+def test_render_html_tem_botao_forcar_busca_agora(fixture_jobs):
+    stats = aggregate(fixture_jobs)
+    output = render_html(fixture_jobs, stats)
+    assert "Forçar busca agora" in output
+    assert 'class="action-btn action-btn--primary"' in output
