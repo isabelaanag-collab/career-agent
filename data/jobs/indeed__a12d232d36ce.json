@@ -1,0 +1,64 @@
+{
+  "id_externo": "indeed__a12d232d36ce",
+  "plataforma": "indeed",
+  "url": "https://to.indeed.com/aa9j897b9lvr",
+  "empresa": "Grupo Artesanal",
+  "cargo": "Analista de Planejamento de Materiais",
+  "salario": null,
+  "salario_estimado": null,
+  "cidade": "Belo Horizonte",
+  "estado": "MG",
+  "modalidade": "presencial",
+  "data_publicacao": "2026-06-29",
+  "data_candidatura": null,
+  "match_score": 82,
+  "probabilidade_estimada_entrevista": {
+    "nivel": "média",
+    "justificativa": "Forte aderência de área/ferramentas (MRP, ERP, Power BI, Excel avançado), mas vaga não informa salário e não foi possível confirmar formação superior no currículo."
+  },
+  "motivos_score": [
+    "Área e responsabilidades (planejamento de materiais, MRP, KPIs, integração com Compras/Supply Chain) batem fortemente com a experiência em S&OE/Compras da candidata na Farmax",
+    "Ferramentas exigidas (MRP, ERP, Excel avançado, Power BI) todas presentes no currículo",
+    "Senioridade pedida (2+ anos, nível pleno) compatível com o cargo atual (Analista de S&OE Pleno)",
+    "Formação exigida (ensino superior completo) não pôde ser confirmada — currículo do Indeed não lista educação, tratado como não verificável",
+    "Vaga não informa salário nem estimativa — mantida no relatório mas marcada como não informado"
+  ],
+  "palavras_chave_encontradas": [
+    "MRP",
+    "Supply Chain",
+    "Planejamento",
+    "KPIs",
+    "Gestão de estoque",
+    "Excel avançado",
+    "Power BI"
+  ],
+  "tecnologias_exigidas": [
+    "ERP",
+    "Excel avançado",
+    "Power BI"
+  ],
+  "idiomas_exigidos": [],
+  "beneficios": [],
+  "requisitos_obrigatorios": [
+    "Ensino superior completo em Administração, Engenharia de Produção, Logística, Supply Chain ou áreas correlatas",
+    "Experiência mínima de 2 anos em PCM, PCP, Supply Chain ou Planejamento de Produção",
+    "Excel avançado e domínio de sistemas ERP"
+  ],
+  "requisitos_desejaveis": [
+    "Experiência na indústria farmacêutica ou segmentos regulados",
+    "Power BI",
+    "Boas Práticas de Fabricação (BPF)",
+    "PDCA, MASP, Lean, 5W2H"
+  ],
+  "status": "Aguardando aprovação",
+  "empresa_favorita": false,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Aguardando aprovação",
+      "data": "2026-07-31T13:16:27+00:00"
+    }
+  ]
+}

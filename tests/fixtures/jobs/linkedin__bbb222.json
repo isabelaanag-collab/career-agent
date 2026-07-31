@@ -1,0 +1,31 @@
+{
+  "id_externo": "linkedin__bbb222",
+  "plataforma": "linkedin",
+  "url": "https://www.linkedin.com/jobs/view/bbb222",
+  "empresa": "Empresa Regional Ltda",
+  "cargo": "Analista de Compras Pleno",
+  "salario": null,
+  "salario_estimado": "R$ 6.500",
+  "cidade": "Contagem",
+  "estado": "MG",
+  "modalidade": "presencial",
+  "data_publicacao": "2026-01-12",
+  "data_candidatura": null,
+  "match_score": 55,
+  "probabilidade_estimada_entrevista": {"nivel": "baixa", "justificativa": "Poucos requisitos batem"},
+  "motivos_score": ["Área parcialmente aderente", "Senioridade abaixo do pedido"],
+  "palavras_chave_encontradas": ["Compras"],
+  "tecnologias_exigidas": ["ERP Totvs"],
+  "idiomas_exigidos": [],
+  "beneficios": ["VT"],
+  "requisitos_obrigatorios": ["Graduação completa"],
+  "requisitos_desejaveis": [],
+  "status": "Encontrada",
+  "empresa_favorita": false,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {"status": "Encontrada", "data": "2026-01-12T14:00:00+00:00"}
+  ]
+}

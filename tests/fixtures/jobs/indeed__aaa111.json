@@ -1,0 +1,32 @@
+{
+  "id_externo": "indeed__aaa111",
+  "plataforma": "indeed",
+  "url": "https://indeed.com/viewjob?jk=aaa111",
+  "empresa": "Vale",
+  "cargo": "Analista de PCP Sênior",
+  "salario": "R$ 9.000",
+  "salario_estimado": null,
+  "cidade": "Belo Horizonte",
+  "estado": "MG",
+  "modalidade": "híbrido",
+  "data_publicacao": "2026-01-10",
+  "data_candidatura": null,
+  "match_score": 85,
+  "probabilidade_estimada_entrevista": {"nivel": "alta", "justificativa": "Score alto e empresa favorita"},
+  "motivos_score": ["Aderência forte de área", "Ferramentas batem"],
+  "palavras_chave_encontradas": ["PCP", "MRP"],
+  "tecnologias_exigidas": ["SAP", "Excel avançado"],
+  "idiomas_exigidos": ["Inglês intermediário"],
+  "beneficios": ["VR", "Plano de saúde"],
+  "requisitos_obrigatorios": ["Experiência em PCP"],
+  "requisitos_desejaveis": ["Inglês avançado"],
+  "status": "Aguardando aprovação",
+  "empresa_favorita": true,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {"status": "Encontrada", "data": "2026-01-10T09:00:00+00:00"},
+    {"status": "Aguardando aprovação", "data": "2026-01-10T09:00:05+00:00"}
+  ]
+}
