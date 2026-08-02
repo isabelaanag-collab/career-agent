@@ -1,0 +1,50 @@
+{
+  "id_externo": "indeed__0d253040bcbe",
+  "plataforma": "indeed",
+  "url": "https://to.indeed.com/aasdtpnxczmw",
+  "empresa": "VIC Engenharia",
+  "cargo": "Analista de Suprimentos II",
+  "salario": null,
+  "salario_estimado": null,
+  "cidade": "Belo Horizonte",
+  "estado": "MG",
+  "modalidade": "presencial",
+  "data_publicacao": "2026-07-14",
+  "data_candidatura": null,
+  "match_score": 71,
+  "probabilidade_estimada_entrevista": "média-alta — área de Suprimentos bate bem, nível 'II' compatível com Pleno, mas a vaga sugere supervisão de equipe, experiência de liderança não comprovada no currículo.",
+  "motivos_score": [
+    "Área de Suprimentos bate diretamente com o perfil.",
+    "Negociação com fornecedores e redução de custos alinham com Strategic Sourcing e Procurement do currículo.",
+    "Vaga menciona supervisão de Auxiliares/Assistentes — não há experiência de liderança formal comprovada no currículo.",
+    "Ferramentas não são especificadas claramente na vaga, tratadas como neutras.",
+    "Localização em Belo Horizonte, cidade onde ela já mora."
+  ],
+  "palavras_chave_encontradas": [
+    "suprimentos",
+    "fornecedores",
+    "negociação",
+    "indicadores",
+    "conformidade"
+  ],
+  "tecnologias_exigidas": [],
+  "idiomas_exigidos": [],
+  "beneficios": [],
+  "requisitos_obrigatorios": [
+    "Análise e otimização de processos de aquisição",
+    "Negociação com fornecedores",
+    "Supervisão de equipe"
+  ],
+  "requisitos_desejaveis": [],
+  "status": "Aguardando aprovação",
+  "empresa_favorita": false,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Aguardando aprovação",
+      "data": "2026-08-02T22:03:31+00:00"
+    }
+  ]
+}

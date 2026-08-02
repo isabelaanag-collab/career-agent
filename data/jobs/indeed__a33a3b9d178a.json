@@ -1,0 +1,62 @@
+{
+  "id_externo": "indeed__a33a3b9d178a",
+  "plataforma": "indeed",
+  "url": "https://to.indeed.com/aa89yppj2489",
+  "empresa": "Jaguar Mining",
+  "cargo": "Analista de Suprimentos PL",
+  "salario": null,
+  "salario_estimado": null,
+  "cidade": "Belo Horizonte",
+  "estado": "MG",
+  "modalidade": "presencial",
+  "data_publicacao": "2026-07-29",
+  "data_candidatura": null,
+  "match_score": 89,
+  "probabilidade_estimada_entrevista": "alta — nível Pleno explícito, SAP e negociação com fornecedores batem diretamente com a experiência e ferramentas do currículo.",
+  "motivos_score": [
+    "Cargo 'Pleno' (PL) bate exatamente com o nível atual da candidata.",
+    "SAP é requisito obrigatório e consta no currículo (SAP ERP).",
+    "Responsabilidades (cotações, negociação, mapas comparativos, ordens de compra) alinham com a experiência em Compras, Procurement e Strategic Sourcing.",
+    "Formação em Engenharia é aceita pela vaga.",
+    "Inglês intermediário é apenas desejável, não obrigatório — não penaliza fortemente por não ser comprovável no currículo."
+  ],
+  "palavras_chave_encontradas": [
+    "compras",
+    "negociação",
+    "fornecedores",
+    "SAP",
+    "contratos",
+    "ordens de compra",
+    "indicadores de desempenho"
+  ],
+  "tecnologias_exigidas": [
+    "SAP",
+    "Pacote Office"
+  ],
+  "idiomas_exigidos": [
+    "Inglês intermediário (desejável)"
+  ],
+  "beneficios": [],
+  "requisitos_obrigatorios": [
+    "Ensino superior em Administração, Engenharia, Logística, Economia, Comércio Exterior ou correlatas",
+    "Experiência prévia em compras, negociações e gestão de fornecedores",
+    "SAP",
+    "Pacote Office"
+  ],
+  "requisitos_desejaveis": [
+    "Vivência em mineração de ouro",
+    "Pós-graduação ou MBA na área",
+    "Inglês intermediário"
+  ],
+  "status": "Aguardando aprovação",
+  "empresa_favorita": false,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Aguardando aprovação",
+      "data": "2026-08-02T22:02:19+00:00"
+    }
+  ]
+}

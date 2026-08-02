@@ -1,0 +1,54 @@
+{
+  "id_externo": "indeed__5a13ec1ee793",
+  "plataforma": "indeed",
+  "url": "https://to.indeed.com/aarq6dm7xpzp",
+  "empresa": "Who.",
+  "cargo": "Analista de Planejamento",
+  "salario": null,
+  "salario_estimado": null,
+  "cidade": "Belo Horizonte",
+  "estado": "MG",
+  "modalidade": "presencial",
+  "data_publicacao": "2026-07-01",
+  "data_candidatura": null,
+  "match_score": 59,
+  "probabilidade_estimada_entrevista": "baixa — o cargo cita 'Planejamento', mas o conteúdo é de BI/indicadores operacionais de uma empresa de prevenção a fraude, sem relação com supply chain.",
+  "motivos_score": [
+    "Título contém 'Planejamento', mas a vaga é de análise de indicadores operacionais/financeiros de uma empresa de antifraude, não de supply chain.",
+    "Ferramentas pedidas (Excel, Power BI) constam no currículo.",
+    "Responsabilidades (dashboards, forecast, previsto x realizado) têm alguma semelhança com a rotina de S&OE dela, mas em contexto de negócio muito diferente.",
+    "Formação aceita é ampla (Administração, Engenharia, Estatística, Economia, Dados).",
+    "Não há exigência de idioma."
+  ],
+  "palavras_chave_encontradas": [
+    "indicadores",
+    "forecast",
+    "dashboards",
+    "Excel",
+    "Power BI"
+  ],
+  "tecnologias_exigidas": [
+    "Excel",
+    "Power BI (diferencial)"
+  ],
+  "idiomas_exigidos": [],
+  "beneficios": [],
+  "requisitos_obrigatorios": [
+    "Superior completo ou em andamento em Administração, Engenharia, Estatística, Economia, Sistemas de Informação ou correlatas",
+    "Excel intermediário/avançado"
+  ],
+  "requisitos_desejaveis": [
+    "Power BI"
+  ],
+  "status": "Encontrada",
+  "empresa_favorita": false,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Encontrada",
+      "data": "2026-08-02T22:03:24+00:00"
+    }
+  ]
+}

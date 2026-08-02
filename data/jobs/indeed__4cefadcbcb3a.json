@@ -1,0 +1,59 @@
+{
+  "id_externo": "indeed__4cefadcbcb3a",
+  "plataforma": "indeed",
+  "url": "https://to.indeed.com/aafkrlpgqmly",
+  "empresa": "CONSTANCE",
+  "cargo": "Analista PCP",
+  "salario": null,
+  "salario_estimado": null,
+  "cidade": "Contagem",
+  "estado": "MG",
+  "modalidade": "presencial",
+  "data_publicacao": "2026-07-10",
+  "data_candidatura": null,
+  "match_score": 68,
+  "probabilidade_estimada_entrevista": "média-baixa — área de PCP/MRP bate, mas é indústria de calçados (chão de fábrica), segmento sem sobreposição com a experiência dela em farmacêutico/cosméticos.",
+  "motivos_score": [
+    "PCP está na lista de áreas-alvo e ela tem forte experiência em MRP.",
+    "Ferramentas (ERP/MRP, Excel) constam no currículo.",
+    "Responsabilidades são muito específicas de chão de fábrica de calçados (corte, costura, montagem) — sem correspondência direta na experiência dela.",
+    "Indicadores/KPIs de produção alinham com a experiência dela em S&OE.",
+    "Formação não é especificada na vaga, Engenharia é aceitável."
+  ],
+  "palavras_chave_encontradas": [
+    "PCP",
+    "MRP",
+    "ordem de produção",
+    "indicadores",
+    "ERP"
+  ],
+  "tecnologias_exigidas": [
+    "ERP/MRP",
+    "Pacote Office"
+  ],
+  "idiomas_exigidos": [],
+  "beneficios": [
+    "Assistência médica",
+    "Assistência odontológica",
+    "Auxílio-combustível",
+    "Auxílio-educação",
+    "Vale-alimentação",
+    "Vale-transporte"
+  ],
+  "requisitos_obrigatorios": [
+    "Vivência em processo produtivo de calçados",
+    "Domínio de Excel e sistemas ERP"
+  ],
+  "requisitos_desejaveis": [],
+  "status": "Encontrada",
+  "empresa_favorita": false,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Encontrada",
+      "data": "2026-08-02T22:03:17+00:00"
+    }
+  ]
+}

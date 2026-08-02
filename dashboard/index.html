@@ -68,9 +68,11 @@
     font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.02em; margin: 0 0 4px;
   }
   header.page-header p { color: var(--text-secondary); margin: 0; font-size: 14px; }
+  .header-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
   .action-btn--primary {
     background: var(--series-1); border-color: var(--series-1); color: white; padding: 8px 14px; white-space: nowrap;
   }
+  .last-update { color: var(--text-muted); font-size: 12px; white-space: nowrap; }
 
   .kpi-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -177,27 +179,155 @@
     <div class="page-header-top">
       <div>
         <h1>Painel de recolocação</h1>
-        <p>Gerado em 31/07/2026 17:03 UTC · 10 vagas no histórico</p>
+        <p>19 vagas no histórico</p>
       </div>
-      <button type="button" class="action-btn action-btn--primary" data-copy="Rode uma busca agora no Career Agent AI, sem esperar a próxima execução agendada da rotina em nuvem (rotina &quot;career-agent-busca-vagas&quot;) — dispare a rotina via RemoteTrigger (action: run) ou, se preferir, execute a lógica de agent/prompts/routine_search_and_score.md diretamente nesta sessão local.">🔄 Forçar busca agora</button>
+      <div class="header-actions">
+        <button type="button" class="action-btn action-btn--primary" data-copy="Rode uma busca agora no Career Agent AI, sem esperar a próxima execução agendada da rotina em nuvem (rotina &quot;career-agent-busca-vagas&quot;) — dispare a rotina via RemoteTrigger (action: run) ou, se preferir, execute a lógica de agent/prompts/routine_search_and_score.md diretamente nesta sessão local.">🔄 Forçar busca agora</button>
+        <span class="last-update">Última atualização: 02/08/2026 19:15 (Brasília)</span>
+      </div>
     </div>
   </header>
 
-  <div class="kpi-grid"><div class="kpi-card"><span class="kpi-value">1</span><span class="kpi-label">Vagas encontradas hoje</span></div><div class="kpi-card"><span class="kpi-value">10</span><span class="kpi-label">Candidatadas hoje</span></div><div class="kpi-card"><span class="kpi-value">10</span><span class="kpi-label">Total de candidaturas</span></div><div class="kpi-card"><span class="kpi-value">78.2%</span><span class="kpi-label">Média de Match Score</span></div><div class="kpi-card"><span class="kpi-value">—</span><span class="kpi-label">Salário médio</span></div><div class="kpi-card"><span class="kpi-value">3</span><span class="kpi-label">Empresas favoritas com vaga</span></div></div>
+  <div class="kpi-grid"><div class="kpi-card"><span class="kpi-value">4</span><span class="kpi-label">Vagas encontradas hoje</span></div><div class="kpi-card"><span class="kpi-value">0</span><span class="kpi-label">Candidatadas hoje</span></div><div class="kpi-card"><span class="kpi-value">10</span><span class="kpi-label">Total de candidaturas</span></div><div class="kpi-card"><span class="kpi-value">76.3%</span><span class="kpi-label">Média de Match Score</span></div><div class="kpi-card"><span class="kpi-value">—</span><span class="kpi-label">Salário médio</span></div><div class="kpi-card"><span class="kpi-value">4</span><span class="kpi-label">Empresas favoritas com vaga</span></div></div>
 
-  <section class="actions-section"><h2>Ações pendentes</h2><p class="viz-empty">Nada esperando sua aprovação agora.</p></section>
+  
+    <section class="actions-section">
+      <h2>Ações pendentes <span class="actions-count">5</span></h2>
+      <div class="actions-grid">
+    <div class="action-card">
+      <div class="action-card-top">
+        <span class="action-badge action-badge--manual">Candidatura manual</span>
+        <span class="action-score">93% match</span>
+      </div>
+      <strong class="action-cargo">Analista de PCP (Planejamento e Controle da Produção) JR</strong>
+      <span class="action-empresa">Lactalis Brasil · Belo Horizonte</span>
+      <p class="action-label">Vaga em infojobs — abra o link e candidate-se manualmente</p>
+      <a class="action-link" href="https://www.infojobs.com.br/vaga-de-analista-pcp-planejamento-controle-da-producao-jr-em-minas-gerais__11632593.aspx" target="_blank" rel="noopener">Ver vaga →</a>
+      <div class="action-buttons"><button type="button" class="action-btn action-btn--reject" data-copy="Reprovar a vaga infojobs__7a744539d234 (Analista de PCP (Planejamento e Controle da Produção) JR na Lactalis Brasil) — marcar como Rejeitado, não candidatar.">✕ Reprovar</button><button type="button" class="action-btn action-btn--applied" data-copy="Marcar a vaga infojobs__7a744539d234 (Analista de PCP (Planejamento e Controle da Produção) JR na Lactalis Brasil) como Candidatura enviada — já me candidatei manualmente pelo link (rode scripts/update_status.py infojobs__7a744539d234 &quot;Candidatura enviada&quot;).">✓ Já me candidatei</button></div>
+    </div>
+    
+    <div class="action-card">
+      <div class="action-card-top">
+        <span class="action-badge action-badge--warning">Preparo pendente</span>
+        <span class="action-score">89% match</span>
+      </div>
+      <strong class="action-cargo">Analista de Suprimentos PL</strong>
+      <span class="action-empresa">Jaguar Mining · Belo Horizonte</span>
+      <p class="action-label">Match bom, mas o preparo do currículo/carta ainda não foi concluído</p>
+      <a class="action-link" href="https://to.indeed.com/aa89yppj2489" target="_blank" rel="noopener">Ver vaga →</a>
+      <div class="action-buttons"><button type="button" class="action-btn action-btn--reject" data-copy="Reprovar a vaga indeed__a33a3b9d178a (Analista de Suprimentos PL na Jaguar Mining) — marcar como Rejeitado, não candidatar.">✕ Reprovar</button><button type="button" class="action-btn action-btn--applied" data-copy="Marcar a vaga indeed__a33a3b9d178a (Analista de Suprimentos PL na Jaguar Mining) como Candidatura enviada — já me candidatei manualmente pelo link (rode scripts/update_status.py indeed__a33a3b9d178a &quot;Candidatura enviada&quot;).">✓ Já me candidatei</button></div>
+    </div>
+    
+    <div class="action-card">
+      <div class="action-card-top">
+        <span class="action-badge action-badge--warning">Preparo pendente</span>
+        <span class="action-score">78% match</span>
+      </div>
+      <strong class="action-cargo">Analista de Supply Chain</strong>
+      <span class="action-empresa">ALLU · Belo Horizonte</span>
+      <p class="action-label">Match bom, mas o preparo do currículo/carta ainda não foi concluído</p>
+      <a class="action-link" href="https://to.indeed.com/aagbgtbf6rj4" target="_blank" rel="noopener">Ver vaga →</a>
+      <div class="action-buttons"><button type="button" class="action-btn action-btn--reject" data-copy="Reprovar a vaga indeed__74e971b184bd (Analista de Supply Chain na ALLU) — marcar como Rejeitado, não candidatar.">✕ Reprovar</button><button type="button" class="action-btn action-btn--applied" data-copy="Marcar a vaga indeed__74e971b184bd (Analista de Supply Chain na ALLU) como Candidatura enviada — já me candidatei manualmente pelo link (rode scripts/update_status.py indeed__74e971b184bd &quot;Candidatura enviada&quot;).">✓ Já me candidatei</button></div>
+    </div>
+    
+    <div class="action-card">
+      <div class="action-card-top">
+        <span class="action-badge action-badge--manual">Candidatura manual</span>
+        <span class="action-score">72% match</span>
+      </div>
+      <strong class="action-cargo">Analista de Compras Técnicas - Peças Automotivas</strong>
+      <span class="action-empresa">Localiza&amp;Co ★ · Belo Horizonte</span>
+      <p class="action-label">Vaga em gupy — abra o link e candidate-se manualmente</p>
+      <a class="action-link" href="https://localiza.gupy.io/jobs/9674674" target="_blank" rel="noopener">Ver vaga →</a>
+      <div class="action-buttons"><button type="button" class="action-btn action-btn--reject" data-copy="Reprovar a vaga gupy__2b26fa10e6b6 (Analista de Compras Técnicas - Peças Automotivas na Localiza&amp;Co) — marcar como Rejeitado, não candidatar.">✕ Reprovar</button><button type="button" class="action-btn action-btn--applied" data-copy="Marcar a vaga gupy__2b26fa10e6b6 (Analista de Compras Técnicas - Peças Automotivas na Localiza&amp;Co) como Candidatura enviada — já me candidatei manualmente pelo link (rode scripts/update_status.py gupy__2b26fa10e6b6 &quot;Candidatura enviada&quot;).">✓ Já me candidatei</button></div>
+    </div>
+    
+    <div class="action-card">
+      <div class="action-card-top">
+        <span class="action-badge action-badge--warning">Preparo pendente</span>
+        <span class="action-score">71% match</span>
+      </div>
+      <strong class="action-cargo">Analista de Suprimentos II</strong>
+      <span class="action-empresa">VIC Engenharia · Belo Horizonte</span>
+      <p class="action-label">Match bom, mas o preparo do currículo/carta ainda não foi concluído</p>
+      <a class="action-link" href="https://to.indeed.com/aasdtpnxczmw" target="_blank" rel="noopener">Ver vaga →</a>
+      <div class="action-buttons"><button type="button" class="action-btn action-btn--reject" data-copy="Reprovar a vaga indeed__0d253040bcbe (Analista de Suprimentos II na VIC Engenharia) — marcar como Rejeitado, não candidatar.">✕ Reprovar</button><button type="button" class="action-btn action-btn--applied" data-copy="Marcar a vaga indeed__0d253040bcbe (Analista de Suprimentos II na VIC Engenharia) como Candidatura enviada — já me candidatei manualmente pelo link (rode scripts/update_status.py indeed__0d253040bcbe &quot;Candidatura enviada&quot;).">✓ Já me candidatei</button></div>
+    </div>
+    </div>
+    </section>
+    
 
   <section>
     <h2>Quadro Kanban</h2>
     <div class="kanban">
         <div class="kanban-col">
-          <header class="kanban-col-header">Vagas Encontradas <span class="kanban-count">0</span></header>
-          <div class="kanban-col-body"><p class="viz-empty">Vazio</p></div>
+          <header class="kanban-col-header">Vagas Encontradas <span class="kanban-count">4</span></header>
+          <div class="kanban-col-body">
+    <a class="job-card" href="https://to.indeed.com/aabzjmtqpx7j" target="_blank" rel="noopener">
+      <div class="job-card-top">
+        <span class="job-card-score">69%</span>
+        <span class="job-card-plataforma">indeed</span>
+      </div>
+      <strong class="job-card-cargo">Analista de Logística Sênior</strong>
+      <span class="job-card-empresa">BIOMM S.A.</span>
+      <span class="job-card-local">Nova Lima · presencial</span>
+      <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--neutro">Encontrada</span>
+    </a>
+    
+    <a class="job-card" href="https://to.indeed.com/aafkrlpgqmly" target="_blank" rel="noopener">
+      <div class="job-card-top">
+        <span class="job-card-score">68%</span>
+        <span class="job-card-plataforma">indeed</span>
+      </div>
+      <strong class="job-card-cargo">Analista PCP</strong>
+      <span class="job-card-empresa">CONSTANCE</span>
+      <span class="job-card-local">Contagem · presencial</span>
+      <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--neutro">Encontrada</span>
+    </a>
+    
+    <a class="job-card" href="https://to.indeed.com/aazxm4xq9rvc" target="_blank" rel="noopener">
+      <div class="job-card-top">
+        <span class="job-card-score">68%</span>
+        <span class="job-card-plataforma">indeed</span>
+      </div>
+      <strong class="job-card-cargo">Analista de Eficiência Logística LLP Jr</strong>
+      <span class="job-card-empresa">DHL</span>
+      <span class="job-card-local">Betim · presencial</span>
+      <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--neutro">Encontrada</span>
+    </a>
+    
+    <a class="job-card" href="https://to.indeed.com/aarq6dm7xpzp" target="_blank" rel="noopener">
+      <div class="job-card-top">
+        <span class="job-card-score">59%</span>
+        <span class="job-card-plataforma">indeed</span>
+      </div>
+      <strong class="job-card-cargo">Analista de Planejamento</strong>
+      <span class="job-card-empresa">Who.</span>
+      <span class="job-card-local">Belo Horizonte · presencial</span>
+      <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--neutro">Encontrada</span>
+    </a>
+    </div>
         </div>
         
         <div class="kanban-col">
-          <header class="kanban-col-header">Excelentes Matches <span class="kanban-count">5</span></header>
+          <header class="kanban-col-header">Excelentes Matches <span class="kanban-count">7</span></header>
           <div class="kanban-col-body">
+    <a class="job-card" href="https://www.infojobs.com.br/vaga-de-analista-pcp-planejamento-controle-da-producao-jr-em-minas-gerais__11632593.aspx" target="_blank" rel="noopener">
+      <div class="job-card-top">
+        <span class="job-card-score">93%</span>
+        <span class="job-card-plataforma">infojobs</span>
+      </div>
+      <strong class="job-card-cargo">Analista de PCP (Planejamento e Controle da Produção) JR</strong>
+      <span class="job-card-empresa">Lactalis Brasil</span>
+      <span class="job-card-local">Belo Horizonte · presencial</span>
+      <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--preparo">Aguardando aprovação</span>
+    </a>
+    
     <a class="job-card job-card--favorita" href="https://esab.gupy.io/candidates/applications/740371407" target="_blank" rel="noopener">
       <div class="job-card-top">
         <span class="job-card-score">90%</span>
@@ -208,6 +338,18 @@
       <span class="job-card-local">Contagem · presencial</span>
       <span class="job-card-salario">não informado</span>
       <span class="status-badge status-badge--enviada">Candidatura enviada</span>
+    </a>
+    
+    <a class="job-card" href="https://to.indeed.com/aa89yppj2489" target="_blank" rel="noopener">
+      <div class="job-card-top">
+        <span class="job-card-score">89%</span>
+        <span class="job-card-plataforma">indeed</span>
+      </div>
+      <strong class="job-card-cargo">Analista de Suprimentos PL</strong>
+      <span class="job-card-empresa">Jaguar Mining</span>
+      <span class="job-card-local">Belo Horizonte · presencial</span>
+      <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--preparo">Aguardando aprovação</span>
     </a>
     
     <a class="job-card" href="https://belgo.gupy.io/candidates/applications/740733326" target="_blank" rel="noopener">
@@ -261,8 +403,68 @@
         </div>
         
         <div class="kanban-col">
-          <header class="kanban-col-header">Aguardando Aprovação <span class="kanban-count">0</span></header>
-          <div class="kanban-col-body"><p class="viz-empty">Vazio</p></div>
+          <header class="kanban-col-header">Aguardando Aprovação <span class="kanban-count">5</span></header>
+          <div class="kanban-col-body">
+    <a class="job-card" href="https://www.infojobs.com.br/vaga-de-analista-pcp-planejamento-controle-da-producao-jr-em-minas-gerais__11632593.aspx" target="_blank" rel="noopener">
+      <div class="job-card-top">
+        <span class="job-card-score">93%</span>
+        <span class="job-card-plataforma">infojobs</span>
+      </div>
+      <strong class="job-card-cargo">Analista de PCP (Planejamento e Controle da Produção) JR</strong>
+      <span class="job-card-empresa">Lactalis Brasil</span>
+      <span class="job-card-local">Belo Horizonte · presencial</span>
+      <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--preparo">Aguardando aprovação</span>
+    </a>
+    
+    <a class="job-card" href="https://to.indeed.com/aa89yppj2489" target="_blank" rel="noopener">
+      <div class="job-card-top">
+        <span class="job-card-score">89%</span>
+        <span class="job-card-plataforma">indeed</span>
+      </div>
+      <strong class="job-card-cargo">Analista de Suprimentos PL</strong>
+      <span class="job-card-empresa">Jaguar Mining</span>
+      <span class="job-card-local">Belo Horizonte · presencial</span>
+      <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--preparo">Aguardando aprovação</span>
+    </a>
+    
+    <a class="job-card" href="https://to.indeed.com/aagbgtbf6rj4" target="_blank" rel="noopener">
+      <div class="job-card-top">
+        <span class="job-card-score">78%</span>
+        <span class="job-card-plataforma">indeed</span>
+      </div>
+      <strong class="job-card-cargo">Analista de Supply Chain</strong>
+      <span class="job-card-empresa">ALLU</span>
+      <span class="job-card-local">Belo Horizonte · presencial</span>
+      <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--preparo">Aguardando aprovação</span>
+    </a>
+    
+    <a class="job-card job-card--favorita" href="https://localiza.gupy.io/jobs/9674674" target="_blank" rel="noopener">
+      <div class="job-card-top">
+        <span class="job-card-score">72%</span>
+        <span class="job-card-plataforma">gupy</span>
+      </div>
+      <strong class="job-card-cargo">Analista de Compras Técnicas - Peças Automotivas</strong>
+      <span class="job-card-empresa">Localiza&amp;Co ★</span>
+      <span class="job-card-local">Belo Horizonte · presencial</span>
+      <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--preparo">Aguardando aprovação</span>
+    </a>
+    
+    <a class="job-card" href="https://to.indeed.com/aasdtpnxczmw" target="_blank" rel="noopener">
+      <div class="job-card-top">
+        <span class="job-card-score">71%</span>
+        <span class="job-card-plataforma">indeed</span>
+      </div>
+      <strong class="job-card-cargo">Analista de Suprimentos II</strong>
+      <span class="job-card-empresa">VIC Engenharia</span>
+      <span class="job-card-local">Belo Horizonte · presencial</span>
+      <span class="job-card-salario">não informado</span>
+      <span class="status-badge status-badge--preparo">Aguardando aprovação</span>
+    </a>
+    </div>
         </div>
         
         <div class="kanban-col">
@@ -410,21 +612,21 @@
   <section>
     <h2>Análises</h2>
     <div class="charts-grid">
-      <div class="chart-card"><h3>Por cidade</h3><svg viewBox="0 0 560 172" width="100%" role="img" aria-label="Gráfico de barras"><text x="142" y="26.0" text-anchor="end" class="viz-axis-label">Belo Horizonte</text><path d="M150.0,12.0 H508.0 Q512.0,12.0 512.0,16.0 V28.0 Q512.0,32.0 508.0,32.0 H150.0 Z" fill="var(--series-1)"><title>Belo Horizonte: 4</title></path><text x="520.0" y="26.0" class="viz-value-label">4</text><text x="142" y="58.0" text-anchor="end" class="viz-axis-label">Contagem</text><path d="M150.0,44.0 H417.5 Q421.5,44.0 421.5,48.0 V60.0 Q421.5,64.0 417.5,64.0 H150.0 Z" fill="var(--series-1)"><title>Contagem: 3</title></path><text x="429.5" y="58.0" class="viz-value-label">3</text><text x="142" y="90.0" text-anchor="end" class="viz-axis-label">Não informado</text><path d="M150.0,76.0 H236.5 Q240.5,76.0 240.5,80.0 V92.0 Q240.5,96.0 236.5,96.0 H150.0 Z" fill="var(--series-1)"><title>Não informado: 1</title></path><text x="248.5" y="90.0" class="viz-value-label">1</text><text x="142" y="122.0" text-anchor="end" class="viz-axis-label">Curitiba</text><path d="M150.0,108.0 H236.5 Q240.5,108.0 240.5,112.0 V124.0 Q240.5,128.0 236.5,128.0 H150.0 Z" fill="var(--series-1)"><title>Curitiba: 1</title></path><text x="248.5" y="122.0" class="viz-value-label">1</text><text x="142" y="154.0" text-anchor="end" class="viz-axis-label">Betim</text><path d="M150.0,140.0 H236.5 Q240.5,140.0 240.5,144.0 V156.0 Q240.5,160.0 236.5,160.0 H150.0 Z" fill="var(--series-1)"><title>Betim: 1</title></path><text x="248.5" y="154.0" class="viz-value-label">1</text></svg><details class="viz-table"><summary>Ver como tabela</summary><table><tbody><tr><td>Belo Horizonte</td><td>4</td></tr><tr><td>Contagem</td><td>3</td></tr><tr><td>Não informado</td><td>1</td></tr><tr><td>Curitiba</td><td>1</td></tr><tr><td>Betim</td><td>1</td></tr></tbody></table></details></div>
-      <div class="chart-card"><h3>Por empresa (top 8)</h3><svg viewBox="0 0 560 236" width="100%" role="img" aria-label="Gráfico de barras"><text x="142" y="26.0" text-anchor="end" class="viz-axis-label">Belgo Arames</text><path d="M150.0,12.0 H508.0 Q512.0,12.0 512.0,16.0 V28.0 Q512.0,32.0 508.0,32.0 H150.0 Z" fill="var(--series-1)"><title>Belgo Arames: 2</title></path><text x="520.0" y="26.0" class="viz-value-label">2</text><text x="142" y="58.0" text-anchor="end" class="viz-axis-label">MRV&amp;Co</text><path d="M150.0,44.0 H508.0 Q512.0,44.0 512.0,48.0 V60.0 Q512.0,64.0 508.0,64.0 H150.0 Z" fill="var(--series-1)"><title>MRV&amp;Co: 2</title></path><text x="520.0" y="58.0" class="viz-value-label">2</text><text x="142" y="90.0" text-anchor="end" class="viz-axis-label">Grupo Boticário</text><path d="M150.0,76.0 H508.0 Q512.0,76.0 512.0,80.0 V92.0 Q512.0,96.0 508.0,96.0 H150.0 Z" fill="var(--series-1)"><title>Grupo Boticário: 2</title></path><text x="520.0" y="90.0" class="viz-value-label">2</text><text x="142" y="122.0" text-anchor="end" class="viz-axis-label">VLI</text><path d="M150.0,108.0 H327.0 Q331.0,108.0 331.0,112.0 V124.0 Q331.0,128.0 327.0,128.0 H150.0 Z" fill="var(--series-1)"><title>VLI: 1</title></path><text x="339.0" y="122.0" class="viz-value-label">1</text><text x="142" y="154.0" text-anchor="end" class="viz-axis-label">SELPE Gente &amp; Gestão</text><path d="M150.0,140.0 H327.0 Q331.0,140.0 331.0,144.0 V156.0 Q331.0,160.0 327.0,160.0 H150.0 Z" fill="var(--series-1)"><title>SELPE Gente &amp; Gestão: 1</title></path><text x="339.0" y="154.0" class="viz-value-label">1</text><text x="142" y="186.0" text-anchor="end" class="viz-axis-label">ESAB</text><path d="M150.0,172.0 H327.0 Q331.0,172.0 331.0,176.0 V188.0 Q331.0,192.0 327.0,192.0 H150.0 Z" fill="var(--series-1)"><title>ESAB: 1</title></path><text x="339.0" y="186.0" class="viz-value-label">1</text><text x="142" y="218.0" text-anchor="end" class="viz-axis-label">Grupo Artesanal</text><path d="M150.0,204.0 H327.0 Q331.0,204.0 331.0,208.0 V220.0 Q331.0,224.0 327.0,224.0 H150.0 Z" fill="var(--series-1)"><title>Grupo Artesanal: 1</title></path><text x="339.0" y="218.0" class="viz-value-label">1</text></svg><details class="viz-table"><summary>Ver como tabela</summary><table><tbody><tr><td>Belgo Arames</td><td>2</td></tr><tr><td>MRV&amp;Co</td><td>2</td></tr><tr><td>Grupo Boticário</td><td>2</td></tr><tr><td>VLI</td><td>1</td></tr><tr><td>SELPE Gente &amp; Gestão</td><td>1</td></tr><tr><td>ESAB</td><td>1</td></tr><tr><td>Grupo Artesanal</td><td>1</td></tr></tbody></table></details></div>
-      <div class="chart-card"><h3>Por plataforma</h3><svg viewBox="0 0 560 76" width="100%" role="img" aria-label="Gráfico de barras"><text x="142" y="26.0" text-anchor="end" class="viz-axis-label">gupy</text><path d="M150.0,12.0 H508.0 Q512.0,12.0 512.0,16.0 V28.0 Q512.0,32.0 508.0,32.0 H150.0 Z" fill="var(--series-3)"><title>gupy: 9</title></path><text x="520.0" y="26.0" class="viz-value-label">9</text><text x="142" y="58.0" text-anchor="end" class="viz-axis-label">indeed</text><path d="M150.0,44.0 H186.2 Q190.2,44.0 190.2,48.0 V60.0 Q190.2,64.0 186.2,64.0 H150.0 Z" fill="var(--series-1)"><title>indeed: 1</title></path><text x="198.22222222222223" y="58.0" class="viz-value-label">1</text></svg><details class="viz-table"><summary>Ver como tabela</summary><table><tbody><tr><td>gupy</td><td>9</td></tr><tr><td>indeed</td><td>1</td></tr></tbody></table></details></div>
-      <div class="chart-card"><h3>Por status</h3><svg viewBox="0 0 560 44" width="100%" role="img" aria-label="Gráfico de barras"><text x="142" y="26.0" text-anchor="end" class="viz-axis-label">Candidatura enviada</text><path d="M150.0,12.0 H508.0 Q512.0,12.0 512.0,16.0 V28.0 Q512.0,32.0 508.0,32.0 H150.0 Z" fill="var(--series-1)"><title>Candidatura enviada: 10</title></path><text x="520.0" y="26.0" class="viz-value-label">10</text></svg><details class="viz-table"><summary>Ver como tabela</summary><table><tbody><tr><td>Candidatura enviada</td><td>10</td></tr></tbody></table></details></div>
+      <div class="chart-card"><h3>Por cidade</h3><svg viewBox="0 0 560 204" width="100%" role="img" aria-label="Gráfico de barras"><text x="142" y="26.0" text-anchor="end" class="viz-axis-label">Belo Horizonte</text><path d="M150.0,12.0 H508.0 Q512.0,12.0 512.0,16.0 V28.0 Q512.0,32.0 508.0,32.0 H150.0 Z" fill="var(--series-1)"><title>Belo Horizonte: 10</title></path><text x="520.0" y="26.0" class="viz-value-label">10</text><text x="142" y="58.0" text-anchor="end" class="viz-axis-label">Contagem</text><path d="M150.0,44.0 H290.8 Q294.8,44.0 294.8,48.0 V60.0 Q294.8,64.0 290.8,64.0 H150.0 Z" fill="var(--series-1)"><title>Contagem: 4</title></path><text x="302.8" y="58.0" class="viz-value-label">4</text><text x="142" y="90.0" text-anchor="end" class="viz-axis-label">Betim</text><path d="M150.0,76.0 H218.4 Q222.4,76.0 222.4,80.0 V92.0 Q222.4,96.0 218.4,96.0 H150.0 Z" fill="var(--series-1)"><title>Betim: 2</title></path><text x="230.4" y="90.0" class="viz-value-label">2</text><text x="142" y="122.0" text-anchor="end" class="viz-axis-label">Não informado</text><path d="M150.0,108.0 H182.2 Q186.2,108.0 186.2,112.0 V124.0 Q186.2,128.0 182.2,128.0 H150.0 Z" fill="var(--series-1)"><title>Não informado: 1</title></path><text x="194.2" y="122.0" class="viz-value-label">1</text><text x="142" y="154.0" text-anchor="end" class="viz-axis-label">Curitiba</text><path d="M150.0,140.0 H182.2 Q186.2,140.0 186.2,144.0 V156.0 Q186.2,160.0 182.2,160.0 H150.0 Z" fill="var(--series-1)"><title>Curitiba: 1</title></path><text x="194.2" y="154.0" class="viz-value-label">1</text><text x="142" y="186.0" text-anchor="end" class="viz-axis-label">Nova Lima</text><path d="M150.0,172.0 H182.2 Q186.2,172.0 186.2,176.0 V188.0 Q186.2,192.0 182.2,192.0 H150.0 Z" fill="var(--series-1)"><title>Nova Lima: 1</title></path><text x="194.2" y="186.0" class="viz-value-label">1</text></svg><details class="viz-table"><summary>Ver como tabela</summary><table><tbody><tr><td>Belo Horizonte</td><td>10</td></tr><tr><td>Contagem</td><td>4</td></tr><tr><td>Betim</td><td>2</td></tr><tr><td>Não informado</td><td>1</td></tr><tr><td>Curitiba</td><td>1</td></tr><tr><td>Nova Lima</td><td>1</td></tr></tbody></table></details></div>
+      <div class="chart-card"><h3>Por empresa (top 8)</h3><svg viewBox="0 0 560 268" width="100%" role="img" aria-label="Gráfico de barras"><text x="142" y="26.0" text-anchor="end" class="viz-axis-label">Belgo Arames</text><path d="M150.0,12.0 H508.0 Q512.0,12.0 512.0,16.0 V28.0 Q512.0,32.0 508.0,32.0 H150.0 Z" fill="var(--series-1)"><title>Belgo Arames: 2</title></path><text x="520.0" y="26.0" class="viz-value-label">2</text><text x="142" y="58.0" text-anchor="end" class="viz-axis-label">MRV&amp;Co</text><path d="M150.0,44.0 H508.0 Q512.0,44.0 512.0,48.0 V60.0 Q512.0,64.0 508.0,64.0 H150.0 Z" fill="var(--series-1)"><title>MRV&amp;Co: 2</title></path><text x="520.0" y="58.0" class="viz-value-label">2</text><text x="142" y="90.0" text-anchor="end" class="viz-axis-label">Grupo Boticário</text><path d="M150.0,76.0 H508.0 Q512.0,76.0 512.0,80.0 V92.0 Q512.0,96.0 508.0,96.0 H150.0 Z" fill="var(--series-1)"><title>Grupo Boticário: 2</title></path><text x="520.0" y="90.0" class="viz-value-label">2</text><text x="142" y="122.0" text-anchor="end" class="viz-axis-label">VLI</text><path d="M150.0,108.0 H327.0 Q331.0,108.0 331.0,112.0 V124.0 Q331.0,128.0 327.0,128.0 H150.0 Z" fill="var(--series-1)"><title>VLI: 1</title></path><text x="339.0" y="122.0" class="viz-value-label">1</text><text x="142" y="154.0" text-anchor="end" class="viz-axis-label">Localiza&amp;Co</text><path d="M150.0,140.0 H327.0 Q331.0,140.0 331.0,144.0 V156.0 Q331.0,160.0 327.0,160.0 H150.0 Z" fill="var(--series-1)"><title>Localiza&amp;Co: 1</title></path><text x="339.0" y="154.0" class="viz-value-label">1</text><text x="142" y="186.0" text-anchor="end" class="viz-axis-label">SELPE Gente &amp; Gestão</text><path d="M150.0,172.0 H327.0 Q331.0,172.0 331.0,176.0 V188.0 Q331.0,192.0 327.0,192.0 H150.0 Z" fill="var(--series-1)"><title>SELPE Gente &amp; Gestão: 1</title></path><text x="339.0" y="186.0" class="viz-value-label">1</text><text x="142" y="218.0" text-anchor="end" class="viz-axis-label">ESAB</text><path d="M150.0,204.0 H327.0 Q331.0,204.0 331.0,208.0 V220.0 Q331.0,224.0 327.0,224.0 H150.0 Z" fill="var(--series-1)"><title>ESAB: 1</title></path><text x="339.0" y="218.0" class="viz-value-label">1</text><text x="142" y="250.0" text-anchor="end" class="viz-axis-label">VIC Engenharia</text><path d="M150.0,236.0 H327.0 Q331.0,236.0 331.0,240.0 V252.0 Q331.0,256.0 327.0,256.0 H150.0 Z" fill="var(--series-1)"><title>VIC Engenharia: 1</title></path><text x="339.0" y="250.0" class="viz-value-label">1</text></svg><details class="viz-table"><summary>Ver como tabela</summary><table><tbody><tr><td>Belgo Arames</td><td>2</td></tr><tr><td>MRV&amp;Co</td><td>2</td></tr><tr><td>Grupo Boticário</td><td>2</td></tr><tr><td>VLI</td><td>1</td></tr><tr><td>Localiza&amp;Co</td><td>1</td></tr><tr><td>SELPE Gente &amp; Gestão</td><td>1</td></tr><tr><td>ESAB</td><td>1</td></tr><tr><td>VIC Engenharia</td><td>1</td></tr></tbody></table></details></div>
+      <div class="chart-card"><h3>Por plataforma</h3><svg viewBox="0 0 560 108" width="100%" role="img" aria-label="Gráfico de barras"><text x="142" y="26.0" text-anchor="end" class="viz-axis-label">gupy</text><path d="M150.0,12.0 H508.0 Q512.0,12.0 512.0,16.0 V28.0 Q512.0,32.0 508.0,32.0 H150.0 Z" fill="var(--series-3)"><title>gupy: 10</title></path><text x="520.0" y="26.0" class="viz-value-label">10</text><text x="142" y="58.0" text-anchor="end" class="viz-axis-label">indeed</text><path d="M150.0,44.0 H435.6 Q439.6,44.0 439.6,48.0 V60.0 Q439.6,64.0 435.6,64.0 H150.0 Z" fill="var(--series-1)"><title>indeed: 8</title></path><text x="447.6" y="58.0" class="viz-value-label">8</text><text x="142" y="90.0" text-anchor="end" class="viz-axis-label">infojobs</text><path d="M150.0,76.0 H182.2 Q186.2,76.0 186.2,80.0 V92.0 Q186.2,96.0 182.2,96.0 H150.0 Z" fill="var(--series-5)"><title>infojobs: 1</title></path><text x="194.2" y="90.0" class="viz-value-label">1</text></svg><details class="viz-table"><summary>Ver como tabela</summary><table><tbody><tr><td>gupy</td><td>10</td></tr><tr><td>indeed</td><td>8</td></tr><tr><td>infojobs</td><td>1</td></tr></tbody></table></details></div>
+      <div class="chart-card"><h3>Por status</h3><svg viewBox="0 0 560 108" width="100%" role="img" aria-label="Gráfico de barras"><text x="142" y="26.0" text-anchor="end" class="viz-axis-label">Candidatura enviada</text><path d="M150.0,12.0 H508.0 Q512.0,12.0 512.0,16.0 V28.0 Q512.0,32.0 508.0,32.0 H150.0 Z" fill="var(--series-1)"><title>Candidatura enviada: 10</title></path><text x="520.0" y="26.0" class="viz-value-label">10</text><text x="142" y="58.0" text-anchor="end" class="viz-axis-label">Aguardando aprovação</text><path d="M150.0,44.0 H327.0 Q331.0,44.0 331.0,48.0 V60.0 Q331.0,64.0 327.0,64.0 H150.0 Z" fill="var(--series-1)"><title>Aguardando aprovação: 5</title></path><text x="339.0" y="58.0" class="viz-value-label">5</text><text x="142" y="90.0" text-anchor="end" class="viz-axis-label">Encontrada</text><path d="M150.0,76.0 H290.8 Q294.8,76.0 294.8,80.0 V92.0 Q294.8,96.0 290.8,96.0 H150.0 Z" fill="var(--series-1)"><title>Encontrada: 4</title></path><text x="302.8" y="90.0" class="viz-value-label">4</text></svg><details class="viz-table"><summary>Ver como tabela</summary><table><tbody><tr><td>Candidatura enviada</td><td>10</td></tr><tr><td>Aguardando aprovação</td><td>5</td></tr><tr><td>Encontrada</td><td>4</td></tr></tbody></table></details></div>
       <div class="chart-card"><h3>Por faixa salarial</h3><svg viewBox="0 0 560 172" width="100%" role="img" aria-label="Gráfico de barras"><text x="142" y="26.0" text-anchor="end" class="viz-axis-label">R$ 6-8k</text><path d="M150.0,12.0 H150.0 Q150.0,12.0 150.0,12.0 V32.0 Q150.0,32.0 150.0,32.0 H150.0 Z" fill="var(--series-1)"><title>R$ 6-8k: 0</title></path><text x="158.0" y="26.0" class="viz-value-label">0</text><text x="142" y="58.0" text-anchor="end" class="viz-axis-label">R$ 8-10k</text><path d="M150.0,44.0 H150.0 Q150.0,44.0 150.0,44.0 V64.0 Q150.0,64.0 150.0,64.0 H150.0 Z" fill="var(--series-1)"><title>R$ 8-10k: 0</title></path><text x="158.0" y="58.0" class="viz-value-label">0</text><text x="142" y="90.0" text-anchor="end" class="viz-axis-label">R$ 10-12k</text><path d="M150.0,76.0 H150.0 Q150.0,76.0 150.0,76.0 V96.0 Q150.0,96.0 150.0,96.0 H150.0 Z" fill="var(--series-1)"><title>R$ 10-12k: 0</title></path><text x="158.0" y="90.0" class="viz-value-label">0</text><text x="142" y="122.0" text-anchor="end" class="viz-axis-label">R$ 12-15k</text><path d="M150.0,108.0 H150.0 Q150.0,108.0 150.0,108.0 V128.0 Q150.0,128.0 150.0,128.0 H150.0 Z" fill="var(--series-1)"><title>R$ 12-15k: 0</title></path><text x="158.0" y="122.0" class="viz-value-label">0</text><text x="142" y="154.0" text-anchor="end" class="viz-axis-label">R$ 15k+</text><path d="M150.0,140.0 H150.0 Q150.0,140.0 150.0,140.0 V160.0 Q150.0,160.0 150.0,160.0 H150.0 Z" fill="var(--series-1)"><title>R$ 15k+: 0</title></path><text x="158.0" y="154.0" class="viz-value-label">0</text></svg><details class="viz-table"><summary>Ver como tabela</summary><table><tbody><tr><td>R$ 6-8k</td><td>0</td></tr><tr><td>R$ 8-10k</td><td>0</td></tr><tr><td>R$ 10-12k</td><td>0</td></tr><tr><td>R$ 12-15k</td><td>0</td></tr><tr><td>R$ 15k+</td><td>0</td></tr></tbody></table></details></div>
       <div class="chart-card"><h3>Evolução semanal</h3>
     <svg viewBox="0 0 560 220" width="100%" role="img" aria-label="Evolução semanal">
       <line x1="36" x2="544" y1="16.0" y2="16.0" class="viz-grid" /><line x1="36" x2="544" y1="104.0" y2="104.0" class="viz-grid" /><line x1="36" x2="544" y1="192.0" y2="192.0" class="viz-grid" />
-      <polyline points="36.0,192.0 120.7,192.0 205.3,192.0 290.0,192.0 374.7,192.0 459.3,192.0 544.0,174.4" fill="none" stroke="var(--series-1)" stroke-width="2"
+      <polyline points="36.0,192.0 120.7,192.0 205.3,192.0 290.0,192.0 374.7,174.4 459.3,192.0 544.0,121.6" fill="none" stroke="var(--series-1)" stroke-width="2"
                 stroke-linejoin="round" stroke-linecap="round" />
-      <polyline points="36.0,192.0 120.7,192.0 205.3,192.0 290.0,192.0 374.7,192.0 459.3,192.0 544.0,16.0" fill="none" stroke="var(--series-2)" stroke-width="2"
+      <polyline points="36.0,192.0 120.7,192.0 205.3,192.0 290.0,192.0 374.7,16.0 459.3,192.0 544.0,192.0" fill="none" stroke="var(--series-2)" stroke-width="2"
                 stroke-linejoin="round" stroke-linecap="round" />
-      <circle cx="36.0" cy="192.0" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-25: 0</title></circle><circle cx="120.7" cy="192.0" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-26: 0</title></circle><circle cx="205.3" cy="192.0" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-27: 0</title></circle><circle cx="290.0" cy="192.0" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-28: 0</title></circle><circle cx="374.7" cy="192.0" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-29: 0</title></circle><circle cx="459.3" cy="192.0" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-30: 0</title></circle><circle cx="544.0" cy="174.4" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-31: 1</title></circle>
-      <circle cx="36.0" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-25: 0</title></circle><circle cx="120.7" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-26: 0</title></circle><circle cx="205.3" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-27: 0</title></circle><circle cx="290.0" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-28: 0</title></circle><circle cx="374.7" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-29: 0</title></circle><circle cx="459.3" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-30: 0</title></circle><circle cx="544.0" cy="16.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-31: 10</title></circle>
-      <text x="36.0" y="214" text-anchor="middle" class="viz-axis-label">07-25</text><text x="120.7" y="214" text-anchor="middle" class="viz-axis-label">07-26</text><text x="205.3" y="214" text-anchor="middle" class="viz-axis-label">07-27</text><text x="290.0" y="214" text-anchor="middle" class="viz-axis-label">07-28</text><text x="374.7" y="214" text-anchor="middle" class="viz-axis-label">07-29</text><text x="459.3" y="214" text-anchor="middle" class="viz-axis-label">07-30</text><text x="544.0" y="214" text-anchor="middle" class="viz-axis-label">07-31</text>
+      <circle cx="36.0" cy="192.0" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-27: 0</title></circle><circle cx="120.7" cy="192.0" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-28: 0</title></circle><circle cx="205.3" cy="192.0" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-29: 0</title></circle><circle cx="290.0" cy="192.0" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-30: 0</title></circle><circle cx="374.7" cy="174.4" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-31: 1</title></circle><circle cx="459.3" cy="192.0" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-08-01: 0</title></circle><circle cx="544.0" cy="121.6" r="4" fill="var(--series-1)" stroke="var(--surface-1)" stroke-width="2"><title>2026-08-02: 4</title></circle>
+      <circle cx="36.0" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-27: 0</title></circle><circle cx="120.7" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-28: 0</title></circle><circle cx="205.3" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-29: 0</title></circle><circle cx="290.0" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-30: 0</title></circle><circle cx="374.7" cy="16.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-07-31: 10</title></circle><circle cx="459.3" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-08-01: 0</title></circle><circle cx="544.0" cy="192.0" r="4" fill="var(--series-2)" stroke="var(--surface-1)" stroke-width="2"><title>2026-08-02: 0</title></circle>
+      <text x="36.0" y="214" text-anchor="middle" class="viz-axis-label">07-27</text><text x="120.7" y="214" text-anchor="middle" class="viz-axis-label">07-28</text><text x="205.3" y="214" text-anchor="middle" class="viz-axis-label">07-29</text><text x="290.0" y="214" text-anchor="middle" class="viz-axis-label">07-30</text><text x="374.7" y="214" text-anchor="middle" class="viz-axis-label">07-31</text><text x="459.3" y="214" text-anchor="middle" class="viz-axis-label">08-01</text><text x="544.0" y="214" text-anchor="middle" class="viz-axis-label">08-02</text>
     </svg>
     <div class="viz-legend">
       <span class="viz-legend-item"><i style="background:var(--series-1)"></i>Encontradas</span>

@@ -1,0 +1,68 @@
+{
+  "id_externo": "indeed__a7cf8c07ad29",
+  "plataforma": "indeed",
+  "url": "https://to.indeed.com/aazxm4xq9rvc",
+  "empresa": "DHL",
+  "cargo": "Analista de Eficiência Logística LLP Jr",
+  "salario": null,
+  "salario_estimado": null,
+  "cidade": "Betim",
+  "estado": "MG",
+  "modalidade": "presencial",
+  "data_publicacao": "2026-07-02",
+  "data_candidatura": null,
+  "match_score": 68,
+  "probabilidade_estimada_entrevista": "média-baixa — empresa grande e área compatível, mas exige inglês avançado para conduzir reuniões, o que não é comprovável no currículo/LinkedIn, e o nível é Júnior.",
+  "motivos_score": [
+    "Área (Supply Chain/Logística/transporte) compatível com o perfil.",
+    "Excel avançado e Power BI, pedidos na vaga, constam no currículo.",
+    "Nível Júnior é abaixo do nível Pleno atual, mas a candidata sinalizou interesse em vagas júnior em empresas de grande porte.",
+    "Inglês avançado é exigido para conduzir reuniões e defender ideias — não há comprovação disso no currículo/LinkedIn, tratado como não verificável.",
+    "Diferenciais (Python, Power Apps/Automate) não constam no currículo."
+  ],
+  "palavras_chave_encontradas": [
+    "supply chain",
+    "transporte",
+    "custos operacionais",
+    "indicadores",
+    "Excel avançado",
+    "Power BI"
+  ],
+  "tecnologias_exigidas": [
+    "Excel avançado",
+    "Power BI"
+  ],
+  "idiomas_exigidos": [
+    "Inglês avançado"
+  ],
+  "beneficios": [
+    "Assistência médica",
+    "Assistência odontológica",
+    "Vale-refeição/restaurante",
+    "Vale-transporte/fretado",
+    "PPR anual",
+    "Seguro de vida",
+    "Gympass"
+  ],
+  "requisitos_obrigatorios": [
+    "Superior completo em Engenharia, Administração, Logística ou correlatas",
+    "Vivência em acompanhamento de projetos e otimização de transporte",
+    "Excel avançado, Power BI"
+  ],
+  "requisitos_desejaveis": [
+    "Python",
+    "Power Apps e Power Automate",
+    "Inglês avançado"
+  ],
+  "status": "Encontrada",
+  "empresa_favorita": false,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Encontrada",
+      "data": "2026-08-02T22:02:37+00:00"
+    }
+  ]
+}

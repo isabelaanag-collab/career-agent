@@ -1,0 +1,60 @@
+{
+  "id_externo": "infojobs__7a744539d234",
+  "plataforma": "infojobs",
+  "url": "https://www.infojobs.com.br/vaga-de-analista-pcp-planejamento-controle-da-producao-jr-em-minas-gerais__11632593.aspx",
+  "empresa": "Lactalis Brasil",
+  "cargo": "Analista de PCP (Planejamento e Controle da Produção) JR",
+  "salario": null,
+  "salario_estimado": null,
+  "cidade": "Belo Horizonte",
+  "estado": "MG",
+  "modalidade": "presencial",
+  "data_publicacao": null,
+  "data_candidatura": null,
+  "match_score": 93,
+  "probabilidade_estimada_entrevista": "alta — multinacional de alimentos, plano de produção baseado em demanda, Excel avançado e SAP batem diretamente com a experiência dela em S&OE/Planejamento de Demanda/MRP.",
+  "motivos_score": [
+    "Área de PCP/Planejamento de Demanda bate diretamente com a experiência atual dela em S&OE.",
+    "Responsabilidades (plano de produção com base na demanda, programado x produzido, sequenciamento) são muito próximas do que ela já faz na Farmax.",
+    "Excel avançado é requisito obrigatório e consta no currículo; SAP é desejável e ela tem SAP ERP.",
+    "Empresa multinacional de alimentos (Lactalis) — segmento FMCG parecido em porte/processos com a experiência dela em farmacêutico/cosméticos.",
+    "Nível Jr é abaixo do Pleno atual dela, mas em empresa de grande porte, alinhado ao interesse dela em vagas júnior em multinacionais."
+  ],
+  "palavras_chave_encontradas": [
+    "PCP",
+    "plano de produção",
+    "demanda",
+    "estoque",
+    "indicadores",
+    "Excel avançado",
+    "SAP"
+  ],
+  "tecnologias_exigidas": [
+    "Excel avançado",
+    "PowerPoint intermediário",
+    "SAP (desejável)"
+  ],
+  "idiomas_exigidos": [],
+  "beneficios": [],
+  "requisitos_obrigatorios": [
+    "Superior completo em Engenharia, Administração ou correlatas",
+    "Excel avançado",
+    "PowerPoint intermediário",
+    "Experiência prévia em PCP ou planejamento integrado"
+  ],
+  "requisitos_desejaveis": [
+    "Conhecimento em SAP",
+    "Experiência com lácteos ou empresas alimentícias"
+  ],
+  "status": "Aguardando aprovação",
+  "empresa_favorita": false,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Aguardando aprovação",
+      "data": "2026-08-02T22:14:57+00:00"
+    }
+  ]
+}

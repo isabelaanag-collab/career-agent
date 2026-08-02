@@ -1,0 +1,57 @@
+{
+  "id_externo": "indeed__edb331a2d613",
+  "plataforma": "indeed",
+  "url": "https://to.indeed.com/aabzjmtqpx7j",
+  "empresa": "BIOMM S.A.",
+  "cargo": "Analista de Logística Sênior",
+  "salario": null,
+  "salario_estimado": null,
+  "cidade": "Nova Lima",
+  "estado": "MG",
+  "modalidade": "presencial",
+  "data_publicacao": "2026-07-01",
+  "data_candidatura": null,
+  "match_score": 69,
+  "probabilidade_estimada_entrevista": "média — setor farmacêutico bate exatamente com a experiência atual da candidata (Farmax), mas a vaga é Sênior e exige pós-graduação/MBA, que não consta no currículo.",
+  "motivos_score": [
+    "Segmento farmacêutico é o mesmo da experiência atual dela na Farmax — forte aderência de contexto de negócio.",
+    "Vaga exige nível Sênior e pós-graduação/MBA em Logística ou Supply Chain — a candidata é Pleno e não há pós-graduação registrada no currículo/LinkedIn, tratado como não verificável.",
+    "Excel avançado consta no currículo; SAP S/4HANA-EWM (WMS) não é comprovável, só SAP ERP genérico.",
+    "Indicadores logísticos (OTIF, acuracidade de estoque) alinham com a experiência dela com KPIs e gestão de estoque.",
+    "Formação em Engenharia de Produção é aceita pela vaga."
+  ],
+  "palavras_chave_encontradas": [
+    "logística",
+    "estoque",
+    "indicadores",
+    "inventário",
+    "farmacêutico",
+    "Excel avançado"
+  ],
+  "tecnologias_exigidas": [
+    "Excel avançado",
+    "ERP",
+    "WMS (SAP S/4HANA-EWM)"
+  ],
+  "idiomas_exigidos": [],
+  "beneficios": [],
+  "requisitos_obrigatorios": [
+    "Superior completo em Engenharia de Produção, Logística, Administração ou correlatas",
+    "Pós-graduação ou MBA em Logística/Supply Chain",
+    "Experiência sólida em logística industrial, preferencialmente farmacêutica",
+    "Excel avançado",
+    "SAP S/4HANA-EWM"
+  ],
+  "requisitos_desejaveis": [],
+  "status": "Encontrada",
+  "empresa_favorita": false,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Encontrada",
+      "data": "2026-08-02T22:03:08+00:00"
+    }
+  ]
+}
