@@ -13,7 +13,16 @@ from collections import Counter, defaultdict
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-from common import DATA_DIR, load_all_jobs, parse_salary_brl
+from common import (
+    DATA_DIR,
+    DEFAULT_LIMIAR_APROVACAO,
+    STATUS_JA_CANDIDATADA,
+    STATUS_ORDER,
+    STATUS_POS_CANDIDATURA,
+    load_all_jobs,
+    load_config,
+    parse_salary_brl,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 DASHBOARD_DIR = ROOT / "dashboard"
@@ -27,16 +36,6 @@ BUSCAR_AGORA_TEXTO = (
     "(action: run) ou, se preferir, execute a lógica de "
     "agent/prompts/routine_search_and_score.md diretamente nesta sessão local."
 )
-
-KANBAN_COLUNAS = [
-    ("Vagas Encontradas", lambda j: j["status"] in {"Encontrada", "Em análise"}),
-    ("Excelentes Matches", lambda j: (j.get("match_score") or 0) >= 80),
-    ("Aguardando Aprovação", lambda j: j["status"] == "Aguardando aprovação"),
-    ("Candidaturas Enviadas", lambda j: j["status"] == "Candidatura enviada"),
-    ("Entrevistas", lambda j: j["status"] == "Entrevista"),
-    ("Rejeitadas", lambda j: j["status"] == "Rejeitado"),
-    ("Ofertas", lambda j: j["status"] == "Aprovado"),
-]
 
 PLATAFORMA_SLOT = {
     "indeed": "--series-1",
@@ -123,7 +122,7 @@ def aggregate(jobs: list[dict]) -> dict:
                 if evento_data == today.isoformat():
                     candidatadas_hoje += 1
 
-        if job.get("status") in {"Candidatura enviada", "Entrevista", "Aprovado", "Rejeitado"}:
+        if job.get("status") in STATUS_JA_CANDIDATADA:
             total_candidaturas += 1
 
     return {
@@ -362,10 +361,13 @@ _STATUS_BADGE = {
     "Currículo otimizado": "status-badge--preparo",
     "Carta criada": "status-badge--preparo",
     "Aguardando aprovação": "status-badge--preparo",
+    "Rejeitado": "status-badge--negativo",
     "Candidatura enviada": "status-badge--enviada",
+    "Aguardando retorno": "status-badge--espera",
     "Entrevista": "status-badge--entrevista",
+    "Em fase de testes": "status-badge--entrevista",
     "Aprovado": "status-badge--aprovado",
-    "Rejeitado": "status-badge--rejeitado",
+    "Retorno negativo": "status-badge--negativo",
 }
 
 
@@ -378,7 +380,7 @@ def _job_card(job: dict) -> str:
     status = job.get("status") or "Encontrada"
     status_class = _STATUS_BADGE.get(status, "status-badge--neutro")
     return f"""
-    <a class="job-card{destaque}" href="{html.escape(link)}" target="_blank" rel="noopener">
+    <a class="job-card{destaque}" data-status="{html.escape(status)}" href="{html.escape(link)}" target="_blank" rel="noopener">
       <div class="job-card-top">
         <span class="job-card-score">{score_txt}</span>
         <span class="job-card-plataforma">{html.escape(job.get('plataforma', ''))}</span>
@@ -392,7 +394,126 @@ def _job_card(job: dict) -> str:
     """
 
 
-def render_html(jobs: list[dict], stats: dict) -> str:
+def render_all_jobs_section(jobs: list[dict]) -> str:
+    """Grade única de vagas com filtro por status (substitui o quadro Kanban)."""
+    status_presentes = [s for s in STATUS_ORDER if any((j.get("status") or "Encontrada") == s for j in jobs)]
+    pills = ['<button type="button" class="filter-pill active" data-status="__all__">Todas <span>' + str(len(jobs)) + '</span></button>']
+    for s in status_presentes:
+        count = sum(1 for j in jobs if (j.get("status") or "Encontrada") == s)
+        pills.append(
+            f'<button type="button" class="filter-pill" data-status="{html.escape(s)}">{html.escape(s)} <span>{count}</span></button>'
+        )
+    cards = "".join(_job_card(j) for j in sorted(jobs, key=lambda j: -(j.get("match_score") or 0)))
+    return f"""
+    <div class="jobs-filter">{''.join(pills)}</div>
+    <div class="jobs-grid" id="all-jobs-grid">{cards or '<p class="viz-empty">Nenhuma vaga ainda.</p>'}</div>
+    """
+
+
+def _application_card(job: dict) -> str:
+    status = job.get("status") or ""
+    status_class = _STATUS_BADGE.get(status, "status-badge--neutro")
+    cargo = job.get("cargo") or ""
+    empresa = job.get("empresa") or ""
+    id_externo = job.get("id_externo") or ""
+    salario = job.get("salario") or (f'~{job.get("salario_estimado")}' if job.get("salario_estimado") else "não informado")
+    data_candidatura = job.get("data_candidatura") or "—"
+    link = job.get("url") or "#"
+
+    botoes = []
+    for novo_status in STATUS_POS_CANDIDATURA:
+        if novo_status == status:
+            continue
+        texto = (
+            f'Atualizar o status da vaga {id_externo} ({cargo} na {empresa}) para "{novo_status}" '
+            f'(rode scripts/update_status.py {id_externo} "{novo_status}").'
+        )
+        extra_cls = (
+            " app-status-btn--negativo" if novo_status == "Retorno negativo"
+            else " app-status-btn--positivo" if novo_status == "Aprovado"
+            else ""
+        )
+        botoes.append(
+            f'<button type="button" class="app-status-btn{extra_cls}" data-copy="{html.escape(texto)}">{html.escape(novo_status)}</button>'
+        )
+
+    return f"""
+    <div class="application-card">
+      <div class="action-card-top">
+        <span class="status-badge {status_class}">{html.escape(status)}</span>
+        <span class="application-date">Candidatou em {html.escape(str(data_candidatura))}</span>
+      </div>
+      <strong class="action-cargo">{html.escape(cargo)}</strong>
+      <span class="action-empresa">{html.escape(empresa)}{' ★' if job.get('empresa_favorita') else ''} · {html.escape(job.get('cidade') or 'remoto')}</span>
+      <span class="job-card-salario">{html.escape(str(salario))}</span>
+      <a class="action-link" href="{html.escape(link)}" target="_blank" rel="noopener">Ver vaga →</a>
+      <div class="application-buttons">{''.join(botoes)}</div>
+    </div>
+    """
+
+
+def render_applications_section(jobs: list[dict]) -> str:
+    candidaturas = [j for j in jobs if j.get("status") in STATUS_JA_CANDIDATADA]
+    if not candidaturas:
+        return '<p class="viz-empty">Nenhuma candidatura enviada ainda.</p>'
+    candidaturas.sort(key=lambda j: j.get("data_candidatura") or "", reverse=True)
+    cards = "".join(_application_card(j) for j in candidaturas)
+    return f'<div class="actions-grid">{cards}</div>'
+
+
+def render_comparison_section(jobs: list[dict], pretensao: float | None) -> str:
+    pretensao_txt = f'R$ {pretensao:,.0f}'.replace(",", ".") if pretensao else "não definida"
+    comparaveis = [
+        j for j in jobs
+        if (j.get("match_score") or 0) >= DEFAULT_LIMIAR_APROVACAO or j.get("status") in STATUS_JA_CANDIDATADA
+    ]
+
+    def sort_key(j: dict) -> tuple:
+        salario = _job_salary(j)
+        return (salario is None, -(salario or 0))
+
+    comparaveis.sort(key=sort_key)
+
+    rows = []
+    for j in comparaveis:
+        salario = j.get("salario") or (f'~{j.get("salario_estimado")}' if j.get("salario_estimado") else "não informado")
+        beneficios = j.get("beneficios") or []
+        chips = "".join(f'<span class="benefit-chip">{html.escape(b)}</span>' for b in beneficios) or '<span class="viz-empty">—</span>'
+        status = j.get("status") or "Encontrada"
+        status_class = _STATUS_BADGE.get(status, "status-badge--neutro")
+        rows.append(f"""
+        <tr>
+          <td><strong>{html.escape(j.get('cargo') or '')}</strong><br><span class="text-muted">{html.escape(j.get('empresa') or '')}{' ★' if j.get('empresa_favorita') else ''}</span></td>
+          <td>{html.escape(str(salario))}</td>
+          <td class="benefits-cell">{chips}</td>
+          <td>{html.escape(j.get('modalidade') or '')}</td>
+          <td><span class="status-badge {status_class}">{html.escape(status)}</span></td>
+        </tr>
+        """)
+
+    if not comparaveis:
+        table_html = '<p class="viz-empty">Nenhuma vaga com match alto ou candidatura ainda para comparar.</p>'
+    else:
+        table_html = f"""
+        <div class="compare-table-wrap">
+          <table class="compare-table">
+            <thead><tr><th>Vaga</th><th>Salário</th><th>Benefícios</th><th>Modalidade</th><th>Status</th></tr></thead>
+            <tbody>{''.join(rows)}</tbody>
+          </table>
+        </div>
+        """
+
+    return f"""
+    <div class="pretensao-banner">
+      <span class="pretensao-label">Sua pretensão salarial (piso mínimo aceito)</span>
+      <span class="pretensao-value">{pretensao_txt}</span>
+      <span class="pretensao-hint">Editável em <code>agent/config/search_criteria.yaml</code>, campo <code>salario_minimo_brl</code></span>
+    </div>
+    {table_html}
+    """
+
+
+def render_html(jobs: list[dict], stats: dict, pretensao_salarial: float | None) -> str:
     kpis = "".join([
         _kpi_card("Vagas encontradas hoje", str(stats["encontradas_hoje"])),
         _kpi_card("Candidatadas hoje", str(stats["candidatadas_hoje"])),
@@ -412,16 +533,9 @@ def render_html(jobs: list[dict], stats: dict) -> str:
     chart_faixa = horizontal_bar_chart(stats["por_faixa_salarial"])
     chart_evolucao = weekly_line_chart(stats["evolucao_semanal"])
 
-    kanban_cols = ""
-    for titulo, filtro in KANBAN_COLUNAS:
-        col_jobs = [j for j in jobs if filtro(j)]
-        cards = "".join(_job_card(j) for j in sorted(col_jobs, key=lambda j: -(j.get("match_score") or 0)))
-        kanban_cols += f"""
-        <div class="kanban-col">
-          <header class="kanban-col-header">{titulo} <span class="kanban-count">{len(col_jobs)}</span></header>
-          <div class="kanban-col-body">{cards or '<p class="viz-empty">Vazio</p>'}</div>
-        </div>
-        """
+    all_jobs_section = render_all_jobs_section(jobs)
+    applications_section = render_applications_section(jobs)
+    comparison_section = render_comparison_section(jobs, pretensao_salarial)
 
     gerado_em = datetime.now(BRASILIA_TZ).strftime("%d/%m/%Y %H:%M")
 
@@ -567,14 +681,65 @@ def render_html(jobs: list[dict], stats: dict) -> str:
   .viz-table table {{ width: 100%; border-collapse: collapse; margin-top: 6px; }}
   .viz-table td {{ padding: 4px 8px; border-bottom: 1px solid var(--border); }}
 
-  .kanban {{ display: grid; grid-auto-flow: column; grid-auto-columns: minmax(220px, 1fr); gap: 16px; overflow-x: auto; padding-bottom: 8px; }}
-  .kanban-col {{ background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; display: flex; flex-direction: column; min-height: 120px; }}
-  .kanban-col-header {{
-    padding: 12px 14px; font-size: 13px; font-weight: 600; border-bottom: 1px solid var(--border);
-    display: flex; justify-content: space-between; align-items: center;
+  .tabs {{ display: flex; gap: 6px; border-bottom: 1px solid var(--border); margin-bottom: 24px; flex-wrap: wrap; }}
+  .tab-btn {{
+    font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; color: var(--text-secondary);
+    background: none; border: none; border-bottom: 2px solid transparent; padding: 10px 4px; margin-bottom: -1px;
   }}
-  .kanban-count {{ color: var(--text-muted); font-weight: 400; }}
-  .kanban-col-body {{ padding: 10px; display: flex; flex-direction: column; gap: 8px; overflow-y: auto; max-height: 480px; }}
+  .tab-btn:hover {{ color: var(--text-primary); }}
+  .tab-btn.active {{ color: var(--text-primary); border-bottom-color: var(--series-1); }}
+  .tab-panel {{ display: none; }}
+  .tab-panel.active {{ display: block; }}
+  .tab-hint {{ color: var(--text-muted); font-size: 12px; margin: -8px 0 16px; }}
+
+  .jobs-filter {{ display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }}
+  .filter-pill {{
+    font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; border-radius: 999px;
+    padding: 6px 12px; border: 1px solid var(--border); background: var(--surface-1); color: var(--text-secondary);
+  }}
+  .filter-pill span {{ color: var(--text-muted); font-weight: 400; }}
+  .filter-pill:hover {{ color: var(--text-primary); }}
+  .filter-pill.active {{ background: var(--series-1); border-color: var(--series-1); color: white; }}
+  .filter-pill.active span {{ color: rgba(255,255,255,0.8); }}
+  .jobs-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }}
+
+  .application-card {{
+    background: var(--page-plane); border: 1px solid var(--border); border-radius: 12px;
+    padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; font-size: 13px;
+  }}
+  .application-date {{ font-size: 11px; color: var(--text-muted); }}
+  .application-buttons {{ display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }}
+  .app-status-btn {{
+    font: inherit; font-size: 11px; font-weight: 600; cursor: pointer; border-radius: 8px;
+    padding: 5px 9px; border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary);
+  }}
+  .app-status-btn:hover {{ filter: brightness(1.15); }}
+  .app-status-btn:active {{ filter: brightness(0.9); }}
+  .app-status-btn--positivo {{ border-color: var(--status-good-text); color: var(--status-good-text); }}
+  .app-status-btn--negativo {{ border-color: var(--status-critical-text); color: var(--status-critical-text); }}
+
+  .pretensao-banner {{
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px 18px; display: flex; flex-direction: column; gap: 4px; margin-bottom: 20px;
+  }}
+  .pretensao-label {{ font-size: 12px; color: var(--text-secondary); }}
+  .pretensao-value {{ font-size: 24px; font-weight: 700; }}
+  .pretensao-hint {{ font-size: 11px; color: var(--text-muted); }}
+  .pretensao-hint code {{ background: var(--page-plane); border-radius: 4px; padding: 1px 4px; }}
+
+  .compare-table-wrap {{ overflow-x: auto; }}
+  .compare-table {{ width: 100%; border-collapse: collapse; font-size: 13px; }}
+  .compare-table th {{
+    text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em;
+    color: var(--text-muted); padding: 8px 10px; border-bottom: 1px solid var(--border);
+  }}
+  .compare-table td {{ padding: 10px; border-bottom: 1px solid var(--border); vertical-align: top; }}
+  .text-muted {{ color: var(--text-muted); font-size: 11px; }}
+  .benefits-cell {{ display: flex; flex-wrap: wrap; gap: 4px; max-width: 320px; }}
+  .benefit-chip {{
+    font-size: 11px; background: rgba(42,120,214,0.12); color: var(--series-1);
+    border-radius: 999px; padding: 2px 8px; white-space: nowrap;
+  }}
 
   .job-card {{
     display: flex; flex-direction: column; gap: 2px; text-decoration: none; color: inherit;
@@ -594,9 +759,10 @@ def render_html(jobs: list[dict], stats: dict) -> str:
   .status-badge--neutro {{ background: rgba(137,135,129,0.18); color: var(--text-secondary); }}
   .status-badge--preparo {{ background: var(--status-warning-bg); color: var(--status-warning-text); }}
   .status-badge--enviada {{ background: rgba(42,120,214,0.16); color: var(--series-1); }}
+  .status-badge--espera {{ background: rgba(237,161,0,0.16); color: var(--series-4); }}
   .status-badge--entrevista {{ background: rgba(74,58,167,0.18); color: var(--series-6); }}
   .status-badge--aprovado {{ background: rgba(12,163,12,0.15); color: var(--status-good-text); }}
-  .status-badge--rejeitado {{ background: rgba(208,59,59,0.15); color: var(--status-critical-text); }}
+  .status-badge--negativo {{ background: rgba(208,59,59,0.15); color: var(--status-critical-text); }}
 
   footer {{ color: var(--text-muted); font-size: 12px; margin-top: 32px; }}
 </style>
@@ -619,24 +785,47 @@ def render_html(jobs: list[dict], stats: dict) -> str:
 
   {render_actions_section(stats["acoes_pendentes"])}
 
-  <section>
-    <h2>Quadro Kanban</h2>
-    <div class="kanban">{kanban_cols}</div>
-  </section>
+  <nav class="tabs">
+    <button type="button" class="tab-btn active" data-tab="geral">Visão geral</button>
+    <button type="button" class="tab-btn" data-tab="candidaturas">Minhas candidaturas</button>
+    <button type="button" class="tab-btn" data-tab="comparar">Comparar vagas</button>
+  </nav>
 
-  <section>
-    <h2>Análises</h2>
-    <div class="charts-grid">
-      <div class="chart-card"><h3>Por cidade</h3>{chart_cidade}{_table_fallback(stats["por_cidade"])}</div>
-      <div class="chart-card"><h3>Por empresa (top 8)</h3>{chart_empresa}{_table_fallback(stats["por_empresa"])}</div>
-      <div class="chart-card"><h3>Por plataforma</h3>{chart_plataforma}{_table_fallback(stats["por_plataforma"])}</div>
-      <div class="chart-card"><h3>Por status</h3>{chart_status}{_table_fallback(stats["por_status"])}</div>
-      <div class="chart-card"><h3>Por faixa salarial</h3>{chart_faixa}{_table_fallback(stats["por_faixa_salarial"])}</div>
-      <div class="chart-card"><h3>Evolução semanal</h3>{chart_evolucao}</div>
-    </div>
-  </section>
+  <div class="tab-panel active" id="tab-geral">
+    <section>
+      <h2>Vagas</h2>
+      {all_jobs_section}
+    </section>
 
-  <footer>Career Agent AI — busca automática (Indeed) + listagem pública (LinkedIn/Gupy/Sólides/carreiras). Candidaturas sempre passam por aprovação manual antes do envio.</footer>
+    <section>
+      <h2>Análises</h2>
+      <div class="charts-grid">
+        <div class="chart-card"><h3>Por cidade</h3>{chart_cidade}{_table_fallback(stats["por_cidade"])}</div>
+        <div class="chart-card"><h3>Por empresa (top 8)</h3>{chart_empresa}{_table_fallback(stats["por_empresa"])}</div>
+        <div class="chart-card"><h3>Por plataforma</h3>{chart_plataforma}{_table_fallback(stats["por_plataforma"])}</div>
+        <div class="chart-card"><h3>Por status</h3>{chart_status}{_table_fallback(stats["por_status"])}</div>
+        <div class="chart-card"><h3>Por faixa salarial</h3>{chart_faixa}{_table_fallback(stats["por_faixa_salarial"])}</div>
+        <div class="chart-card"><h3>Evolução semanal</h3>{chart_evolucao}</div>
+      </div>
+    </section>
+  </div>
+
+  <div class="tab-panel" id="tab-candidaturas">
+    <section>
+      <h2>Minhas candidaturas</h2>
+      <p class="tab-hint">Clique num botão de status para copiar o comando — cole numa sessão local do Claude Code para atualizar a vaga.</p>
+      {applications_section}
+    </section>
+  </div>
+
+  <div class="tab-panel" id="tab-comparar">
+    <section>
+      <h2>Comparar vagas</h2>
+      {comparison_section}
+    </section>
+  </div>
+
+  <footer>Career Agent AI — busca automática (Indeed) + listagem pública (LinkedIn/Gupy/Sólides/Vagas.com/InfoJobs/99Jobs/Adecco/CIA de Talentos/i9 Hunter/Manpower/Catho/Page Personnel/carreiras). Candidaturas sempre passam por aprovação manual antes do envio.</footer>
 
   <script>
     document.querySelectorAll('[data-copy]').forEach(function (btn) {{
@@ -657,6 +846,27 @@ def render_html(jobs: list[dict], stats: dict) -> str:
         setTimeout(function () {{ btn.textContent = original; }}, 1500);
       }});
     }});
+
+    document.querySelectorAll('.tab-btn').forEach(function (btn) {{
+      btn.addEventListener('click', function () {{
+        document.querySelectorAll('.tab-btn').forEach(function (b) {{ b.classList.remove('active'); }});
+        document.querySelectorAll('.tab-panel').forEach(function (p) {{ p.classList.remove('active'); }});
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.getAttribute('data-tab')).classList.add('active');
+      }});
+    }});
+
+    document.querySelectorAll('.filter-pill').forEach(function (pill) {{
+      pill.addEventListener('click', function () {{
+        document.querySelectorAll('.filter-pill').forEach(function (p) {{ p.classList.remove('active'); }});
+        pill.classList.add('active');
+        var status = pill.getAttribute('data-status');
+        document.querySelectorAll('#all-jobs-grid .job-card').forEach(function (card) {{
+          var match = status === '__all__' || card.getAttribute('data-status') === status;
+          card.style.display = match ? '' : 'none';
+        }});
+      }});
+    }});
   </script>
 </body>
 </html>
@@ -666,8 +876,10 @@ def render_html(jobs: list[dict], stats: dict) -> str:
 def main() -> int:
     jobs = load_all_jobs()
     stats = aggregate(jobs)
+    config = load_config()
+    pretensao_salarial = config.get("salario_minimo_brl")
     DASHBOARD_DIR.mkdir(parents=True, exist_ok=True)
-    DASHBOARD_PATH.write_text(render_html(jobs, stats), encoding="utf-8")
+    DASHBOARD_PATH.write_text(render_html(jobs, stats, pretensao_salarial), encoding="utf-8")
     print(f"Dashboard gerado em {DASHBOARD_PATH} ({len(jobs)} vagas).")
     return 0
 

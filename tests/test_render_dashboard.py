@@ -67,17 +67,17 @@ def test_aggregate_conta_evento_de_hoje():
 
 def test_render_html_nao_quebra_e_contem_elementos_esperados(fixture_jobs):
     stats = aggregate(fixture_jobs)
-    output = render_html(fixture_jobs, stats)
+    output = render_html(fixture_jobs, stats, None)
     assert "<html" in output
     assert "Painel de recolocação" in output
-    assert "Aguardando Aprovação" in output
+    assert "Aguardando aprovação" in output
     assert "Vale" in output
     assert "Bosch" in output
 
 
 def test_render_html_com_lista_vazia_nao_quebra():
     stats = aggregate([])
-    output = render_html([], stats)
+    output = render_html([], stats, None)
     assert "<html" in output
     assert "Sem dados ainda." in output
 
@@ -116,7 +116,7 @@ def test_pending_actions_ignora_vagas_sem_status_aguardando(fixture_jobs):
 
 def test_render_html_mostra_secao_de_acoes_pendentes(fixture_jobs):
     stats = aggregate(fixture_jobs)
-    output = render_html(fixture_jobs, stats)
+    output = render_html(fixture_jobs, stats, None)
     assert "Ações pendentes" in output
     assert "Preparo pendente" in output
 
@@ -128,7 +128,7 @@ def test_action_card_pronta_tem_botao_aprovar_e_reprovar():
         "versao_curriculo": "data/resumes/x.md", "versao_carta": "data/cover_letters/x.md",
     }
     stats = aggregate([job])
-    output = render_html([job], stats)
+    output = render_html([job], stats, None)
     assert "action-btn--approve" in output
     assert "action-btn--reject" in output
     assert "indeed__abc123" in output  # id da vaga embutido no texto copiado
@@ -140,28 +140,28 @@ def test_action_card_preparo_pendente_so_tem_botao_reprovar():
         "status": "Aguardando aprovação", "match_score": 60,
     }
     stats = aggregate([job])
-    output = render_html([job], stats)
+    output = render_html([job], stats, None)
     assert 'class="action-btn action-btn--reject"' in output
     assert 'class="action-btn action-btn--approve"' not in output
 
 
 def test_action_card_sempre_tem_botao_ja_me_candidatei(fixture_jobs):
     stats = aggregate(fixture_jobs)
-    output = render_html(fixture_jobs, stats)
+    output = render_html(fixture_jobs, stats, None)
     assert 'class="action-btn action-btn--applied"' in output
     assert "Já me candidatei" in output
 
 
 def test_render_html_tem_botao_forcar_busca_agora(fixture_jobs):
     stats = aggregate(fixture_jobs)
-    output = render_html(fixture_jobs, stats)
+    output = render_html(fixture_jobs, stats, None)
     assert "Forçar busca agora" in output
     assert 'class="action-btn action-btn--primary"' in output
 
 
 def test_job_card_mostra_tag_de_status(fixture_jobs):
     stats = aggregate(fixture_jobs)
-    output = render_html(fixture_jobs, stats)
+    output = render_html(fixture_jobs, stats, None)
     assert 'class="status-badge status-badge--enviada"' in output  # Bosch, Candidatura enviada
     assert 'class="status-badge status-badge--preparo"' in output  # Vale, Aguardando aprovação
     assert 'class="status-badge status-badge--neutro"' in output  # LinkedIn, Encontrada

@@ -20,14 +20,34 @@ STATUS_ORDER = [
     "Currículo otimizado",
     "Carta criada",
     "Aguardando aprovação",
+    "Rejeitado",  # candidata decidiu não se candidatar a essa vaga
     "Candidatura enviada",
+    "Aguardando retorno",
     "Entrevista",
+    "Em fase de testes",
     "Aprovado",
-    "Rejeitado",
+    "Retorno negativo",  # empresa recusou depois da candidatura enviada
 ]
 
 # Status que significam "já candidatada" — nunca reenviar depois deles.
-STATUS_JA_CANDIDATADA = {"Candidatura enviada", "Entrevista", "Aprovado", "Rejeitado"}
+STATUS_JA_CANDIDATADA = {
+    "Candidatura enviada",
+    "Aguardando retorno",
+    "Entrevista",
+    "Em fase de testes",
+    "Aprovado",
+    "Retorno negativo",
+}
+
+# Status pós-candidatura que a candidata atualiza manualmente pelo dashboard,
+# na ordem em que costumam aparecer nos botões (não é uma ordem fixa de transição).
+STATUS_POS_CANDIDATURA = [
+    "Aguardando retorno",
+    "Entrevista",
+    "Em fase de testes",
+    "Aprovado",
+    "Retorno negativo",
+]
 
 DEFAULT_LIMIAR_APROVACAO = 70
 DEFAULT_LIMIAR_EXCELENTE = 80

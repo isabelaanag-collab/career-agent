@@ -23,7 +23,7 @@ data/
 scripts/
   common.py                    # funções/constantes compartilhadas
   ingest.py                    # dedup + grava vaga nova
-  render_dashboard.py          # gera dashboard/index.html (Kanban + gráficos + KPIs)
+  render_dashboard.py          # gera dashboard/index.html (abas: Visão geral, Minhas candidaturas, Comparar vagas)
   update_status.py             # muda o status de uma vaga (nunca edite o JSON à mão)
 dashboard/
   index.html                   # gerado a cada rodada — abra no navegador para ver o painel
@@ -36,7 +36,9 @@ tests/                         # pytest
 
 ## Status possíveis
 
-`Encontrada → Em análise → Currículo otimizado → Carta criada → Aguardando aprovação → Candidatura enviada → Entrevista → Aprovado → Rejeitado`
+Antes da candidatura: `Encontrada → Em análise → Currículo otimizado → Carta criada → Aguardando aprovação → Rejeitado` (candidata decidiu não se candidatar)
+
+Depois da candidatura: `Candidatura enviada → Aguardando retorno → Entrevista → Em fase de testes → Aprovado` ou, a qualquer momento depois do envio, `Retorno negativo` (empresa recusou). Os status pós-candidatura são atualizados pelos botões na aba "Minhas candidaturas" do dashboard.
 
 ## Rodando localmente
 
