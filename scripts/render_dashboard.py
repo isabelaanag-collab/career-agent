@@ -326,7 +326,7 @@ def _action_card(item: dict) -> str:
         )
 
     return f"""
-    <div class="action-card">
+    <div class="action-card" data-job-id="{html.escape(id_externo)}">
       <div class="action-card-top">
         <span class="action-badge {badge_class}">{badge_text}</span>
         <span class="action-score">{score_txt}</span>
@@ -350,6 +350,7 @@ def render_actions_section(acoes: list[dict]) -> str:
     return f"""
     <section class="actions-section">
       <h2>Ações pendentes <span class="actions-count">{len(acoes)}</span></h2>
+      <p class="tab-hint">Ao clicar, o card some daqui na hora e o comando é copiado; cole numa sessão local do Claude Code para confirmar de verdade.</p>
       <div class="actions-grid">{cards}</div>
     </section>
     """
@@ -420,7 +421,7 @@ def _application_card(job: dict) -> str:
     data_candidatura = job.get("data_candidatura") or "—"
     link = job.get("url") or "#"
 
-    botoes = []
+    options = ['<option value="" selected disabled>Atualizar status…</option>']
     for novo_status in STATUS_POS_CANDIDATURA:
         if novo_status == status:
             continue
@@ -428,26 +429,22 @@ def _application_card(job: dict) -> str:
             f'Atualizar o status da vaga {id_externo} ({cargo} na {empresa}) para "{novo_status}" '
             f'(rode scripts/update_status.py {id_externo} "{novo_status}").'
         )
-        extra_cls = (
-            " app-status-btn--negativo" if novo_status == "Retorno negativo"
-            else " app-status-btn--positivo" if novo_status == "Aprovado"
-            else ""
-        )
-        botoes.append(
-            f'<button type="button" class="app-status-btn{extra_cls}" data-copy="{html.escape(texto)}">{html.escape(novo_status)}</button>'
+        options.append(
+            f'<option value="{html.escape(novo_status)}" data-copy="{html.escape(texto)}">{html.escape(novo_status)}</option>'
         )
 
     return f"""
-    <div class="application-card">
+    <div class="application-card" data-job-id="{html.escape(id_externo)}">
       <div class="action-card-top">
-        <span class="status-badge {status_class}">{html.escape(status)}</span>
+        <span class="status-badge {status_class}" data-status-badge>{html.escape(status)}</span>
         <span class="application-date">Candidatou em {html.escape(str(data_candidatura))}</span>
       </div>
       <strong class="action-cargo">{html.escape(cargo)}</strong>
       <span class="action-empresa">{html.escape(empresa)}{' ★' if job.get('empresa_favorita') else ''} · {html.escape(job.get('cidade') or 'remoto')}</span>
       <span class="job-card-salario">{html.escape(str(salario))}</span>
       <a class="action-link" href="{html.escape(link)}" target="_blank" rel="noopener">Ver vaga →</a>
-      <div class="application-buttons">{''.join(botoes)}</div>
+      <select class="app-status-select" data-copy-select>{''.join(options)}</select>
+      <span class="status-toast" data-toast></span>
     </div>
     """
 
@@ -708,15 +705,16 @@ def render_html(jobs: list[dict], stats: dict, pretensao_salarial: float | None)
     padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; font-size: 13px;
   }}
   .application-date {{ font-size: 11px; color: var(--text-muted); }}
-  .application-buttons {{ display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }}
-  .app-status-btn {{
-    font: inherit; font-size: 11px; font-weight: 600; cursor: pointer; border-radius: 8px;
-    padding: 5px 9px; border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary);
+  .action-card--done {{ opacity: 0; transform: scale(0.97); transition: opacity 0.35s ease, transform 0.35s ease; }}
+  .app-status-select {{
+    font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; border-radius: 8px;
+    padding: 7px 9px; border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary);
+    margin-top: 8px; width: 100%;
   }}
-  .app-status-btn:hover {{ filter: brightness(1.15); }}
-  .app-status-btn:active {{ filter: brightness(0.9); }}
-  .app-status-btn--positivo {{ border-color: var(--status-good-text); color: var(--status-good-text); }}
-  .app-status-btn--negativo {{ border-color: var(--status-critical-text); color: var(--status-critical-text); }}
+  .app-status-select:hover {{ filter: brightness(1.15); }}
+  .status-toast {{
+    font-size: 11px; color: var(--status-good-text); margin-top: 4px; height: 14px;
+  }}
 
   .pretensao-banner {{
     background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px;
@@ -813,7 +811,7 @@ def render_html(jobs: list[dict], stats: dict, pretensao_salarial: float | None)
   <div class="tab-panel" id="tab-candidaturas">
     <section>
       <h2>Minhas candidaturas</h2>
-      <p class="tab-hint">Clique num botão de status para copiar o comando — cole numa sessão local do Claude Code para atualizar a vaga.</p>
+      <p class="tab-hint">Escolha o novo status no menu de cada vaga — o card atualiza na hora e o comando é copiado; cole numa sessão local do Claude Code para confirmar de verdade.</p>
       {applications_section}
     </section>
   </div>
@@ -828,24 +826,132 @@ def render_html(jobs: list[dict], stats: dict, pretensao_salarial: float | None)
   <footer>Career Agent AI — busca automática (Indeed) + listagem pública (LinkedIn/Gupy/Sólides/Vagas.com/InfoJobs/99Jobs/Adecco/CIA de Talentos/i9 Hunter/Manpower/Catho/Page Personnel/carreiras). Candidaturas sempre passam por aprovação manual antes do envio.</footer>
 
   <script>
-    document.querySelectorAll('[data-copy]').forEach(function (btn) {{
+    var STATUS_BADGE_CLASS = {{
+      'Encontrada': 'status-badge--neutro',
+      'Em análise': 'status-badge--neutro',
+      'Currículo otimizado': 'status-badge--preparo',
+      'Carta criada': 'status-badge--preparo',
+      'Aguardando aprovação': 'status-badge--preparo',
+      'Rejeitado': 'status-badge--negativo',
+      'Candidatura enviada': 'status-badge--enviada',
+      'Aguardando retorno': 'status-badge--espera',
+      'Entrevista': 'status-badge--entrevista',
+      'Em fase de testes': 'status-badge--entrevista',
+      'Aprovado': 'status-badge--aprovado',
+      'Retorno negativo': 'status-badge--negativo'
+    }};
+
+    function copyToClipboard(texto) {{
+      var textarea = document.createElement('textarea');
+      textarea.value = texto;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      var copiado = false;
+      try {{ copiado = document.execCommand('copy'); }} catch (e) {{ copiado = false; }}
+      document.body.removeChild(textarea);
+      return copiado;
+    }}
+
+    function markActed(jobId) {{
+      try {{
+        var acted = JSON.parse(localStorage.getItem('careerAgentActed') || '[]');
+        if (acted.indexOf(jobId) === -1) acted.push(jobId);
+        localStorage.setItem('careerAgentActed', JSON.stringify(acted));
+      }} catch (e) {{}}
+    }}
+
+    function saveStatusOverride(jobId, status) {{
+      try {{
+        var overrides = JSON.parse(localStorage.getItem('careerAgentStatusOverride') || '{{}}');
+        overrides[jobId] = status;
+        localStorage.setItem('careerAgentStatusOverride', JSON.stringify(overrides));
+      }} catch (e) {{}}
+    }}
+
+    function updatePendingCount() {{
+      var remaining = document.querySelectorAll('.actions-grid .action-card').length;
+      var counter = document.querySelector('.actions-count');
+      if (counter) counter.textContent = remaining;
+      if (remaining === 0) {{
+        var grid = document.querySelector('.actions-grid');
+        if (grid) grid.outerHTML = '<p class="viz-empty">Nada esperando sua aprovação agora.</p>';
+      }}
+    }}
+
+    document.querySelectorAll('button[data-copy]').forEach(function (btn) {{
       btn.addEventListener('click', function () {{
-        var texto = btn.getAttribute('data-copy');
+        var copiado = copyToClipboard(btn.getAttribute('data-copy'));
         var original = btn.textContent;
-        var textarea = document.createElement('textarea');
-        textarea.value = texto;
-        textarea.style.position = 'fixed';
-        textarea.style.opacity = '0';
-        document.body.appendChild(textarea);
-        textarea.focus();
-        textarea.select();
-        var copiado = false;
-        try {{ copiado = document.execCommand('copy'); }} catch (e) {{ copiado = false; }}
-        document.body.removeChild(textarea);
         btn.textContent = copiado ? 'Copiado ✓' : 'Erro ao copiar';
         setTimeout(function () {{ btn.textContent = original; }}, 1500);
+
+        var card = btn.closest('.action-card');
+        if (card) {{
+          var jobId = card.getAttribute('data-job-id');
+          if (jobId) markActed(jobId);
+          card.classList.add('action-card--done');
+          setTimeout(function () {{ card.remove(); updatePendingCount(); }}, 350);
+        }}
       }});
     }});
+
+    document.querySelectorAll('select[data-copy-select]').forEach(function (select) {{
+      select.addEventListener('change', function () {{
+        var option = select.selectedOptions[0];
+        if (!option || !option.getAttribute('data-copy')) return;
+        var copiado = copyToClipboard(option.getAttribute('data-copy'));
+        var card = select.closest('.application-card');
+        if (card) {{
+          var novoStatus = option.value;
+          var badge = card.querySelector('[data-status-badge]');
+          if (badge && novoStatus) {{
+            badge.textContent = novoStatus;
+            badge.className = 'status-badge ' + (STATUS_BADGE_CLASS[novoStatus] || 'status-badge--neutro');
+          }}
+          var jobId = card.getAttribute('data-job-id');
+          if (jobId && novoStatus) saveStatusOverride(jobId, novoStatus);
+          var toast = card.querySelector('[data-toast]');
+          if (toast) {{
+            toast.textContent = copiado ? 'Comando copiado — cole no Claude Code ✓' : 'Erro ao copiar comando';
+            setTimeout(function () {{ toast.textContent = ''; }}, 3000);
+          }}
+        }}
+        select.selectedIndex = 0;
+      }});
+    }});
+
+    (function applyStoredState() {{
+      try {{
+        var acted = JSON.parse(localStorage.getItem('careerAgentActed') || '[]');
+        acted.forEach(function (jobId) {{
+          var card = document.querySelector('.action-card[data-job-id="' + CSS.escape(jobId) + '"]');
+          if (card) card.remove();
+        }});
+        updatePendingCount();
+      }} catch (e) {{}}
+
+      try {{
+        var overrides = JSON.parse(localStorage.getItem('careerAgentStatusOverride') || '{{}}');
+        var changed = false;
+        Object.keys(overrides).forEach(function (jobId) {{
+          var card = document.querySelector('.application-card[data-job-id="' + CSS.escape(jobId) + '"]');
+          if (!card) return;
+          var badge = card.querySelector('[data-status-badge]');
+          if (!badge) return;
+          if (badge.textContent.trim() === overrides[jobId]) {{
+            delete overrides[jobId];
+            changed = true;
+            return;
+          }}
+          badge.textContent = overrides[jobId];
+          badge.className = 'status-badge ' + (STATUS_BADGE_CLASS[overrides[jobId]] || 'status-badge--neutro');
+        }});
+        if (changed) localStorage.setItem('careerAgentStatusOverride', JSON.stringify(overrides));
+      }} catch (e) {{}}
+    }})();
 
     document.querySelectorAll('.tab-btn').forEach(function (btn) {{
       btn.addEventListener('click', function () {{

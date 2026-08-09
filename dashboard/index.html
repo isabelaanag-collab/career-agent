@@ -167,15 +167,16 @@
     padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; font-size: 13px;
   }
   .application-date { font-size: 11px; color: var(--text-muted); }
-  .application-buttons { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
-  .app-status-btn {
-    font: inherit; font-size: 11px; font-weight: 600; cursor: pointer; border-radius: 8px;
-    padding: 5px 9px; border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary);
+  .action-card--done { opacity: 0; transform: scale(0.97); transition: opacity 0.35s ease, transform 0.35s ease; }
+  .app-status-select {
+    font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; border-radius: 8px;
+    padding: 7px 9px; border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary);
+    margin-top: 8px; width: 100%;
   }
-  .app-status-btn:hover { filter: brightness(1.15); }
-  .app-status-btn:active { filter: brightness(0.9); }
-  .app-status-btn--positivo { border-color: var(--status-good-text); color: var(--status-good-text); }
-  .app-status-btn--negativo { border-color: var(--status-critical-text); color: var(--status-critical-text); }
+  .app-status-select:hover { filter: brightness(1.15); }
+  .status-toast {
+    font-size: 11px; color: var(--status-good-text); margin-top: 4px; height: 14px;
+  }
 
   .pretensao-banner {
     background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px;
@@ -235,7 +236,7 @@
       </div>
       <div class="header-actions">
         <button type="button" class="action-btn action-btn--primary" data-copy="Rode uma busca agora no Career Agent AI, sem esperar a próxima execução agendada da rotina em nuvem (rotina &quot;career-agent-busca-vagas&quot;) — dispare a rotina via RemoteTrigger (action: run) ou, se preferir, execute a lógica de agent/prompts/routine_search_and_score.md diretamente nesta sessão local.">🔄 Forçar busca agora</button>
-        <span class="last-update">Última atualização: 08/08/2026 21:30 (Brasília)</span>
+        <span class="last-update">Última atualização: 08/08/2026 22:10 (Brasília)</span>
       </div>
     </div>
   </header>
@@ -245,8 +246,9 @@
   
     <section class="actions-section">
       <h2>Ações pendentes <span class="actions-count">5</span></h2>
+      <p class="tab-hint">Ao clicar, o card some daqui na hora e o comando é copiado; cole numa sessão local do Claude Code para confirmar de verdade.</p>
       <div class="actions-grid">
-    <div class="action-card">
+    <div class="action-card" data-job-id="infojobs__7a744539d234">
       <div class="action-card-top">
         <span class="action-badge action-badge--manual">Candidatura manual</span>
         <span class="action-score">93% match</span>
@@ -258,7 +260,7 @@
       <div class="action-buttons"><button type="button" class="action-btn action-btn--reject" data-copy="Reprovar a vaga infojobs__7a744539d234 (Analista de PCP (Planejamento e Controle da Produção) JR na Lactalis Brasil) — marcar como Rejeitado, não candidatar.">✕ Reprovar</button><button type="button" class="action-btn action-btn--applied" data-copy="Marcar a vaga infojobs__7a744539d234 (Analista de PCP (Planejamento e Controle da Produção) JR na Lactalis Brasil) como Candidatura enviada — já me candidatei manualmente pelo link (rode scripts/update_status.py infojobs__7a744539d234 &quot;Candidatura enviada&quot;).">✓ Já me candidatei</button></div>
     </div>
     
-    <div class="action-card">
+    <div class="action-card" data-job-id="indeed__a33a3b9d178a">
       <div class="action-card-top">
         <span class="action-badge action-badge--warning">Preparo pendente</span>
         <span class="action-score">89% match</span>
@@ -270,7 +272,7 @@
       <div class="action-buttons"><button type="button" class="action-btn action-btn--reject" data-copy="Reprovar a vaga indeed__a33a3b9d178a (Analista de Suprimentos PL na Jaguar Mining) — marcar como Rejeitado, não candidatar.">✕ Reprovar</button><button type="button" class="action-btn action-btn--applied" data-copy="Marcar a vaga indeed__a33a3b9d178a (Analista de Suprimentos PL na Jaguar Mining) como Candidatura enviada — já me candidatei manualmente pelo link (rode scripts/update_status.py indeed__a33a3b9d178a &quot;Candidatura enviada&quot;).">✓ Já me candidatei</button></div>
     </div>
     
-    <div class="action-card">
+    <div class="action-card" data-job-id="indeed__74e971b184bd">
       <div class="action-card-top">
         <span class="action-badge action-badge--warning">Preparo pendente</span>
         <span class="action-score">78% match</span>
@@ -282,7 +284,7 @@
       <div class="action-buttons"><button type="button" class="action-btn action-btn--reject" data-copy="Reprovar a vaga indeed__74e971b184bd (Analista de Supply Chain na ALLU) — marcar como Rejeitado, não candidatar.">✕ Reprovar</button><button type="button" class="action-btn action-btn--applied" data-copy="Marcar a vaga indeed__74e971b184bd (Analista de Supply Chain na ALLU) como Candidatura enviada — já me candidatei manualmente pelo link (rode scripts/update_status.py indeed__74e971b184bd &quot;Candidatura enviada&quot;).">✓ Já me candidatei</button></div>
     </div>
     
-    <div class="action-card">
+    <div class="action-card" data-job-id="gupy__2b26fa10e6b6">
       <div class="action-card-top">
         <span class="action-badge action-badge--manual">Candidatura manual</span>
         <span class="action-score">72% match</span>
@@ -294,7 +296,7 @@
       <div class="action-buttons"><button type="button" class="action-btn action-btn--reject" data-copy="Reprovar a vaga gupy__2b26fa10e6b6 (Analista de Compras Técnicas - Peças Automotivas na Localiza&amp;Co) — marcar como Rejeitado, não candidatar.">✕ Reprovar</button><button type="button" class="action-btn action-btn--applied" data-copy="Marcar a vaga gupy__2b26fa10e6b6 (Analista de Compras Técnicas - Peças Automotivas na Localiza&amp;Co) como Candidatura enviada — já me candidatei manualmente pelo link (rode scripts/update_status.py gupy__2b26fa10e6b6 &quot;Candidatura enviada&quot;).">✓ Já me candidatei</button></div>
     </div>
     
-    <div class="action-card">
+    <div class="action-card" data-job-id="indeed__0d253040bcbe">
       <div class="action-card-top">
         <span class="action-badge action-badge--warning">Preparo pendente</span>
         <span class="action-score">71% match</span>
@@ -583,126 +585,136 @@
   <div class="tab-panel" id="tab-candidaturas">
     <section>
       <h2>Minhas candidaturas</h2>
-      <p class="tab-hint">Clique num botão de status para copiar o comando — cole numa sessão local do Claude Code para atualizar a vaga.</p>
+      <p class="tab-hint">Escolha o novo status no menu de cada vaga — o card atualiza na hora e o comando é copiado; cole numa sessão local do Claude Code para confirmar de verdade.</p>
       <div class="actions-grid">
-    <div class="application-card">
+    <div class="application-card" data-job-id="gupy__0abc21330ccb">
       <div class="action-card-top">
-        <span class="status-badge status-badge--enviada">Candidatura enviada</span>
+        <span class="status-badge status-badge--enviada" data-status-badge>Candidatura enviada</span>
         <span class="application-date">Candidatou em 2026-07-31</span>
       </div>
       <strong class="action-cargo">308494 - Analista Suprimentos Pleno</strong>
       <span class="action-empresa">VLI ★ · Belo Horizonte</span>
       <span class="job-card-salario">não informado</span>
       <a class="action-link" href="https://vli-vagas-externas.gupy.io/candidates/applications/738146636" target="_blank" rel="noopener">Ver vaga →</a>
-      <div class="application-buttons"><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__0abc21330ccb (308494 - Analista Suprimentos Pleno na VLI) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py gupy__0abc21330ccb &quot;Aguardando retorno&quot;).">Aguardando retorno</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__0abc21330ccb (308494 - Analista Suprimentos Pleno na VLI) para &quot;Entrevista&quot; (rode scripts/update_status.py gupy__0abc21330ccb &quot;Entrevista&quot;).">Entrevista</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__0abc21330ccb (308494 - Analista Suprimentos Pleno na VLI) para &quot;Em fase de testes&quot; (rode scripts/update_status.py gupy__0abc21330ccb &quot;Em fase de testes&quot;).">Em fase de testes</button><button type="button" class="app-status-btn app-status-btn--positivo" data-copy="Atualizar o status da vaga gupy__0abc21330ccb (308494 - Analista Suprimentos Pleno na VLI) para &quot;Aprovado&quot; (rode scripts/update_status.py gupy__0abc21330ccb &quot;Aprovado&quot;).">Aprovado</button><button type="button" class="app-status-btn app-status-btn--negativo" data-copy="Atualizar o status da vaga gupy__0abc21330ccb (308494 - Analista Suprimentos Pleno na VLI) para &quot;Retorno negativo&quot; (rode scripts/update_status.py gupy__0abc21330ccb &quot;Retorno negativo&quot;).">Retorno negativo</button></div>
+      <select class="app-status-select" data-copy-select><option value="" selected disabled>Atualizar status…</option><option value="Aguardando retorno" data-copy="Atualizar o status da vaga gupy__0abc21330ccb (308494 - Analista Suprimentos Pleno na VLI) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py gupy__0abc21330ccb &quot;Aguardando retorno&quot;).">Aguardando retorno</option><option value="Entrevista" data-copy="Atualizar o status da vaga gupy__0abc21330ccb (308494 - Analista Suprimentos Pleno na VLI) para &quot;Entrevista&quot; (rode scripts/update_status.py gupy__0abc21330ccb &quot;Entrevista&quot;).">Entrevista</option><option value="Em fase de testes" data-copy="Atualizar o status da vaga gupy__0abc21330ccb (308494 - Analista Suprimentos Pleno na VLI) para &quot;Em fase de testes&quot; (rode scripts/update_status.py gupy__0abc21330ccb &quot;Em fase de testes&quot;).">Em fase de testes</option><option value="Aprovado" data-copy="Atualizar o status da vaga gupy__0abc21330ccb (308494 - Analista Suprimentos Pleno na VLI) para &quot;Aprovado&quot; (rode scripts/update_status.py gupy__0abc21330ccb &quot;Aprovado&quot;).">Aprovado</option><option value="Retorno negativo" data-copy="Atualizar o status da vaga gupy__0abc21330ccb (308494 - Analista Suprimentos Pleno na VLI) para &quot;Retorno negativo&quot; (rode scripts/update_status.py gupy__0abc21330ccb &quot;Retorno negativo&quot;).">Retorno negativo</option></select>
+      <span class="status-toast" data-toast></span>
     </div>
     
-    <div class="application-card">
+    <div class="application-card" data-job-id="gupy__0d3618005a2a">
       <div class="action-card-top">
-        <span class="status-badge status-badge--enviada">Candidatura enviada</span>
+        <span class="status-badge status-badge--enviada" data-status-badge>Candidatura enviada</span>
         <span class="application-date">Candidatou em 2026-07-31</span>
       </div>
       <strong class="action-cargo">Especialista de Planejamento - MRP</strong>
       <span class="action-empresa">Belgo Arames · Contagem</span>
       <span class="job-card-salario">não informado</span>
       <a class="action-link" href="https://belgo.gupy.io/candidates/applications/740733326" target="_blank" rel="noopener">Ver vaga →</a>
-      <div class="application-buttons"><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__0d3618005a2a (Especialista de Planejamento - MRP na Belgo Arames) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py gupy__0d3618005a2a &quot;Aguardando retorno&quot;).">Aguardando retorno</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__0d3618005a2a (Especialista de Planejamento - MRP na Belgo Arames) para &quot;Entrevista&quot; (rode scripts/update_status.py gupy__0d3618005a2a &quot;Entrevista&quot;).">Entrevista</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__0d3618005a2a (Especialista de Planejamento - MRP na Belgo Arames) para &quot;Em fase de testes&quot; (rode scripts/update_status.py gupy__0d3618005a2a &quot;Em fase de testes&quot;).">Em fase de testes</button><button type="button" class="app-status-btn app-status-btn--positivo" data-copy="Atualizar o status da vaga gupy__0d3618005a2a (Especialista de Planejamento - MRP na Belgo Arames) para &quot;Aprovado&quot; (rode scripts/update_status.py gupy__0d3618005a2a &quot;Aprovado&quot;).">Aprovado</button><button type="button" class="app-status-btn app-status-btn--negativo" data-copy="Atualizar o status da vaga gupy__0d3618005a2a (Especialista de Planejamento - MRP na Belgo Arames) para &quot;Retorno negativo&quot; (rode scripts/update_status.py gupy__0d3618005a2a &quot;Retorno negativo&quot;).">Retorno negativo</button></div>
+      <select class="app-status-select" data-copy-select><option value="" selected disabled>Atualizar status…</option><option value="Aguardando retorno" data-copy="Atualizar o status da vaga gupy__0d3618005a2a (Especialista de Planejamento - MRP na Belgo Arames) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py gupy__0d3618005a2a &quot;Aguardando retorno&quot;).">Aguardando retorno</option><option value="Entrevista" data-copy="Atualizar o status da vaga gupy__0d3618005a2a (Especialista de Planejamento - MRP na Belgo Arames) para &quot;Entrevista&quot; (rode scripts/update_status.py gupy__0d3618005a2a &quot;Entrevista&quot;).">Entrevista</option><option value="Em fase de testes" data-copy="Atualizar o status da vaga gupy__0d3618005a2a (Especialista de Planejamento - MRP na Belgo Arames) para &quot;Em fase de testes&quot; (rode scripts/update_status.py gupy__0d3618005a2a &quot;Em fase de testes&quot;).">Em fase de testes</option><option value="Aprovado" data-copy="Atualizar o status da vaga gupy__0d3618005a2a (Especialista de Planejamento - MRP na Belgo Arames) para &quot;Aprovado&quot; (rode scripts/update_status.py gupy__0d3618005a2a &quot;Aprovado&quot;).">Aprovado</option><option value="Retorno negativo" data-copy="Atualizar o status da vaga gupy__0d3618005a2a (Especialista de Planejamento - MRP na Belgo Arames) para &quot;Retorno negativo&quot; (rode scripts/update_status.py gupy__0d3618005a2a &quot;Retorno negativo&quot;).">Retorno negativo</option></select>
+      <span class="status-toast" data-toast></span>
     </div>
     
-    <div class="application-card">
+    <div class="application-card" data-job-id="gupy__2ad392efb7b2">
       <div class="action-card-top">
-        <span class="status-badge status-badge--enviada">Candidatura enviada</span>
+        <span class="status-badge status-badge--enviada" data-status-badge>Candidatura enviada</span>
         <span class="application-date">Candidatou em 2026-07-31</span>
       </div>
       <strong class="action-cargo">Analista de Suprimentos Pleno | Gestão de Pagamentos</strong>
       <span class="action-empresa">MRV&amp;Co ★ · Belo Horizonte</span>
       <span class="job-card-salario">não informado</span>
       <a class="action-link" href="https://vagas-mrveco.gupy.io/candidates/applications/740370663" target="_blank" rel="noopener">Ver vaga →</a>
-      <div class="application-buttons"><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__2ad392efb7b2 (Analista de Suprimentos Pleno | Gestão de Pagamentos na MRV&amp;Co) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py gupy__2ad392efb7b2 &quot;Aguardando retorno&quot;).">Aguardando retorno</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__2ad392efb7b2 (Analista de Suprimentos Pleno | Gestão de Pagamentos na MRV&amp;Co) para &quot;Entrevista&quot; (rode scripts/update_status.py gupy__2ad392efb7b2 &quot;Entrevista&quot;).">Entrevista</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__2ad392efb7b2 (Analista de Suprimentos Pleno | Gestão de Pagamentos na MRV&amp;Co) para &quot;Em fase de testes&quot; (rode scripts/update_status.py gupy__2ad392efb7b2 &quot;Em fase de testes&quot;).">Em fase de testes</button><button type="button" class="app-status-btn app-status-btn--positivo" data-copy="Atualizar o status da vaga gupy__2ad392efb7b2 (Analista de Suprimentos Pleno | Gestão de Pagamentos na MRV&amp;Co) para &quot;Aprovado&quot; (rode scripts/update_status.py gupy__2ad392efb7b2 &quot;Aprovado&quot;).">Aprovado</button><button type="button" class="app-status-btn app-status-btn--negativo" data-copy="Atualizar o status da vaga gupy__2ad392efb7b2 (Analista de Suprimentos Pleno | Gestão de Pagamentos na MRV&amp;Co) para &quot;Retorno negativo&quot; (rode scripts/update_status.py gupy__2ad392efb7b2 &quot;Retorno negativo&quot;).">Retorno negativo</button></div>
+      <select class="app-status-select" data-copy-select><option value="" selected disabled>Atualizar status…</option><option value="Aguardando retorno" data-copy="Atualizar o status da vaga gupy__2ad392efb7b2 (Analista de Suprimentos Pleno | Gestão de Pagamentos na MRV&amp;Co) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py gupy__2ad392efb7b2 &quot;Aguardando retorno&quot;).">Aguardando retorno</option><option value="Entrevista" data-copy="Atualizar o status da vaga gupy__2ad392efb7b2 (Analista de Suprimentos Pleno | Gestão de Pagamentos na MRV&amp;Co) para &quot;Entrevista&quot; (rode scripts/update_status.py gupy__2ad392efb7b2 &quot;Entrevista&quot;).">Entrevista</option><option value="Em fase de testes" data-copy="Atualizar o status da vaga gupy__2ad392efb7b2 (Analista de Suprimentos Pleno | Gestão de Pagamentos na MRV&amp;Co) para &quot;Em fase de testes&quot; (rode scripts/update_status.py gupy__2ad392efb7b2 &quot;Em fase de testes&quot;).">Em fase de testes</option><option value="Aprovado" data-copy="Atualizar o status da vaga gupy__2ad392efb7b2 (Analista de Suprimentos Pleno | Gestão de Pagamentos na MRV&amp;Co) para &quot;Aprovado&quot; (rode scripts/update_status.py gupy__2ad392efb7b2 &quot;Aprovado&quot;).">Aprovado</option><option value="Retorno negativo" data-copy="Atualizar o status da vaga gupy__2ad392efb7b2 (Analista de Suprimentos Pleno | Gestão de Pagamentos na MRV&amp;Co) para &quot;Retorno negativo&quot; (rode scripts/update_status.py gupy__2ad392efb7b2 &quot;Retorno negativo&quot;).">Retorno negativo</option></select>
+      <span class="status-toast" data-toast></span>
     </div>
     
-    <div class="application-card">
+    <div class="application-card" data-job-id="gupy__379de707adb1">
       <div class="action-card-top">
-        <span class="status-badge status-badge--enviada">Candidatura enviada</span>
+        <span class="status-badge status-badge--enviada" data-status-badge>Candidatura enviada</span>
         <span class="application-date">Candidatou em 2026-07-31</span>
       </div>
       <strong class="action-cargo">Analista II - Planejamento de Demanda</strong>
       <span class="action-empresa">Grupo Boticário · remoto</span>
       <span class="job-card-salario">não informado</span>
       <a class="action-link" href="https://grupoboticario.gupy.io/candidates/applications/733749594" target="_blank" rel="noopener">Ver vaga →</a>
-      <div class="application-buttons"><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__379de707adb1 (Analista II - Planejamento de Demanda na Grupo Boticário) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py gupy__379de707adb1 &quot;Aguardando retorno&quot;).">Aguardando retorno</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__379de707adb1 (Analista II - Planejamento de Demanda na Grupo Boticário) para &quot;Entrevista&quot; (rode scripts/update_status.py gupy__379de707adb1 &quot;Entrevista&quot;).">Entrevista</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__379de707adb1 (Analista II - Planejamento de Demanda na Grupo Boticário) para &quot;Em fase de testes&quot; (rode scripts/update_status.py gupy__379de707adb1 &quot;Em fase de testes&quot;).">Em fase de testes</button><button type="button" class="app-status-btn app-status-btn--positivo" data-copy="Atualizar o status da vaga gupy__379de707adb1 (Analista II - Planejamento de Demanda na Grupo Boticário) para &quot;Aprovado&quot; (rode scripts/update_status.py gupy__379de707adb1 &quot;Aprovado&quot;).">Aprovado</button><button type="button" class="app-status-btn app-status-btn--negativo" data-copy="Atualizar o status da vaga gupy__379de707adb1 (Analista II - Planejamento de Demanda na Grupo Boticário) para &quot;Retorno negativo&quot; (rode scripts/update_status.py gupy__379de707adb1 &quot;Retorno negativo&quot;).">Retorno negativo</button></div>
+      <select class="app-status-select" data-copy-select><option value="" selected disabled>Atualizar status…</option><option value="Aguardando retorno" data-copy="Atualizar o status da vaga gupy__379de707adb1 (Analista II - Planejamento de Demanda na Grupo Boticário) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py gupy__379de707adb1 &quot;Aguardando retorno&quot;).">Aguardando retorno</option><option value="Entrevista" data-copy="Atualizar o status da vaga gupy__379de707adb1 (Analista II - Planejamento de Demanda na Grupo Boticário) para &quot;Entrevista&quot; (rode scripts/update_status.py gupy__379de707adb1 &quot;Entrevista&quot;).">Entrevista</option><option value="Em fase de testes" data-copy="Atualizar o status da vaga gupy__379de707adb1 (Analista II - Planejamento de Demanda na Grupo Boticário) para &quot;Em fase de testes&quot; (rode scripts/update_status.py gupy__379de707adb1 &quot;Em fase de testes&quot;).">Em fase de testes</option><option value="Aprovado" data-copy="Atualizar o status da vaga gupy__379de707adb1 (Analista II - Planejamento de Demanda na Grupo Boticário) para &quot;Aprovado&quot; (rode scripts/update_status.py gupy__379de707adb1 &quot;Aprovado&quot;).">Aprovado</option><option value="Retorno negativo" data-copy="Atualizar o status da vaga gupy__379de707adb1 (Analista II - Planejamento de Demanda na Grupo Boticário) para &quot;Retorno negativo&quot; (rode scripts/update_status.py gupy__379de707adb1 &quot;Retorno negativo&quot;).">Retorno negativo</option></select>
+      <span class="status-toast" data-toast></span>
     </div>
     
-    <div class="application-card">
+    <div class="application-card" data-job-id="gupy__4077ce6844d8">
       <div class="action-card-top">
-        <span class="status-badge status-badge--enviada">Candidatura enviada</span>
+        <span class="status-badge status-badge--enviada" data-status-badge>Candidatura enviada</span>
         <span class="application-date">Candidatou em 2026-07-31</span>
       </div>
       <strong class="action-cargo">Analista de Supply Chain II - Lançamentos de Novos Produtos</strong>
       <span class="action-empresa">Grupo Boticário · Curitiba</span>
       <span class="job-card-salario">não informado</span>
       <a class="action-link" href="https://grupoboticario.gupy.io/candidates/applications/732339632" target="_blank" rel="noopener">Ver vaga →</a>
-      <div class="application-buttons"><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__4077ce6844d8 (Analista de Supply Chain II - Lançamentos de Novos Produtos na Grupo Boticário) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py gupy__4077ce6844d8 &quot;Aguardando retorno&quot;).">Aguardando retorno</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__4077ce6844d8 (Analista de Supply Chain II - Lançamentos de Novos Produtos na Grupo Boticário) para &quot;Entrevista&quot; (rode scripts/update_status.py gupy__4077ce6844d8 &quot;Entrevista&quot;).">Entrevista</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__4077ce6844d8 (Analista de Supply Chain II - Lançamentos de Novos Produtos na Grupo Boticário) para &quot;Em fase de testes&quot; (rode scripts/update_status.py gupy__4077ce6844d8 &quot;Em fase de testes&quot;).">Em fase de testes</button><button type="button" class="app-status-btn app-status-btn--positivo" data-copy="Atualizar o status da vaga gupy__4077ce6844d8 (Analista de Supply Chain II - Lançamentos de Novos Produtos na Grupo Boticário) para &quot;Aprovado&quot; (rode scripts/update_status.py gupy__4077ce6844d8 &quot;Aprovado&quot;).">Aprovado</button><button type="button" class="app-status-btn app-status-btn--negativo" data-copy="Atualizar o status da vaga gupy__4077ce6844d8 (Analista de Supply Chain II - Lançamentos de Novos Produtos na Grupo Boticário) para &quot;Retorno negativo&quot; (rode scripts/update_status.py gupy__4077ce6844d8 &quot;Retorno negativo&quot;).">Retorno negativo</button></div>
+      <select class="app-status-select" data-copy-select><option value="" selected disabled>Atualizar status…</option><option value="Aguardando retorno" data-copy="Atualizar o status da vaga gupy__4077ce6844d8 (Analista de Supply Chain II - Lançamentos de Novos Produtos na Grupo Boticário) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py gupy__4077ce6844d8 &quot;Aguardando retorno&quot;).">Aguardando retorno</option><option value="Entrevista" data-copy="Atualizar o status da vaga gupy__4077ce6844d8 (Analista de Supply Chain II - Lançamentos de Novos Produtos na Grupo Boticário) para &quot;Entrevista&quot; (rode scripts/update_status.py gupy__4077ce6844d8 &quot;Entrevista&quot;).">Entrevista</option><option value="Em fase de testes" data-copy="Atualizar o status da vaga gupy__4077ce6844d8 (Analista de Supply Chain II - Lançamentos de Novos Produtos na Grupo Boticário) para &quot;Em fase de testes&quot; (rode scripts/update_status.py gupy__4077ce6844d8 &quot;Em fase de testes&quot;).">Em fase de testes</option><option value="Aprovado" data-copy="Atualizar o status da vaga gupy__4077ce6844d8 (Analista de Supply Chain II - Lançamentos de Novos Produtos na Grupo Boticário) para &quot;Aprovado&quot; (rode scripts/update_status.py gupy__4077ce6844d8 &quot;Aprovado&quot;).">Aprovado</option><option value="Retorno negativo" data-copy="Atualizar o status da vaga gupy__4077ce6844d8 (Analista de Supply Chain II - Lançamentos de Novos Produtos na Grupo Boticário) para &quot;Retorno negativo&quot; (rode scripts/update_status.py gupy__4077ce6844d8 &quot;Retorno negativo&quot;).">Retorno negativo</option></select>
+      <span class="status-toast" data-toast></span>
     </div>
     
-    <div class="application-card">
+    <div class="application-card" data-job-id="gupy__842340021f0c">
       <div class="action-card-top">
-        <span class="status-badge status-badge--enviada">Candidatura enviada</span>
+        <span class="status-badge status-badge--enviada" data-status-badge>Candidatura enviada</span>
         <span class="application-date">Candidatou em 2026-07-31</span>
       </div>
       <strong class="action-cargo">Analista de Suprimentos Pleno</strong>
       <span class="action-empresa">Belgo Arames · Contagem</span>
       <span class="job-card-salario">não informado</span>
       <a class="action-link" href="https://belgo.gupy.io/candidates/applications/738139340" target="_blank" rel="noopener">Ver vaga →</a>
-      <div class="application-buttons"><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__842340021f0c (Analista de Suprimentos Pleno na Belgo Arames) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py gupy__842340021f0c &quot;Aguardando retorno&quot;).">Aguardando retorno</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__842340021f0c (Analista de Suprimentos Pleno na Belgo Arames) para &quot;Entrevista&quot; (rode scripts/update_status.py gupy__842340021f0c &quot;Entrevista&quot;).">Entrevista</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__842340021f0c (Analista de Suprimentos Pleno na Belgo Arames) para &quot;Em fase de testes&quot; (rode scripts/update_status.py gupy__842340021f0c &quot;Em fase de testes&quot;).">Em fase de testes</button><button type="button" class="app-status-btn app-status-btn--positivo" data-copy="Atualizar o status da vaga gupy__842340021f0c (Analista de Suprimentos Pleno na Belgo Arames) para &quot;Aprovado&quot; (rode scripts/update_status.py gupy__842340021f0c &quot;Aprovado&quot;).">Aprovado</button><button type="button" class="app-status-btn app-status-btn--negativo" data-copy="Atualizar o status da vaga gupy__842340021f0c (Analista de Suprimentos Pleno na Belgo Arames) para &quot;Retorno negativo&quot; (rode scripts/update_status.py gupy__842340021f0c &quot;Retorno negativo&quot;).">Retorno negativo</button></div>
+      <select class="app-status-select" data-copy-select><option value="" selected disabled>Atualizar status…</option><option value="Aguardando retorno" data-copy="Atualizar o status da vaga gupy__842340021f0c (Analista de Suprimentos Pleno na Belgo Arames) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py gupy__842340021f0c &quot;Aguardando retorno&quot;).">Aguardando retorno</option><option value="Entrevista" data-copy="Atualizar o status da vaga gupy__842340021f0c (Analista de Suprimentos Pleno na Belgo Arames) para &quot;Entrevista&quot; (rode scripts/update_status.py gupy__842340021f0c &quot;Entrevista&quot;).">Entrevista</option><option value="Em fase de testes" data-copy="Atualizar o status da vaga gupy__842340021f0c (Analista de Suprimentos Pleno na Belgo Arames) para &quot;Em fase de testes&quot; (rode scripts/update_status.py gupy__842340021f0c &quot;Em fase de testes&quot;).">Em fase de testes</option><option value="Aprovado" data-copy="Atualizar o status da vaga gupy__842340021f0c (Analista de Suprimentos Pleno na Belgo Arames) para &quot;Aprovado&quot; (rode scripts/update_status.py gupy__842340021f0c &quot;Aprovado&quot;).">Aprovado</option><option value="Retorno negativo" data-copy="Atualizar o status da vaga gupy__842340021f0c (Analista de Suprimentos Pleno na Belgo Arames) para &quot;Retorno negativo&quot; (rode scripts/update_status.py gupy__842340021f0c &quot;Retorno negativo&quot;).">Retorno negativo</option></select>
+      <span class="status-toast" data-toast></span>
     </div>
     
-    <div class="application-card">
+    <div class="application-card" data-job-id="gupy__d372377266a4">
       <div class="action-card-top">
-        <span class="status-badge status-badge--enviada">Candidatura enviada</span>
+        <span class="status-badge status-badge--enviada" data-status-badge>Candidatura enviada</span>
         <span class="application-date">Candidatou em 2026-07-31</span>
       </div>
       <strong class="action-cargo">Analista de Compras Pleno</strong>
       <span class="action-empresa">SELPE Gente &amp; Gestão · Betim</span>
       <span class="job-card-salario">não informado</span>
       <a class="action-link" href="https://selpe.gupy.io/candidates/applications/740744012" target="_blank" rel="noopener">Ver vaga →</a>
-      <div class="application-buttons"><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__d372377266a4 (Analista de Compras Pleno na SELPE Gente &amp; Gestão) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py gupy__d372377266a4 &quot;Aguardando retorno&quot;).">Aguardando retorno</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__d372377266a4 (Analista de Compras Pleno na SELPE Gente &amp; Gestão) para &quot;Entrevista&quot; (rode scripts/update_status.py gupy__d372377266a4 &quot;Entrevista&quot;).">Entrevista</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__d372377266a4 (Analista de Compras Pleno na SELPE Gente &amp; Gestão) para &quot;Em fase de testes&quot; (rode scripts/update_status.py gupy__d372377266a4 &quot;Em fase de testes&quot;).">Em fase de testes</button><button type="button" class="app-status-btn app-status-btn--positivo" data-copy="Atualizar o status da vaga gupy__d372377266a4 (Analista de Compras Pleno na SELPE Gente &amp; Gestão) para &quot;Aprovado&quot; (rode scripts/update_status.py gupy__d372377266a4 &quot;Aprovado&quot;).">Aprovado</button><button type="button" class="app-status-btn app-status-btn--negativo" data-copy="Atualizar o status da vaga gupy__d372377266a4 (Analista de Compras Pleno na SELPE Gente &amp; Gestão) para &quot;Retorno negativo&quot; (rode scripts/update_status.py gupy__d372377266a4 &quot;Retorno negativo&quot;).">Retorno negativo</button></div>
+      <select class="app-status-select" data-copy-select><option value="" selected disabled>Atualizar status…</option><option value="Aguardando retorno" data-copy="Atualizar o status da vaga gupy__d372377266a4 (Analista de Compras Pleno na SELPE Gente &amp; Gestão) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py gupy__d372377266a4 &quot;Aguardando retorno&quot;).">Aguardando retorno</option><option value="Entrevista" data-copy="Atualizar o status da vaga gupy__d372377266a4 (Analista de Compras Pleno na SELPE Gente &amp; Gestão) para &quot;Entrevista&quot; (rode scripts/update_status.py gupy__d372377266a4 &quot;Entrevista&quot;).">Entrevista</option><option value="Em fase de testes" data-copy="Atualizar o status da vaga gupy__d372377266a4 (Analista de Compras Pleno na SELPE Gente &amp; Gestão) para &quot;Em fase de testes&quot; (rode scripts/update_status.py gupy__d372377266a4 &quot;Em fase de testes&quot;).">Em fase de testes</option><option value="Aprovado" data-copy="Atualizar o status da vaga gupy__d372377266a4 (Analista de Compras Pleno na SELPE Gente &amp; Gestão) para &quot;Aprovado&quot; (rode scripts/update_status.py gupy__d372377266a4 &quot;Aprovado&quot;).">Aprovado</option><option value="Retorno negativo" data-copy="Atualizar o status da vaga gupy__d372377266a4 (Analista de Compras Pleno na SELPE Gente &amp; Gestão) para &quot;Retorno negativo&quot; (rode scripts/update_status.py gupy__d372377266a4 &quot;Retorno negativo&quot;).">Retorno negativo</option></select>
+      <span class="status-toast" data-toast></span>
     </div>
     
-    <div class="application-card">
+    <div class="application-card" data-job-id="gupy__e839685b69a2">
       <div class="action-card-top">
-        <span class="status-badge status-badge--enviada">Candidatura enviada</span>
+        <span class="status-badge status-badge--enviada" data-status-badge>Candidatura enviada</span>
         <span class="application-date">Candidatou em 2026-07-31</span>
       </div>
       <strong class="action-cargo">Analista de Planejamento de Demanda (MRP)</strong>
       <span class="action-empresa">ESAB ★ · Contagem</span>
       <span class="job-card-salario">não informado</span>
       <a class="action-link" href="https://esab.gupy.io/candidates/applications/740371407" target="_blank" rel="noopener">Ver vaga →</a>
-      <div class="application-buttons"><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__e839685b69a2 (Analista de Planejamento de Demanda (MRP) na ESAB) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py gupy__e839685b69a2 &quot;Aguardando retorno&quot;).">Aguardando retorno</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__e839685b69a2 (Analista de Planejamento de Demanda (MRP) na ESAB) para &quot;Entrevista&quot; (rode scripts/update_status.py gupy__e839685b69a2 &quot;Entrevista&quot;).">Entrevista</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__e839685b69a2 (Analista de Planejamento de Demanda (MRP) na ESAB) para &quot;Em fase de testes&quot; (rode scripts/update_status.py gupy__e839685b69a2 &quot;Em fase de testes&quot;).">Em fase de testes</button><button type="button" class="app-status-btn app-status-btn--positivo" data-copy="Atualizar o status da vaga gupy__e839685b69a2 (Analista de Planejamento de Demanda (MRP) na ESAB) para &quot;Aprovado&quot; (rode scripts/update_status.py gupy__e839685b69a2 &quot;Aprovado&quot;).">Aprovado</button><button type="button" class="app-status-btn app-status-btn--negativo" data-copy="Atualizar o status da vaga gupy__e839685b69a2 (Analista de Planejamento de Demanda (MRP) na ESAB) para &quot;Retorno negativo&quot; (rode scripts/update_status.py gupy__e839685b69a2 &quot;Retorno negativo&quot;).">Retorno negativo</button></div>
+      <select class="app-status-select" data-copy-select><option value="" selected disabled>Atualizar status…</option><option value="Aguardando retorno" data-copy="Atualizar o status da vaga gupy__e839685b69a2 (Analista de Planejamento de Demanda (MRP) na ESAB) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py gupy__e839685b69a2 &quot;Aguardando retorno&quot;).">Aguardando retorno</option><option value="Entrevista" data-copy="Atualizar o status da vaga gupy__e839685b69a2 (Analista de Planejamento de Demanda (MRP) na ESAB) para &quot;Entrevista&quot; (rode scripts/update_status.py gupy__e839685b69a2 &quot;Entrevista&quot;).">Entrevista</option><option value="Em fase de testes" data-copy="Atualizar o status da vaga gupy__e839685b69a2 (Analista de Planejamento de Demanda (MRP) na ESAB) para &quot;Em fase de testes&quot; (rode scripts/update_status.py gupy__e839685b69a2 &quot;Em fase de testes&quot;).">Em fase de testes</option><option value="Aprovado" data-copy="Atualizar o status da vaga gupy__e839685b69a2 (Analista de Planejamento de Demanda (MRP) na ESAB) para &quot;Aprovado&quot; (rode scripts/update_status.py gupy__e839685b69a2 &quot;Aprovado&quot;).">Aprovado</option><option value="Retorno negativo" data-copy="Atualizar o status da vaga gupy__e839685b69a2 (Analista de Planejamento de Demanda (MRP) na ESAB) para &quot;Retorno negativo&quot; (rode scripts/update_status.py gupy__e839685b69a2 &quot;Retorno negativo&quot;).">Retorno negativo</option></select>
+      <span class="status-toast" data-toast></span>
     </div>
     
-    <div class="application-card">
+    <div class="application-card" data-job-id="gupy__fed9b0458a37">
       <div class="action-card-top">
-        <span class="status-badge status-badge--enviada">Candidatura enviada</span>
+        <span class="status-badge status-badge--enviada" data-status-badge>Candidatura enviada</span>
         <span class="application-date">Candidatou em 2026-07-31</span>
       </div>
       <strong class="action-cargo">Analista Suprimentos Júnior | Gestão de Fornecedores - BH</strong>
       <span class="action-empresa">MRV&amp;Co ★ · Belo Horizonte</span>
       <span class="job-card-salario">não informado</span>
       <a class="action-link" href="https://vagas-mrveco.gupy.io/candidates/applications/735979321" target="_blank" rel="noopener">Ver vaga →</a>
-      <div class="application-buttons"><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__fed9b0458a37 (Analista Suprimentos Júnior | Gestão de Fornecedores - BH na MRV&amp;Co) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py gupy__fed9b0458a37 &quot;Aguardando retorno&quot;).">Aguardando retorno</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__fed9b0458a37 (Analista Suprimentos Júnior | Gestão de Fornecedores - BH na MRV&amp;Co) para &quot;Entrevista&quot; (rode scripts/update_status.py gupy__fed9b0458a37 &quot;Entrevista&quot;).">Entrevista</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga gupy__fed9b0458a37 (Analista Suprimentos Júnior | Gestão de Fornecedores - BH na MRV&amp;Co) para &quot;Em fase de testes&quot; (rode scripts/update_status.py gupy__fed9b0458a37 &quot;Em fase de testes&quot;).">Em fase de testes</button><button type="button" class="app-status-btn app-status-btn--positivo" data-copy="Atualizar o status da vaga gupy__fed9b0458a37 (Analista Suprimentos Júnior | Gestão de Fornecedores - BH na MRV&amp;Co) para &quot;Aprovado&quot; (rode scripts/update_status.py gupy__fed9b0458a37 &quot;Aprovado&quot;).">Aprovado</button><button type="button" class="app-status-btn app-status-btn--negativo" data-copy="Atualizar o status da vaga gupy__fed9b0458a37 (Analista Suprimentos Júnior | Gestão de Fornecedores - BH na MRV&amp;Co) para &quot;Retorno negativo&quot; (rode scripts/update_status.py gupy__fed9b0458a37 &quot;Retorno negativo&quot;).">Retorno negativo</button></div>
+      <select class="app-status-select" data-copy-select><option value="" selected disabled>Atualizar status…</option><option value="Aguardando retorno" data-copy="Atualizar o status da vaga gupy__fed9b0458a37 (Analista Suprimentos Júnior | Gestão de Fornecedores - BH na MRV&amp;Co) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py gupy__fed9b0458a37 &quot;Aguardando retorno&quot;).">Aguardando retorno</option><option value="Entrevista" data-copy="Atualizar o status da vaga gupy__fed9b0458a37 (Analista Suprimentos Júnior | Gestão de Fornecedores - BH na MRV&amp;Co) para &quot;Entrevista&quot; (rode scripts/update_status.py gupy__fed9b0458a37 &quot;Entrevista&quot;).">Entrevista</option><option value="Em fase de testes" data-copy="Atualizar o status da vaga gupy__fed9b0458a37 (Analista Suprimentos Júnior | Gestão de Fornecedores - BH na MRV&amp;Co) para &quot;Em fase de testes&quot; (rode scripts/update_status.py gupy__fed9b0458a37 &quot;Em fase de testes&quot;).">Em fase de testes</option><option value="Aprovado" data-copy="Atualizar o status da vaga gupy__fed9b0458a37 (Analista Suprimentos Júnior | Gestão de Fornecedores - BH na MRV&amp;Co) para &quot;Aprovado&quot; (rode scripts/update_status.py gupy__fed9b0458a37 &quot;Aprovado&quot;).">Aprovado</option><option value="Retorno negativo" data-copy="Atualizar o status da vaga gupy__fed9b0458a37 (Analista Suprimentos Júnior | Gestão de Fornecedores - BH na MRV&amp;Co) para &quot;Retorno negativo&quot; (rode scripts/update_status.py gupy__fed9b0458a37 &quot;Retorno negativo&quot;).">Retorno negativo</option></select>
+      <span class="status-toast" data-toast></span>
     </div>
     
-    <div class="application-card">
+    <div class="application-card" data-job-id="indeed__a12d232d36ce">
       <div class="action-card-top">
-        <span class="status-badge status-badge--enviada">Candidatura enviada</span>
+        <span class="status-badge status-badge--enviada" data-status-badge>Candidatura enviada</span>
         <span class="application-date">Candidatou em 2026-07-31</span>
       </div>
       <strong class="action-cargo">Analista de Planejamento de Materiais</strong>
       <span class="action-empresa">Grupo Artesanal · Belo Horizonte</span>
       <span class="job-card-salario">não informado</span>
       <a class="action-link" href="https://to.indeed.com/aa9j897b9lvr" target="_blank" rel="noopener">Ver vaga →</a>
-      <div class="application-buttons"><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga indeed__a12d232d36ce (Analista de Planejamento de Materiais na Grupo Artesanal) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py indeed__a12d232d36ce &quot;Aguardando retorno&quot;).">Aguardando retorno</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga indeed__a12d232d36ce (Analista de Planejamento de Materiais na Grupo Artesanal) para &quot;Entrevista&quot; (rode scripts/update_status.py indeed__a12d232d36ce &quot;Entrevista&quot;).">Entrevista</button><button type="button" class="app-status-btn" data-copy="Atualizar o status da vaga indeed__a12d232d36ce (Analista de Planejamento de Materiais na Grupo Artesanal) para &quot;Em fase de testes&quot; (rode scripts/update_status.py indeed__a12d232d36ce &quot;Em fase de testes&quot;).">Em fase de testes</button><button type="button" class="app-status-btn app-status-btn--positivo" data-copy="Atualizar o status da vaga indeed__a12d232d36ce (Analista de Planejamento de Materiais na Grupo Artesanal) para &quot;Aprovado&quot; (rode scripts/update_status.py indeed__a12d232d36ce &quot;Aprovado&quot;).">Aprovado</button><button type="button" class="app-status-btn app-status-btn--negativo" data-copy="Atualizar o status da vaga indeed__a12d232d36ce (Analista de Planejamento de Materiais na Grupo Artesanal) para &quot;Retorno negativo&quot; (rode scripts/update_status.py indeed__a12d232d36ce &quot;Retorno negativo&quot;).">Retorno negativo</button></div>
+      <select class="app-status-select" data-copy-select><option value="" selected disabled>Atualizar status…</option><option value="Aguardando retorno" data-copy="Atualizar o status da vaga indeed__a12d232d36ce (Analista de Planejamento de Materiais na Grupo Artesanal) para &quot;Aguardando retorno&quot; (rode scripts/update_status.py indeed__a12d232d36ce &quot;Aguardando retorno&quot;).">Aguardando retorno</option><option value="Entrevista" data-copy="Atualizar o status da vaga indeed__a12d232d36ce (Analista de Planejamento de Materiais na Grupo Artesanal) para &quot;Entrevista&quot; (rode scripts/update_status.py indeed__a12d232d36ce &quot;Entrevista&quot;).">Entrevista</option><option value="Em fase de testes" data-copy="Atualizar o status da vaga indeed__a12d232d36ce (Analista de Planejamento de Materiais na Grupo Artesanal) para &quot;Em fase de testes&quot; (rode scripts/update_status.py indeed__a12d232d36ce &quot;Em fase de testes&quot;).">Em fase de testes</option><option value="Aprovado" data-copy="Atualizar o status da vaga indeed__a12d232d36ce (Analista de Planejamento de Materiais na Grupo Artesanal) para &quot;Aprovado&quot; (rode scripts/update_status.py indeed__a12d232d36ce &quot;Aprovado&quot;).">Aprovado</option><option value="Retorno negativo" data-copy="Atualizar o status da vaga indeed__a12d232d36ce (Analista de Planejamento de Materiais na Grupo Artesanal) para &quot;Retorno negativo&quot; (rode scripts/update_status.py indeed__a12d232d36ce &quot;Retorno negativo&quot;).">Retorno negativo</option></select>
+      <span class="status-toast" data-toast></span>
     </div>
     </div>
     </section>
@@ -852,24 +864,132 @@
   <footer>Career Agent AI — busca automática (Indeed) + listagem pública (LinkedIn/Gupy/Sólides/Vagas.com/InfoJobs/99Jobs/Adecco/CIA de Talentos/i9 Hunter/Manpower/Catho/Page Personnel/carreiras). Candidaturas sempre passam por aprovação manual antes do envio.</footer>
 
   <script>
-    document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    var STATUS_BADGE_CLASS = {
+      'Encontrada': 'status-badge--neutro',
+      'Em análise': 'status-badge--neutro',
+      'Currículo otimizado': 'status-badge--preparo',
+      'Carta criada': 'status-badge--preparo',
+      'Aguardando aprovação': 'status-badge--preparo',
+      'Rejeitado': 'status-badge--negativo',
+      'Candidatura enviada': 'status-badge--enviada',
+      'Aguardando retorno': 'status-badge--espera',
+      'Entrevista': 'status-badge--entrevista',
+      'Em fase de testes': 'status-badge--entrevista',
+      'Aprovado': 'status-badge--aprovado',
+      'Retorno negativo': 'status-badge--negativo'
+    };
+
+    function copyToClipboard(texto) {
+      var textarea = document.createElement('textarea');
+      textarea.value = texto;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      var copiado = false;
+      try { copiado = document.execCommand('copy'); } catch (e) { copiado = false; }
+      document.body.removeChild(textarea);
+      return copiado;
+    }
+
+    function markActed(jobId) {
+      try {
+        var acted = JSON.parse(localStorage.getItem('careerAgentActed') || '[]');
+        if (acted.indexOf(jobId) === -1) acted.push(jobId);
+        localStorage.setItem('careerAgentActed', JSON.stringify(acted));
+      } catch (e) {}
+    }
+
+    function saveStatusOverride(jobId, status) {
+      try {
+        var overrides = JSON.parse(localStorage.getItem('careerAgentStatusOverride') || '{}');
+        overrides[jobId] = status;
+        localStorage.setItem('careerAgentStatusOverride', JSON.stringify(overrides));
+      } catch (e) {}
+    }
+
+    function updatePendingCount() {
+      var remaining = document.querySelectorAll('.actions-grid .action-card').length;
+      var counter = document.querySelector('.actions-count');
+      if (counter) counter.textContent = remaining;
+      if (remaining === 0) {
+        var grid = document.querySelector('.actions-grid');
+        if (grid) grid.outerHTML = '<p class="viz-empty">Nada esperando sua aprovação agora.</p>';
+      }
+    }
+
+    document.querySelectorAll('button[data-copy]').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var texto = btn.getAttribute('data-copy');
+        var copiado = copyToClipboard(btn.getAttribute('data-copy'));
         var original = btn.textContent;
-        var textarea = document.createElement('textarea');
-        textarea.value = texto;
-        textarea.style.position = 'fixed';
-        textarea.style.opacity = '0';
-        document.body.appendChild(textarea);
-        textarea.focus();
-        textarea.select();
-        var copiado = false;
-        try { copiado = document.execCommand('copy'); } catch (e) { copiado = false; }
-        document.body.removeChild(textarea);
         btn.textContent = copiado ? 'Copiado ✓' : 'Erro ao copiar';
         setTimeout(function () { btn.textContent = original; }, 1500);
+
+        var card = btn.closest('.action-card');
+        if (card) {
+          var jobId = card.getAttribute('data-job-id');
+          if (jobId) markActed(jobId);
+          card.classList.add('action-card--done');
+          setTimeout(function () { card.remove(); updatePendingCount(); }, 350);
+        }
       });
     });
+
+    document.querySelectorAll('select[data-copy-select]').forEach(function (select) {
+      select.addEventListener('change', function () {
+        var option = select.selectedOptions[0];
+        if (!option || !option.getAttribute('data-copy')) return;
+        var copiado = copyToClipboard(option.getAttribute('data-copy'));
+        var card = select.closest('.application-card');
+        if (card) {
+          var novoStatus = option.value;
+          var badge = card.querySelector('[data-status-badge]');
+          if (badge && novoStatus) {
+            badge.textContent = novoStatus;
+            badge.className = 'status-badge ' + (STATUS_BADGE_CLASS[novoStatus] || 'status-badge--neutro');
+          }
+          var jobId = card.getAttribute('data-job-id');
+          if (jobId && novoStatus) saveStatusOverride(jobId, novoStatus);
+          var toast = card.querySelector('[data-toast]');
+          if (toast) {
+            toast.textContent = copiado ? 'Comando copiado — cole no Claude Code ✓' : 'Erro ao copiar comando';
+            setTimeout(function () { toast.textContent = ''; }, 3000);
+          }
+        }
+        select.selectedIndex = 0;
+      });
+    });
+
+    (function applyStoredState() {
+      try {
+        var acted = JSON.parse(localStorage.getItem('careerAgentActed') || '[]');
+        acted.forEach(function (jobId) {
+          var card = document.querySelector('.action-card[data-job-id="' + CSS.escape(jobId) + '"]');
+          if (card) card.remove();
+        });
+        updatePendingCount();
+      } catch (e) {}
+
+      try {
+        var overrides = JSON.parse(localStorage.getItem('careerAgentStatusOverride') || '{}');
+        var changed = false;
+        Object.keys(overrides).forEach(function (jobId) {
+          var card = document.querySelector('.application-card[data-job-id="' + CSS.escape(jobId) + '"]');
+          if (!card) return;
+          var badge = card.querySelector('[data-status-badge]');
+          if (!badge) return;
+          if (badge.textContent.trim() === overrides[jobId]) {
+            delete overrides[jobId];
+            changed = true;
+            return;
+          }
+          badge.textContent = overrides[jobId];
+          badge.className = 'status-badge ' + (STATUS_BADGE_CLASS[overrides[jobId]] || 'status-badge--neutro');
+        });
+        if (changed) localStorage.setItem('careerAgentStatusOverride', JSON.stringify(overrides));
+      } catch (e) {}
+    })();
 
     document.querySelectorAll('.tab-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
