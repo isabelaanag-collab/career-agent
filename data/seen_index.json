@@ -1,4 +1,14 @@
 {
+  "catho__928d63b7bef1": {
+    "empresa": "Empresa não divulgada",
+    "plataforma": "catho",
+    "registrado_em": "2026-08-09T19:10:53+00:00"
+  },
+  "catho__b013b51deca4": {
+    "empresa": "Empresa não divulgada",
+    "plataforma": "catho",
+    "registrado_em": "2026-08-09T19:10:53+00:00"
+  },
   "gupy__0abc21330ccb": {
     "empresa": "VLI",
     "plataforma": "gupy",
@@ -8,6 +18,11 @@
     "empresa": "Belgo Arames",
     "plataforma": "gupy",
     "registrado_em": "2026-07-31T15:18:24+00:00"
+  },
+  "gupy__1a5a5e1f3296": {
+    "empresa": "Ambev",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-09T19:10:53+00:00"
   },
   "gupy__2ad392efb7b2": {
     "empresa": "MRV&Co",
@@ -29,10 +44,20 @@
     "plataforma": "gupy",
     "registrado_em": "2026-07-31T15:18:24+00:00"
   },
+  "gupy__834b69768f53": {
+    "empresa": "Santa Casa BH",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-09T19:10:53+00:00"
+  },
   "gupy__842340021f0c": {
     "empresa": "Belgo Arames",
     "plataforma": "gupy",
     "registrado_em": "2026-07-31T15:18:24+00:00"
+  },
+  "gupy__97bf308a77f3": {
+    "empresa": "Unidas",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-09T19:10:53+00:00"
   },
   "gupy__d372377266a4": {
     "empresa": "SELPE Gente & Gestão",
@@ -89,9 +114,19 @@
     "plataforma": "indeed",
     "registrado_em": "2026-08-02T22:03:08+00:00"
   },
+  "infojobs__5cc6196d8242": {
+    "empresa": "Empresa não divulgada",
+    "plataforma": "infojobs",
+    "registrado_em": "2026-08-09T19:10:53+00:00"
+  },
   "infojobs__7a744539d234": {
     "empresa": "Lactalis Brasil",
     "plataforma": "infojobs",
     "registrado_em": "2026-08-02T22:14:57+00:00"
+  },
+  "vagas__3ca339fcd422": {
+    "empresa": "Grupo Avante",
+    "plataforma": "vagas",
+    "registrado_em": "2026-08-09T19:10:53+00:00"
   }
 }

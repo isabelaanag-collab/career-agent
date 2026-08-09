@@ -1,0 +1,60 @@
+{
+  "id_externo": "catho__b013b51deca4",
+  "plataforma": "catho",
+  "url": "https://www.catho.com.br/vagas/analista-de-logistica/37545960",
+  "empresa": "Empresa não divulgada",
+  "cargo": "Analista de Logística",
+  "salario": null,
+  "salario_estimado": null,
+  "cidade": "Belo Horizonte",
+  "estado": "MG",
+  "modalidade": "presencial",
+  "data_publicacao": null,
+  "data_candidatura": null,
+  "match_score": 80,
+  "probabilidade_estimada_entrevista": {
+    "nivel": "alta",
+    "justificativa": "Responsabilidades (roteirização, negociação com transportadoras, indicadores de desempenho logístico) são quase idênticas ao projeto de classificação de transportadoras que a candidata liderou; requisito de Excel avançado também é ponto forte comprovado dela."
+  },
+  "motivos_score": [
+    "Área (Logística) e responsabilidades (fluxo de materiais, roteirização, negociação com transportadoras, indicadores de desempenho) batem fortemente com o projeto de classificação de transportadoras que a candidata liderou",
+    "Requisito de Excel avançado como diferencial é comprovadamente dominado pela candidata",
+    "Formação exigida (superior completo ou cursando em Logística, Administração ou áreas correlatas) é compatível com a formação dela em Engenharia de Produção",
+    "Nenhum idioma é exigido na vaga — sem penalidade nessa dimensão",
+    "Cidade (Belo Horizonte) é match exato de localização",
+    "Senioridade não é especificada no anúncio — tratado como neutro, não penalizado nem bonificado"
+  ],
+  "palavras_chave_encontradas": [
+    "Logística",
+    "Excel avançado",
+    "Transportadoras",
+    "Indicadores"
+  ],
+  "tecnologias_exigidas": [
+    "Pacote Office",
+    "Excel avançado (diferencial)"
+  ],
+  "idiomas_exigidos": [],
+  "beneficios": [],
+  "requisitos_obrigatorios": [
+    "Superior completo ou cursando em Logística, Administração ou áreas correlatas",
+    "Experiência anterior em logística",
+    "Perfil analítico e proativo para resolução de problemas",
+    "Boa comunicação e capacidade de negociação"
+  ],
+  "requisitos_desejaveis": [
+    "Excel avançado",
+    "Conhecimento intermediário do Pacote Office"
+  ],
+  "status": "Aguardando aprovação",
+  "empresa_favorita": false,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Aguardando aprovação",
+      "data": "2026-08-09T19:10:53+00:00"
+    }
+  ]
+}

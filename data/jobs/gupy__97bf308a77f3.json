@@ -1,0 +1,51 @@
+{
+  "id_externo": "gupy__97bf308a77f3",
+  "plataforma": "gupy",
+  "url": "https://unidas.gupy.io/jobs/11607441",
+  "empresa": "Unidas",
+  "cargo": "Analista Suprimentos Jr",
+  "salario": null,
+  "salario_estimado": null,
+  "cidade": "Belo Horizonte",
+  "estado": "MG",
+  "modalidade": "presencial",
+  "data_publicacao": null,
+  "data_candidatura": null,
+  "match_score": 61,
+  "probabilidade_estimada_entrevista": {
+    "nivel": "média",
+    "justificativa": "Candidata tem mais experiência do que o nível Jr pede (o que facilita aprovação em processo seletivo), e ela mesma declarou interesse em posições Júnior de destaque em empresas grandes; porém a vaga é focada em compliance/governança, área menos central no currículo dela."
+  },
+  "motivos_score": [
+    "Área (Suprimentos) bate com a lista de áreas-alvo da candidata",
+    "Senioridade Jr é inferior à experiência real da candidata (4+ anos, nível pleno), mas ela declarou interesse explícito em vagas Júnior de destaque em empresas de grande porte como a Unidas",
+    "Responsabilidades descritas (compliance, normas e políticas internas de suprimentos) têm sobreposição parcial, mas não são o foco central da experiência dela em MRP/S&OE/Planejamento",
+    "Ferramentas/tecnologias exigidas não informadas na vaga — não verificável",
+    "Cidade (Belo Horizonte) é match exato de localização"
+  ],
+  "palavras_chave_encontradas": [
+    "Suprimentos"
+  ],
+  "tecnologias_exigidas": [],
+  "idiomas_exigidos": [],
+  "beneficios": [
+    "Participação nos Lucros e Resultados (PLR)"
+  ],
+  "requisitos_obrigatorios": [],
+  "requisitos_desejaveis": [
+    "Perfil analítico",
+    "Boa comunicação",
+    "Capacidade de relacionamento interpessoal"
+  ],
+  "status": "Encontrada",
+  "empresa_favorita": false,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Encontrada",
+      "data": "2026-08-09T19:10:53+00:00"
+    }
+  ]
+}

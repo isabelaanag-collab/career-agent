@@ -1,0 +1,56 @@
+{
+  "id_externo": "catho__928d63b7bef1",
+  "plataforma": "catho",
+  "url": "https://www.catho.com.br/vagas/analista-de-logistica-internacional/37500003/",
+  "empresa": "Empresa não divulgada",
+  "cargo": "Analista de Logística Internacional",
+  "salario": null,
+  "salario_estimado": "R$ 3.403,87 a R$ 6.896,25 (faixa salarial média da profissão em 2026, segundo Glassdoor/Catho — não é a estimativa da vaga específica)",
+  "cidade": "Belo Horizonte",
+  "estado": "MG",
+  "modalidade": "presencial",
+  "data_publicacao": null,
+  "data_candidatura": null,
+  "match_score": 34,
+  "probabilidade_estimada_entrevista": {
+    "nivel": "baixa",
+    "justificativa": "A vaga exige experiência comprovada em logística internacional/comércio exterior (documentação de importação/exportação, inglês intermediário/avançado), nenhuma das quais consta no currículo da candidata — perfil dela é mais forte em logística doméstica/planejamento."
+  },
+  "motivos_score": [
+    "Área (Logística) está na lista de áreas-alvo, mas a especialização em comércio exterior não aparece em nenhuma experiência da candidata",
+    "Requisitos obrigatórios (documentação de importação/exportação — DI, LI, BL, AWB —, legislação aduaneira) não são comprovados no currículo/LinkedIn dela",
+    "Idioma exigido (inglês intermediário/avançado) não pôde ser confirmado como atendido — currículo/perfil não menciona idiomas",
+    "Cidade (Belo Horizonte) é match exato de localização",
+    "Empresa contratante não é divulgada publicamente pela plataforma"
+  ],
+  "palavras_chave_encontradas": [
+    "Logística"
+  ],
+  "tecnologias_exigidas": [
+    "Documentação de comércio exterior (DI, LI, BL, AWB)"
+  ],
+  "idiomas_exigidos": [
+    "Inglês intermediário/avançado"
+  ],
+  "beneficios": [],
+  "requisitos_obrigatorios": [
+    "Experiência comprovada em logística internacional",
+    "Conhecimento em operações de importação e exportação",
+    "Inglês intermediário ou avançado",
+    "Domínio de documentação e processos aduaneiros"
+  ],
+  "requisitos_desejaveis": [
+    "Organização, atenção a detalhes e proatividade"
+  ],
+  "status": "Encontrada",
+  "empresa_favorita": false,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Encontrada",
+      "data": "2026-08-09T19:10:53+00:00"
+    }
+  ]
+}

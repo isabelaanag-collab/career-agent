@@ -1,0 +1,57 @@
+{
+  "id_externo": "gupy__1a5a5e1f3296",
+  "plataforma": "gupy",
+  "url": "https://ambev.gupy.io/jobs/9464879",
+  "empresa": "Ambev",
+  "cargo": "Analista de Planejamento Logístico",
+  "salario": null,
+  "salario_estimado": null,
+  "cidade": "Belo Horizonte",
+  "estado": "MG",
+  "modalidade": "presencial",
+  "data_publicacao": null,
+  "data_candidatura": null,
+  "match_score": 60,
+  "probabilidade_estimada_entrevista": {
+    "nivel": "baixa",
+    "justificativa": "Área (Planejamento/Logística) bate com o perfil, mas a vaga anunciada não detalha requisitos, ferramentas ou senioridade, o que impede confirmar aderência real; Ambev costuma ter alta concorrência."
+  },
+  "motivos_score": [
+    "Cargo e área (Planejamento Logístico) alinham diretamente com a experiência da candidata em Planejamento e Logística",
+    "Empresa favorita (Ambev) e multinacional, mas anúncio público não lista requisitos obrigatórios, ferramentas ou senioridade — maioria das dimensões da rubrica não pôde ser avaliada por falta de dado",
+    "Cidade (Belo Horizonte) é match exato de localização",
+    "Formação e idiomas exigidos não informados na vaga — tratado como não verificável"
+  ],
+  "palavras_chave_encontradas": [
+    "Planejamento",
+    "Logística"
+  ],
+  "tecnologias_exigidas": [],
+  "idiomas_exigidos": [],
+  "beneficios": [
+    "Plano de saúde",
+    "Plano odontológico",
+    "Telemedicina",
+    "Seguro de vida",
+    "Gympass",
+    "Desconto em produtos Ambev",
+    "Cesta de natal e brinquedos",
+    "Previdência privada",
+    "Vale-alimentação ou refeição",
+    "Vale-transporte opcional",
+    "Bônus de assiduidade (14º salário)"
+  ],
+  "requisitos_obrigatorios": [],
+  "requisitos_desejaveis": [],
+  "status": "Encontrada",
+  "empresa_favorita": true,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Encontrada",
+      "data": "2026-08-09T19:10:53+00:00"
+    }
+  ]
+}

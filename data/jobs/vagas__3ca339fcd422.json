@@ -1,0 +1,56 @@
+{
+  "id_externo": "vagas__3ca339fcd422",
+  "plataforma": "vagas",
+  "url": "https://www.vagas.com.br/vagas/v2809829/analista-de-suprimentos-pleno-belo-horizonte",
+  "empresa": "Grupo Avante",
+  "cargo": "Analista de Suprimentos Pleno",
+  "salario": "A combinar",
+  "salario_estimado": null,
+  "cidade": "Belo Horizonte",
+  "estado": "MG",
+  "modalidade": "presencial",
+  "data_publicacao": null,
+  "data_candidatura": null,
+  "match_score": 60,
+  "probabilidade_estimada_entrevista": {
+    "nivel": "baixa",
+    "justificativa": "Área e senioridade batem, mas o anúncio público não detalha requisitos técnicos nem responsabilidades específicas, e o setor da empresa (mineração/logística) é diferente da experiência da candidata (farmacêutico/cosméticos)."
+  },
+  "motivos_score": [
+    "Área (Suprimentos) e senioridade (Pleno) batem com o perfil da candidata",
+    "Empresa atua em mineração e logística (GSM Mineração, Ferro Puro, CBD/CDA Logística) — setor diferente da experiência da candidata em farmacêutico/cosméticos",
+    "Anúncio não detalha requisitos obrigatórios, ferramentas ou responsabilidades específicas — maior parte da rubrica não verificável",
+    "Cidade (Belo Horizonte) é match exato de localização",
+    "Salário não informado (\"a combinar\") — mantida no relatório conforme regra de não descartar por falta desse dado"
+  ],
+  "palavras_chave_encontradas": [
+    "Suprimentos"
+  ],
+  "tecnologias_exigidas": [],
+  "idiomas_exigidos": [],
+  "beneficios": [
+    "Assistência médica",
+    "Assistência odontológica",
+    "Auxílio academia",
+    "Vale-combustível",
+    "Café da manhã",
+    "Participação nos lucros",
+    "Seguro de vida",
+    "Vale-alimentação",
+    "Vale-refeição",
+    "Vale-transporte"
+  ],
+  "requisitos_obrigatorios": [],
+  "requisitos_desejaveis": [],
+  "status": "Encontrada",
+  "empresa_favorita": false,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Encontrada",
+      "data": "2026-08-09T19:10:53+00:00"
+    }
+  ]
+}
