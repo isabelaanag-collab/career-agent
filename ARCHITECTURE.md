@@ -32,7 +32,7 @@ Cada vaga recebe um `id_externo = plataforma + hash(url_ou_id)` (ver `scripts/co
 ## Limitações conhecidas (deliberadas, não bugs)
 
 - **Sem notificação push a partir da rotina em nuvem.** Ela não tem como avisar o celular da candidata diretamente. Hoje, a forma de saber que a rotina achou algo bom é abrir o dashboard ou pedir, numa sessão local, para revisar o que foi encontrado. Se no futuro a candidata conectar Slack ou e-mail como MCP connector, dá pra revisitar isso.
-- **LinkedIn/Gupy/Sólides são só leitura.** Não há API pública, e automatizar login/candidatura nessas plataformas violaria os Termos de Uso e arrisca suspensão de conta. A rotina só lista essas vagas via busca pública (`WebSearch`/`WebFetch`), sem login e sem preencher nada.
+- **LinkedIn/Gupy/Sólides/Vagas.com/InfoJobs/99Jobs/Adecco/CIA de Talentos/i9 Hunter/Manpower/Catho/Page Personnel são só leitura.** Não há API pública, e automatizar login/candidatura nessas plataformas violaria os Termos de Uso e arrisca suspensão de conta. A rotina só lista essas vagas via busca pública (`WebSearch`/`WebFetch`), sem login e sem preencher nada.
 - **Candidatura assistida só existe no Indeed.** É a única plataforma com conector oficial e onde o fluxo local com `claude-in-chrome` foi desenhado para preencher o formulário — sempre parando antes do envio final para a candidata confirmar.
 - **A rotina em nuvem precisa de `pip install -r requirements.txt`** (PyYAML para ler o config, pytest para os testes) — isso está no passo 0 de `agent/prompts/routine_search_and_score.md`.
 

@@ -16,9 +16,9 @@ Leia `agent/config/search_criteria.yaml` (áreas, cidades, piso salarial, empres
 
 **Indeed (automatizado, via conector MCP)**: para cada área em `areas` × cada cidade em `localidades.cidades_presencial_ou_hibrido` + `"remoto"`, chame `search_jobs`. Para os resultados que parecerem plausíveis (título/local batem com o que se busca), chame `get_job_details` para o texto completo e `get_company_data` para contexto da empresa (multinacional? avaliações?).
 
-**LinkedIn / Gupy / Sólides / páginas de carreira das empresas favoritas**: NÃO existe conector — use `WebSearch` com buscas como `site:linkedin.com/jobs <área> <cidade>`, `site:gupy.io <área> <cidade>`, `site:solides.com <área>`, e `<nome da empresa favorita> vagas carreira <área>`. Depois `WebFetch` na página do resultado para extrair título, empresa, local, modalidade e trecho da descrição.
+**Demais plataformas (LinkedIn, Gupy, Sólides, Vagas.com, InfoJobs, 99Jobs, Adecco, CIA de Talentos, i9 Hunter, ManpowerGroup, Catho, Page Personnel e páginas de carreira das empresas favoritas)**: NÃO existe conector — use `WebSearch` com buscas como `site:linkedin.com/jobs <área> <cidade>`, `site:gupy.io <área> <cidade>`, `site:solides.com <área>`, `site:vagas.com.br <área> <cidade>`, `site:infojobs.com.br <área> <cidade>`, `site:99jobs.com <área> <cidade>`, `site:catho.com.br <área> <cidade>`, `adecco vagas <área> <cidade>`, `cia de talentos vagas <área> <cidade>`, `i9 hunter vagas <área> <cidade>`, `manpower vagas <área> <cidade>`, `page personnel vagas <área> <cidade>`, e `<nome da empresa favorita> vagas carreira <área>`. Depois `WebFetch` na página do resultado para extrair título, empresa, local, modalidade e trecho da descrição.
 
-**Regra inegociável**: nestas plataformas você é **só leitura**. Nunca faça login, nunca preencha formulário, nunca envie nada. O objetivo é só listar a vaga no relatório com um link para a candidata abrir depois, se quiser.
+**Regra inegociável**: em todas essas plataformas (todas, exceto Indeed) você é **só leitura**. Nunca faça login, nunca preencha formulário, nunca envie nada. O objetivo é só listar a vaga no relatório com um link para a candidata abrir depois, se quiser.
 
 ## 3. Deduplicar
 

@@ -6,7 +6,7 @@ Agente pessoal de recolocação profissional: busca vagas de Supply Chain / PCP 
 
 Duas partes rodam em lugares diferentes, porque cada uma precisa de acesso a coisas diferentes:
 
-1. **Rotina em nuvem** (a cada poucas horas): busca vagas no Indeed (API oficial) e lista vagas públicas de LinkedIn/Gupy/Sólides/páginas de carreira (via busca na web, só leitura). Pontua cada vaga, grava em `data/jobs/`, regera o dashboard e dá `git push`. Ver `ARCHITECTURE.md` para os detalhes e limitações (ela não tem navegador nem acesso ao seu PC).
+1. **Rotina em nuvem** (2x ao dia, 6h e 14h): busca vagas no Indeed (API oficial) e lista vagas públicas de LinkedIn/Gupy/Sólides/Vagas.com/InfoJobs/99Jobs/Adecco/CIA de Talentos/i9 Hunter/Manpower/Catho/Page Personnel/páginas de carreira (via busca na web, só leitura). Pontua cada vaga, grava em `data/jobs/`, regera o dashboard e dá `git push`. Ver `ARCHITECTURE.md` para os detalhes e limitações (ela não tem navegador nem acesso ao seu PC).
 2. **Sessão local** (quando você quiser): você abre o Claude Code no seu PC, dá `git pull`, revisa as vagas com status "Aguardando aprovação" no dashboard, aprova as que fazem sentido — aí o currículo/carta são adaptados e, para vagas do Indeed, o navegador (`claude-in-chrome`) preenche o formulário de candidatura e **para antes do envio**, esperando seu clique de confirmação.
 
 ## Estrutura
