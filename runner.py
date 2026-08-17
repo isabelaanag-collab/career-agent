@@ -15,6 +15,7 @@ Code com claude-in-chrome (candidatura). Ver ARCHITECTURE.md.
 """
 from __future__ import annotations
 
+import argparse
 import logging
 import os
 import sys
@@ -103,11 +104,34 @@ def _write_github_output(**kv: object) -> None:
             fh.write(f"{key}={value}\n")
 
 
+def _sync_existing_jobs(config: dict) -> int:
+    """Sincroniza com o Sheets vagas que já estavam em data/jobs/ ANTES da regra de
+    sincronização mudar (ou antes do Sheets ser configurado) — não busca nada de novo.
+    Uso único/manual: `python runner.py --sync-existing`.
+    """
+    jobs = [j for j in common.load_all_jobs() if j.get("status") in {"Encontrada", "Aguardando aprovação"}]
+    logger.info("Sincronizando %d vaga(s) já existente(s) com o Sheets...", len(jobs))
+    sincronizadas = sheets_sync.sync_new_jobs(jobs, config)
+    logger.info("Google Sheets: %d linha(s) sincronizada(s)", sincronizadas)
+    return 0
+
+
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--sync-existing",
+        action="store_true",
+        help="Não busca vagas novas — só sincroniza com o Sheets o que já está em data/jobs/.",
+    )
+    args = parser.parse_args()
+
     config = common.load_config()
     if not config:
         logger.error("Não foi possível ler agent/config/search_criteria.yaml — abortando")
         return 1
+
+    if args.sync_existing:
+        return _sync_existing_jobs(config)
 
     termos = _build_search_terms(config)
     cidades = config.get("localidades", {}).get("cidades_presencial_ou_hibrido", [])

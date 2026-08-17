@@ -4,7 +4,12 @@ on:
   schedule:
     # 07:00 horário de Brasília (UTC-3) = 10:00 UTC
     - cron: '0 10 * * *'
-  workflow_dispatch: {}  # permite rodar manualmente pela aba Actions, para testar
+  workflow_dispatch:  # permite rodar manualmente pela aba Actions, para testar
+    inputs:
+      sync_existing:
+        description: 'Só sincronizar com o Sheets vagas já existentes (não busca vagas novas)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -36,7 +41,12 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
-        run: python runner.py
+        run: |
+          if [ "${{ github.event.inputs.sync_existing }}" = "true" ]; then
+            python runner.py --sync-existing
+          else
+            python runner.py
+          fi
 
       - name: Commit e push (só se houve mudança)
         run: |
