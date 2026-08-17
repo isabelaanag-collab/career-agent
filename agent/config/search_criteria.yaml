@@ -87,5 +87,5 @@ candidatura_automatica:
 google_sheets:
   # Preencha com o ID da planilha (a string longa na URL entre /d/ e /edit).
   # Alternativa: defina o secret/variável de ambiente GOOGLE_SHEET_ID em vez de editar aqui.
-  spreadsheet_id: ""
+  spreadsheet_id: "1cL6xJDKZKAZOgNEPteRAAybgsPWf93W4gaGuMIYADqs"
   worksheet_name: ""   # em branco = primeira aba da planilha
