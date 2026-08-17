@@ -15,7 +15,7 @@ Duas partes rodam em lugares diferentes, porque cada uma precisa de acesso a coi
 runner.py                      # orquestrador da rotina diária (GitHub Actions chama isso)
 src/
   scrapers/                    # um módulo por plataforma (gupy, indeed, vagas_com, linkedin, solides)
-  filters.py                   # filtro duro: área, salário, localidade, recência (48h)
+  filters.py                   # filtro duro: área, senioridade do título, salário, localidade, recência (48h)
   dedup.py                     # dedup por conteúdo (empresa+cargo+cidade) + candidaturas feitas fora do sistema
   scorer.py                    # chamada cirúrgica à API da Anthropic (só vagas pós-filtro)
   sheets_sync.py                # grava as vagas aprovadas no Google Sheets
@@ -102,7 +102,7 @@ Para revisar e aprovar candidaturas pendentes, abra uma sessão do Claude Code n
 
 ## Editando critérios de busca
 
-Tudo em `agent/config/search_criteria.yaml`: piso salarial, cidades aceitas, áreas de interesse, empresas favoritas, limiares de match score, configuração do Google Sheets. `runner.py` lê esse arquivo a cada execução — não precisa reimplantar nada.
+Tudo em `agent/config/search_criteria.yaml`: piso salarial, cidades aceitas, áreas de interesse, termos de título excluídos/aceitos (`filtro_cargo`), empresas favoritas, limiares de match score, configuração do Google Sheets. `runner.py` lê esse arquivo a cada execução — não precisa reimplantar nada.
 
 ## Regras que nunca mudam
 

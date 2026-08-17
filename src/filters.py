@@ -31,6 +31,19 @@ def matches_area(job: RawJob, areas: list[str]) -> bool:
     return contains_any(texto, areas) is not None
 
 
+def matches_seniority_exclusion(job: RawJob, excluded_keywords: list[str]) -> str | None:
+    """Filtro rígido de senioridade: retorna o termo excluído encontrado no título
+    (cargo), ou None se o título não contiver nenhum termo de nível júnior/operacional.
+    Só olha o título — descrição pode citar "requisitos para estagiários" como parte
+    de um programa maior sem a vaga em si ser de estágio.
+    """
+    return contains_any(job.cargo, excluded_keywords)
+
+
+def has_seniority_signal(job: RawJob, allowed_seniorities: list[str]) -> bool:
+    return contains_any(job.cargo, allowed_seniorities) is not None
+
+
 def matches_location(job: RawJob, cidades_aceitas: list[str], aceita_remoto: bool, aceita_hibrido: bool) -> bool:
     if job.modalidade == "remoto":
         return aceita_remoto
@@ -65,17 +78,27 @@ def parse_salary_brl(*values: str | None) -> float | None:
     return None
 
 
-def matches_salary(job: RawJob, salario_minimo: float) -> bool:
+def matches_salary(job: RawJob, salario_minimo: float, allowed_seniorities: list[str] | None = None) -> bool:
     valor = parse_salary_brl(job.salario, job.salario_estimado)
-    if valor is None:
-        return True  # sem informação de salário -> não descarta, fica "não informado"
-    return valor >= salario_minimo
+    if valor is not None:
+        return valor >= salario_minimo
+    # Sem informação de salário: só mantém se o título indicar nível sênior/estratégico
+    # explicitamente — vaga genérica sem nível e sem salário informado é descartada.
+    if not allowed_seniorities:
+        return True
+    return has_seniority_signal(job, allowed_seniorities)
 
 
 def passes_hard_filter(job: RawJob, config: dict) -> tuple[bool, str]:
     """Retorna (passou, motivo_se_reprovado)."""
     if not is_recent(job.data_publicacao):
         return False, "vaga antiga (> 48h)"
+
+    filtro_cargo = config.get("filtro_cargo", {})
+    excluded_keywords = filtro_cargo.get("excluded_keywords", [])
+    termo_excluido = matches_seniority_exclusion(job, excluded_keywords) if excluded_keywords else None
+    if termo_excluido:
+        return False, f"título indica nível júnior/operacional ('{termo_excluido}')"
 
     areas = config.get("areas", [])
     if areas and not matches_area(job, areas):
@@ -91,7 +114,8 @@ def passes_hard_filter(job: RawJob, config: dict) -> tuple[bool, str]:
         return False, "localidade fora dos critérios"
 
     salario_minimo = config.get("salario_minimo_brl", 0)
-    if salario_minimo and not matches_salary(job, salario_minimo):
-        return False, f"salário abaixo de R$ {salario_minimo}"
+    allowed_seniorities = filtro_cargo.get("allowed_seniorities", [])
+    if salario_minimo and not matches_salary(job, salario_minimo, allowed_seniorities):
+        return False, f"salário abaixo de R$ {salario_minimo} (ou não informado sem nível explícito no título)"
 
     return True, ""

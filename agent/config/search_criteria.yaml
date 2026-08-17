@@ -19,14 +19,51 @@ localidades:
 areas:
   - Supply Chain
   - S&OE
+  - S&OP
   - Planejamento
   - MRP
   - PCP
   - Planejamento de Demanda
+  - Demand Planning
+  - Analista de Demanda
+  - Especialista de Demanda
   - Supply Planning
   - Compras
   - Suprimentos
   - Logística
+
+filtro_cargo:
+  # Filtro rígido de senioridade — aplicado em src/filters.py, sem LLM.
+  # Vaga cujo título contenha qualquer um destes termos é descartada automaticamente,
+  # não importa a área/salário (case-insensitive, sem acento).
+  excluded_keywords:
+    - Estágio
+    - Estagiário
+    - Estagiária
+    - Trainee
+    - Assistente
+    - Auxiliar
+    - Operador
+    - Conferente
+    - Jovem Aprendiz
+    - Prático
+    - Técnico
+    - Ajudante
+    - Motorista
+    - Estoquista
+  # Termos que indicam nível aceitável. Usados em dois pontos do filtro duro:
+  # (1) vaga sem salário informado só passa se o título contiver um destes termos
+  #     (ver src/filters.py::matches_salary); (2) referência do que se espera aceitar
+  # — Analista, Especialista, Coordenador, Supervisor e Gerente, nos níveis Pleno/Sênior/Lead.
+  allowed_seniorities:
+    - Analista
+    - Pleno
+    - Sênior
+    - Lead
+    - Especialista
+    - Coordenador
+    - Supervisor
+    - Gerente
 
 priorizar_multinacionais: true
 
