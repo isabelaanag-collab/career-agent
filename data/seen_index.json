@@ -34,6 +34,11 @@
     "plataforma": "gupy",
     "registrado_em": "2026-08-02T22:14:52+00:00"
   },
+  "gupy__2e15de395a67": {
+    "empresa": "Sicredi",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-17T17:29:25+00:00"
+  },
   "gupy__379de707adb1": {
     "empresa": "Grupo Boticário",
     "plataforma": "gupy",
@@ -158,6 +163,11 @@
     "empresa": "Confidencial",
     "plataforma": "vagas.com",
     "registrado_em": "2026-08-17T16:48:07+00:00"
+  },
+  "vagas-com__7916f5c6cc8c": {
+    "empresa": "AeC",
+    "plataforma": "vagas.com",
+    "registrado_em": "2026-08-17T17:29:25+00:00"
   },
   "vagas__3ca339fcd422": {
     "empresa": "Grupo Avante",
