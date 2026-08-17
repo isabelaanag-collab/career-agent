@@ -23,6 +23,10 @@
     "ext_id": "gupy__3fc667e47c79",
     "plataforma": "gupy"
   },
+  "8214819c04047fbf": {
+    "ext_id": "linkedin__50f4ca52ca32",
+    "plataforma": "linkedin"
+  },
   "84374fea8abe215d": {
     "ext_id": "vagas-com__0d2aa2dcf8aa",
     "plataforma": "vagas.com"
@@ -34,5 +38,9 @@
   "ccf3f1e7a078b153": {
     "ext_id": "linkedin__952dafb1d072",
     "plataforma": "linkedin"
+  },
+  "da6322567a61517e": {
+    "ext_id": "gupy__c8aaef4f0bfd",
+    "plataforma": "gupy"
   }
 }
