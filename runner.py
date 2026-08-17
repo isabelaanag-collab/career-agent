@@ -162,7 +162,13 @@ def main() -> int:
     logger.info("Vagas novas gravadas em data/jobs/: %d", len(novas_gravadas))
 
     pendentes_aprovacao = [j for j in novas_gravadas if j["status"] == "Aguardando aprovação"]
-    sincronizadas = sheets_sync.sync_new_jobs(pendentes_aprovacao, config)
+
+    # Sheets recebe toda vaga aprovada no filtro duro, com ou sem score (ver
+    # ingest.ingest_draft: status inicial é sempre "Encontrada" ou "Aguardando
+    # aprovação") — assim a candidata vê no Sheets mesmo o que ainda não foi
+    # pontuado (ex.: quando a API da Anthropic está sem saldo/indisponível).
+    sincronizaveis = [j for j in novas_gravadas if j["status"] in {"Encontrada", "Aguardando aprovação"}]
+    sincronizadas = sheets_sync.sync_new_jobs(sincronizaveis, config)
     logger.info("Google Sheets: %d linha(s) sincronizada(s)", sincronizadas)
 
     render_dashboard.main()

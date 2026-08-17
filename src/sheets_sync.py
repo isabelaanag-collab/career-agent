@@ -101,8 +101,9 @@ def _row_for_job(job: dict) -> list[str]:
 
 
 def sync_new_jobs(jobs: list[dict], config: dict) -> int:
-    """Insere no Sheets as vagas passadas (já filtradas pelo runner — normalmente só
-    as que chegaram a 'Aguardando aprovação'). Retorna quantas linhas foram inseridas."""
+    """Insere no Sheets as vagas passadas (já filtradas pelo runner — hoje, toda vaga
+    nova que passou no filtro duro, com status 'Encontrada' ou 'Aguardando aprovação',
+    tenha ou não match_score). Retorna quantas linhas foram inseridas."""
     sheets_config = config.get("google_sheets", {})
     spreadsheet_id = sheets_config.get("spreadsheet_id") or os.environ.get("GOOGLE_SHEET_ID")
     if not spreadsheet_id:
