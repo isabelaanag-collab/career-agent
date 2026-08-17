@@ -1,5 +1,5 @@
 # Critérios de busca do Career Agent AI
-# Editável a qualquer momento — a rotina em nuvem lê este arquivo a cada execução.
+# Editável a qualquer momento — runner.py lê este arquivo a cada execução (GitHub Actions, 1x/dia às 7h BRT).
 
 salario_minimo_brl: 6000
 # Se a vaga não informa salário, usar a estimativa (Indeed/Glassdoor-like) quando disponível.
@@ -56,16 +56,21 @@ empresas_favoritas:
   - MRV&Co
 
 plataformas:
-  indeed:
-    modo: automatizado_api
-  linkedin:
-    modo: leitura_publica   # busca via WebSearch/WebFetch, sem login, sem candidatura
+  # A busca diária (runner.py, via GitHub Actions) usa scrapers Python puros —
+  # nenhuma dessas plataformas é acessada por login nem por candidatura automática.
+  # Ver src/scrapers/ para a implementação de cada uma.
   gupy:
-    modo: leitura_publica
+    modo: scraper_publico   # API pública não-autenticada do portal.gupy.io
+  indeed:
+    modo: scraper_publico   # HTML público de resultado de busca (sem API paga)
+  vagas.com:
+    modo: scraper_publico   # HTML público de resultado de busca
+  linkedin:
+    modo: scraper_publico_instavel  # endpoint público "guest", sem login — mas o LinkedIn
+                                     # aplica rate-limit agressivo; pode retornar 0 resultados
+                                     # em várias execuções. Ver src/scrapers/linkedin.py.
   solides:
-    modo: leitura_publica
-  paginas_carreira_empresas_favoritas:
-    modo: leitura_publica
+    modo: nao_implementado  # SPA sem endpoint público identificado — ver src/scrapers/solides.py
 
 match_score:
   limiar_prepara_candidatura: 70   # score >= 70 -> status "Aguardando aprovação"
@@ -78,3 +83,9 @@ candidatura_automatica:
   nunca_inventar_informacoes: true
   nunca_alterar_datas: true
   nunca_criar_experiencias_inexistentes: true
+
+google_sheets:
+  # Preencha com o ID da planilha (a string longa na URL entre /d/ e /edit).
+  # Alternativa: defina o secret/variável de ambiente GOOGLE_SHEET_ID em vez de editar aqui.
+  spreadsheet_id: ""
+  worksheet_name: ""   # em branco = primeira aba da planilha

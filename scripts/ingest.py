@@ -40,25 +40,25 @@ def cmd_check(args: argparse.Namespace) -> int:
     return 0
 
 
-def cmd_write(args: argparse.Namespace) -> int:
-    draft_path = Path(args.input)
-    draft = json.loads(draft_path.read_text(encoding="utf-8"))
+def ingest_draft(draft: dict, force: bool = False) -> tuple[str, dict | None, str | None]:
+    """Núcleo reutilizável de `cmd_write` — usado tanto pela CLI quanto pelo
+    runner.py (que chama isso diretamente por vaga, sem subprocess/arquivo temporário).
 
+    Retorna (resultado, job_ou_none, ext_id_ou_none) onde resultado é um de:
+    "invalido" (faltam campos), "ja_visto" (SEEN e sem --force) ou "gravado".
+    """
     missing = [f for f in REQUIRED_DRAFT_FIELDS if not draft.get(f)]
     if missing:
-        print(f"Rascunho inválido, faltando campos: {missing}", file=sys.stderr)
-        return 2
+        return "invalido", None, None
 
     referencia = draft.get("url") or draft.get("id_vaga_plataforma")
     if not referencia:
-        print("Rascunho precisa de 'url' ou 'id_vaga_plataforma' para deduplicação.", file=sys.stderr)
-        return 2
+        return "invalido", None, None
 
     ext_id = external_id(draft["plataforma"], referencia)
     seen = load_seen_index()
-    if ext_id in seen and not args.force:
-        print(f"Vaga já registrada ({ext_id}), ignorando.")
-        return 0
+    if ext_id in seen and not force:
+        return "ja_visto", None, ext_id
 
     config = load_config()
     limiar_aprovacao = (
@@ -112,7 +112,28 @@ def cmd_write(args: argparse.Namespace) -> int:
     }
     save_seen_index(seen)
 
-    print(f"Vaga registrada: {ext_id} ({job['empresa']} — {job['cargo']}) status={status_inicial}")
+    return "gravado", job, ext_id
+
+
+def cmd_write(args: argparse.Namespace) -> int:
+    draft_path = Path(args.input)
+    draft = json.loads(draft_path.read_text(encoding="utf-8"))
+
+    resultado, job, ext_id = ingest_draft(draft, force=args.force)
+
+    if resultado == "invalido":
+        missing = [f for f in REQUIRED_DRAFT_FIELDS if not draft.get(f)]
+        if missing:
+            print(f"Rascunho inválido, faltando campos: {missing}", file=sys.stderr)
+        else:
+            print("Rascunho precisa de 'url' ou 'id_vaga_plataforma' para deduplicação.", file=sys.stderr)
+        return 2
+
+    if resultado == "ja_visto":
+        print(f"Vaga já registrada ({ext_id}), ignorando.")
+        return 0
+
+    print(f"Vaga registrada: {ext_id} ({job['empresa']} — {job['cargo']}) status={job['status']}")
     return 0
 
 

@@ -1,0 +1,53 @@
+name: Rotina diária de busca de vagas
+
+on:
+  schedule:
+    # 07:00 horário de Brasília (UTC-3) = 10:00 UTC
+    - cron: '0 10 * * *'
+  workflow_dispatch: {}  # permite rodar manualmente pela aba Actions, para testar
+
+permissions:
+  contents: write
+
+concurrency:
+  group: career-agent-daily-routine
+  cancel-in-progress: false
+
+jobs:
+  buscar-vagas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+
+      - name: Rodar rotina (busca + filtro + score cirúrgico + Sheets + dashboard)
+        id: rotina
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+        run: python runner.py
+
+      - name: Commit e push (só se houve mudança)
+        run: |
+          git config user.name "career-agent-bot"
+          git config user.email "career-agent-bot@users.noreply.github.com"
+          git add data/ dashboard/
+          if git diff --cached --quiet; then
+            echo "Nada novo para commitar."
+            exit 0
+          fi
+          NOVAS="${{ steps.rotina.outputs.vagas_novas }}"
+          PENDENTES="${{ steps.rotina.outputs.vagas_aguardando_aprovacao }}"
+          git commit -m "Rotina: ${NOVAS:-0} vaga(s) nova(s) (${PENDENTES:-0} aguardando aprovação)"
+          git push

@@ -4,7 +4,7 @@ Use esta rubrica para avaliar toda vaga que já passou pelo filtro duro (salári
 
 ## Regra de ouro
 
-**Nunca invente.** Toda afirmação sobre a candidata (ferramenta que ela domina, anos de experiência, formação, idioma) precisa vir literalmente do currículo (`get_resume`) ou do texto do LinkedIn colado em `agent/config/linkedin_profile.txt` (se o arquivo existir). Se uma informação não puder ser confirmada em nenhuma dessas duas fontes, trate como "não verificável" e não pontue a favor dela — não assuma o benefício da dúvida.
+**Nunca invente.** Toda afirmação sobre a candidata (ferramenta que ela domina, anos de experiência, formação, idioma) precisa vir literalmente de `agent/config/linkedin_profile.txt` e/ou `agent/config/resume.txt` (se este último existir — é opcional, para currículo mais completo que o resumo do perfil). Se uma informação não puder ser confirmada em nenhuma dessas fontes, trate como "não verificável" e não pontue a favor dela — não assuma o benefício da dúvida.
 
 ## Dimensões e pesos (soma = 100)
 

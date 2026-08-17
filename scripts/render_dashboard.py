@@ -31,10 +31,9 @@ DASHBOARD_PATH = DASHBOARD_DIR / "index.html"
 BRASILIA_TZ = timezone(timedelta(hours=-3))  # Brasília não usa horário de verão desde 2019
 
 BUSCAR_AGORA_TEXTO = (
-    "Rode uma busca agora no Career Agent AI, sem esperar a próxima execução agendada da rotina "
-    "em nuvem (rotina \"career-agent-busca-vagas\") — dispare a rotina via RemoteTrigger "
-    "(action: run) ou, se preferir, execute a lógica de "
-    "agent/prompts/routine_search_and_score.md diretamente nesta sessão local."
+    "Rode `python runner.py` na raiz deste repositório para forçar uma busca agora, sem "
+    "esperar a próxima execução agendada (GitHub Actions, 07:00 BRT). Alternativa sem "
+    "terminal: aba Actions do GitHub → \"Rotina diária de busca de vagas\" → Run workflow."
 )
 
 PLATAFORMA_SLOT = {
