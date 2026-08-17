@@ -39,10 +39,20 @@
     "plataforma": "gupy",
     "registrado_em": "2026-07-31T15:18:24+00:00"
   },
+  "gupy__3fc667e47c79": {
+    "empresa": "Wilson Sons",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-17T16:48:07+00:00"
+  },
   "gupy__4077ce6844d8": {
     "empresa": "Grupo Boticário",
     "plataforma": "gupy",
     "registrado_em": "2026-07-31T15:18:24+00:00"
+  },
+  "gupy__5edd51e9bb0d": {
+    "empresa": "Hospital Felício Rocho",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-17T16:48:07+00:00"
   },
   "gupy__834b69768f53": {
     "empresa": "Santa Casa BH",
@@ -54,6 +64,11 @@
     "plataforma": "gupy",
     "registrado_em": "2026-07-31T15:18:24+00:00"
   },
+  "gupy__93ad71979112": {
+    "empresa": "Árvore",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-17T16:48:07+00:00"
+  },
   "gupy__97bf308a77f3": {
     "empresa": "Unidas",
     "plataforma": "gupy",
@@ -63,6 +78,11 @@
     "empresa": "SELPE Gente & Gestão",
     "plataforma": "gupy",
     "registrado_em": "2026-07-31T15:18:24+00:00"
+  },
+  "gupy__dedaa284f35a": {
+    "empresa": "Rede Américas",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-17T16:48:07+00:00"
   },
   "gupy__e839685b69a2": {
     "empresa": "ESAB",
@@ -123,6 +143,21 @@
     "empresa": "Lactalis Brasil",
     "plataforma": "infojobs",
     "registrado_em": "2026-08-02T22:14:57+00:00"
+  },
+  "linkedin__2abb29388690": {
+    "empresa": "Indústria Santa Clara",
+    "plataforma": "linkedin",
+    "registrado_em": "2026-08-17T16:48:07+00:00"
+  },
+  "linkedin__952dafb1d072": {
+    "empresa": "SNB Peças e Serviços",
+    "plataforma": "linkedin",
+    "registrado_em": "2026-08-17T16:48:07+00:00"
+  },
+  "vagas-com__0d2aa2dcf8aa": {
+    "empresa": "Confidencial",
+    "plataforma": "vagas.com",
+    "registrado_em": "2026-08-17T16:48:07+00:00"
   },
   "vagas__3ca339fcd422": {
     "empresa": "Grupo Avante",

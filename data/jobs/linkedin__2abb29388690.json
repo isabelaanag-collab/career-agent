@@ -1,0 +1,34 @@
+{
+  "id_externo": "linkedin__2abb29388690",
+  "plataforma": "linkedin",
+  "url": "https://br.linkedin.com/jobs/view/analista-de-pcp-at-ind%C3%BAstria-santa-clara-s-a-4455170819",
+  "empresa": "Indústria Santa Clara",
+  "cargo": "Analista de PCP",
+  "salario": null,
+  "salario_estimado": null,
+  "cidade": "Contagem",
+  "estado": "MG",
+  "modalidade": null,
+  "data_publicacao": "2026-08-16",
+  "data_candidatura": null,
+  "match_score": null,
+  "probabilidade_estimada_entrevista": null,
+  "motivos_score": [],
+  "palavras_chave_encontradas": [],
+  "tecnologias_exigidas": [],
+  "idiomas_exigidos": [],
+  "beneficios": [],
+  "requisitos_obrigatorios": [],
+  "requisitos_desejaveis": [],
+  "status": "Encontrada",
+  "empresa_favorita": false,
+  "versao_curriculo": null,
+  "versao_carta": null,
+  "respostas_formulario": {},
+  "historico_status": [
+    {
+      "status": "Encontrada",
+      "data": "2026-08-17T16:48:07+00:00"
+    }
+  ]
+}
