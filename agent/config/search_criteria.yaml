@@ -1,5 +1,5 @@
 # Critérios de busca do Career Agent AI
-# Editável a qualquer momento — runner.py lê este arquivo a cada execução (GitHub Actions, 1x/dia às 7h BRT).
+# Editável a qualquer momento — runner.py lê este arquivo a cada execução (GitHub Actions, 3x/dia: 7h, 12h, 18h BRT).
 
 salario_minimo_brl: 6000
 # Se a vaga não informa salário, usar a estimativa (Indeed/Glassdoor-like) quando disponível.

@@ -32,7 +32,7 @@ BRASILIA_TZ = timezone(timedelta(hours=-3))  # Brasília não usa horário de ve
 
 BUSCAR_AGORA_TEXTO = (
     "Rode `python runner.py` na raiz deste repositório para forçar uma busca agora, sem "
-    "esperar a próxima execução agendada (GitHub Actions, 07:00 BRT). Alternativa sem "
+    "esperar a próxima execução agendada (GitHub Actions, 3x/dia: 7h, 12h, 18h BRT). Alternativa sem "
     "terminal: aba Actions do GitHub → \"Rotina diária de busca de vagas\" → Run workflow."
 )
 

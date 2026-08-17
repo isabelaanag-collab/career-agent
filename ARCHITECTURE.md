@@ -2,7 +2,7 @@
 
 ## Por que duas partes (GitHub Actions + sessão local) em vez de um script só
 
-A busca diária roda em **GitHub Actions** (`.github/workflows/daily_routine.yml`, cron `'0 10 * * *'` = 07:00 BRT), executando `runner.py` — Python puro, sem CLI do Claude, sem navegador. Já a candidatura de fato — preencher formulário, anexar arquivo, clicar em enviar — só é possível com um navegador real, que só existe numa sessão local do Claude Code no PC da candidata (via `claude-in-chrome`).
+A busca roda em **GitHub Actions** (`.github/workflows/daily_routine.yml`, 3x/dia — 07h, 12h e 18h BRT), executando `runner.py` — Python puro, sem CLI do Claude, sem navegador. Já a candidatura de fato — preencher formulário, anexar arquivo, clicar em enviar — só é possível com um navegador real, que só existe numa sessão local do Claude Code no PC da candidata (via `claude-in-chrome`).
 
 Por isso o sistema é dividido assim:
 
@@ -63,7 +63,7 @@ Além disso, `data/applied_externos.json` é uma lista mantida manualmente pela 
 
 ## Fluxo de dados de uma vaga (ciclo de vida do arquivo JSON)
 
-1. `runner.py` (GitHub Actions, 1x/dia) cria `data/jobs/<id_externo>.json` com status `Encontrada` ou `Aguardando aprovação` (conforme o Match Score retornado por `src/scorer.py`; se a chamada à API falhar ou a chave não estiver configurada, a vaga é registrada como `Encontrada` sem score, para revisão manual).
+1. `runner.py` (GitHub Actions, 3x/dia) cria `data/jobs/<id_externo>.json` com status `Encontrada` ou `Aguardando aprovação` (conforme o Match Score retornado por `src/scorer.py`; se a chamada à API falhar ou a chave não estiver configurada, a vaga é registrada como `Encontrada` sem score, para revisão manual).
 2. Sessão local, ao aprovar: `Aguardando aprovação` → `Currículo otimizado` → `Carta criada` (via `resume_tailoring.md` + `update_status.py`).
 3. Após o clique de confirmação da candidata e envio real (só Indeed, via navegador): `Carta criada` → `Candidatura enviada` — nesse momento `update_status.py` também grava uma linha em `data/applications_log.jsonl`.
 4. Atualizações manuais posteriores (candidata informa que teve retorno): `Candidatura enviada` → `Entrevista` → `Aprovado` ou `Rejeitado`.

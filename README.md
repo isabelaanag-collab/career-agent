@@ -6,7 +6,7 @@ Agente pessoal de recolocação profissional: busca vagas de Supply Chain / PCP 
 
 Duas partes rodam em lugares diferentes, porque cada uma precisa de acesso a coisas diferentes:
 
-1. **GitHub Actions** (1x ao dia, 07:00 horário de Brasília): roda `python runner.py`, que busca vagas em Gupy, Indeed, Vagas.com e LinkedIn (scrapers Python puros, sem CLI do Claude, sem custo de token), aplica o filtro duro (área/salário/localidade/recência), e só então chama a API da Anthropic — de forma cirúrgica, só para as vagas que já passaram no filtro — para pontuar a aderência ao perfil. Grava em `data/jobs/`, sincroniza as aprovadas com o Google Sheets, regera o dashboard e dá `git push`. Ver `ARCHITECTURE.md` para detalhes, incluindo por que Sólides não está implementado e por que o LinkedIn é instável.
+1. **GitHub Actions** (3x ao dia — 07h, 12h e 18h horário de Brasília): roda `python runner.py`, que busca vagas em Gupy, Indeed, Vagas.com e LinkedIn (scrapers Python puros, sem CLI do Claude, sem custo de token), aplica o filtro duro (área/salário/localidade/recência), e só então chama a API da Anthropic — de forma cirúrgica, só para as vagas que já passaram no filtro — para pontuar a aderência ao perfil. Grava em `data/jobs/`, sincroniza as aprovadas com o Google Sheets, regera o dashboard e dá `git push`. Ver `ARCHITECTURE.md` para detalhes, incluindo por que Sólides não está implementado e por que o LinkedIn é instável.
 2. **Sessão local** (quando você quiser): você abre o Claude Code no seu PC, dá `git pull`, revisa as vagas com status "Aguardando aprovação" no dashboard, aprova as que fazem sentido — aí o currículo/carta são adaptados e, para vagas do Indeed, o navegador (`claude-in-chrome`) preenche o formulário de candidatura e **para antes do envio**, esperando seu clique de confirmação.
 
 ## Estrutura
@@ -39,7 +39,7 @@ scripts/
 dashboard/
   index.html                   # gerado a cada rodada — abra no navegador para ver o painel
 .github/workflows/
-  daily_routine.yml            # cron 07:00 BRT rodando runner.py
+  daily_routine.yml            # cron 3x/dia (07h, 12h, 18h BRT) rodando runner.py
 tests/                         # pytest
 ```
 

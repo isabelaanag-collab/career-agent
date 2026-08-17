@@ -2,8 +2,10 @@ name: Rotina diária de busca de vagas
 
 on:
   schedule:
-    # 07:00 horário de Brasília (UTC-3) = 10:00 UTC
+    # Horário de Brasília (UTC-3), 3x/dia — 07h, 12h e 18h BRT = 10h, 15h, 21h UTC
     - cron: '0 10 * * *'
+    - cron: '0 15 * * *'
+    - cron: '0 21 * * *'
   workflow_dispatch:  # permite rodar manualmente pela aba Actions, para testar
     inputs:
       sync_existing:
