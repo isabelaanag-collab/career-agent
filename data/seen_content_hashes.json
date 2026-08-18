@@ -7,6 +7,10 @@
     "ext_id": "linkedin__2abb29388690",
     "plataforma": "linkedin"
   },
+  "19d7b3713464253a": {
+    "ext_id": "linkedin__1715964a464e",
+    "plataforma": "linkedin"
+  },
   "1e9f4a357b0948d5": {
     "ext_id": "gupy__93ad71979112",
     "plataforma": "gupy"
@@ -14,6 +18,14 @@
   "32e8962d30c88d87": {
     "ext_id": "gupy__2e15de395a67",
     "plataforma": "gupy"
+  },
+  "35e614c18bfb1e36": {
+    "ext_id": "linkedin__f3f6fce51702",
+    "plataforma": "linkedin"
+  },
+  "42188e34ce6f4863": {
+    "ext_id": "linkedin__d8875ed88e5f",
+    "plataforma": "linkedin"
   },
   "4b0d90fe04591dc4": {
     "ext_id": "linkedin__33eca00834cb",
@@ -39,6 +51,10 @@
     "ext_id": "linkedin__35aa3d9ec391",
     "plataforma": "linkedin"
   },
+  "65c7c668d862b380": {
+    "ext_id": "gupy__321d5c530fef",
+    "plataforma": "gupy"
+  },
   "6851a2c4374ce35f": {
     "ext_id": "gupy__2b90ca3b9555",
     "plataforma": "gupy"
@@ -59,6 +75,10 @@
     "ext_id": "gupy__3fc667e47c79",
     "plataforma": "gupy"
   },
+  "81cd024651b08574": {
+    "ext_id": "linkedin__3c36e8a91f4c",
+    "plataforma": "linkedin"
+  },
   "8214819c04047fbf": {
     "ext_id": "linkedin__50f4ca52ca32",
     "plataforma": "linkedin"
@@ -67,8 +87,16 @@
     "ext_id": "vagas-com__0d2aa2dcf8aa",
     "plataforma": "vagas.com"
   },
+  "88f38557ee9fd02b": {
+    "ext_id": "gupy__b13f597d8578",
+    "plataforma": "gupy"
+  },
   "8af4c01a7a073a47": {
     "ext_id": "gupy__58510e4f0673",
+    "plataforma": "gupy"
+  },
+  "9173e0a8f10759d1": {
+    "ext_id": "gupy__243ecc6bf31b",
     "plataforma": "gupy"
   },
   "92ec0c6d6d2d3074": {
@@ -79,6 +107,18 @@
     "ext_id": "gupy__95e4fd1ca10a",
     "plataforma": "gupy"
   },
+  "ad6e1ba8239375b3": {
+    "ext_id": "gupy__6309874acd1d",
+    "plataforma": "gupy"
+  },
+  "b7fa5e63be13f214": {
+    "ext_id": "gupy__2ba483eabe72",
+    "plataforma": "gupy"
+  },
+  "bf77af95ca66f594": {
+    "ext_id": "gupy__e699b9c6394f",
+    "plataforma": "gupy"
+  },
   "c6b48d4b75900487": {
     "ext_id": "gupy__8e76611e42ae",
     "plataforma": "gupy"
@@ -86,6 +126,10 @@
   "ccf3f1e7a078b153": {
     "ext_id": "linkedin__952dafb1d072",
     "plataforma": "linkedin"
+  },
+  "d3c74bb223e0388b": {
+    "ext_id": "gupy__6af1bbd8ec74",
+    "plataforma": "gupy"
   },
   "da6322567a61517e": {
     "ext_id": "gupy__c8aaef4f0bfd",

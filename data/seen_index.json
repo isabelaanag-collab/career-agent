@@ -24,6 +24,11 @@
     "plataforma": "gupy",
     "registrado_em": "2026-08-09T19:10:53+00:00"
   },
+  "gupy__243ecc6bf31b": {
+    "empresa": "Kordsa",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-18T21:54:04+00:00"
+  },
   "gupy__2ad392efb7b2": {
     "empresa": "MRV&Co",
     "plataforma": "gupy",
@@ -39,10 +44,20 @@
     "plataforma": "gupy",
     "registrado_em": "2026-08-18T16:06:44+00:00"
   },
+  "gupy__2ba483eabe72": {
+    "empresa": "Mobyan",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-18T21:54:04+00:00"
+  },
   "gupy__2e15de395a67": {
     "empresa": "Sicredi",
     "plataforma": "gupy",
     "registrado_em": "2026-08-17T17:29:25+00:00"
+  },
+  "gupy__321d5c530fef": {
+    "empresa": "Martin Brower Brasil",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-18T21:54:04+00:00"
   },
   "gupy__379de707adb1": {
     "empresa": "Grupo Boticário",
@@ -68,6 +83,16 @@
     "empresa": "Hospital Felício Rocho",
     "plataforma": "gupy",
     "registrado_em": "2026-08-17T16:48:07+00:00"
+  },
+  "gupy__6309874acd1d": {
+    "empresa": "ALE Combustíveis",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-18T21:54:04+00:00"
+  },
+  "gupy__6af1bbd8ec74": {
+    "empresa": "Qualidados",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-18T21:54:04+00:00"
   },
   "gupy__725b58d0a8ac": {
     "empresa": "Daiichi Sankyo Brasil Farmacêutica",
@@ -109,6 +134,11 @@
     "plataforma": "gupy",
     "registrado_em": "2026-08-18T16:06:44+00:00"
   },
+  "gupy__b13f597d8578": {
+    "empresa": "Suzano",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-18T21:54:04+00:00"
+  },
   "gupy__b39d2e87b1e5": {
     "empresa": "Dengo Chocolates",
     "plataforma": "gupy",
@@ -133,6 +163,11 @@
     "empresa": "Rede Américas",
     "plataforma": "gupy",
     "registrado_em": "2026-08-17T16:48:07+00:00"
+  },
+  "gupy__e699b9c6394f": {
+    "empresa": "Grupo Boticário",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-18T21:54:04+00:00"
   },
   "gupy__e839685b69a2": {
     "empresa": "ESAB",
@@ -194,6 +229,11 @@
     "plataforma": "infojobs",
     "registrado_em": "2026-08-02T22:14:57+00:00"
   },
+  "linkedin__1715964a464e": {
+    "empresa": "Robert Half",
+    "plataforma": "linkedin",
+    "registrado_em": "2026-08-18T21:54:04+00:00"
+  },
   "linkedin__224aaa421bf7": {
     "empresa": "Artesanal",
     "plataforma": "linkedin",
@@ -219,6 +259,11 @@
     "plataforma": "linkedin",
     "registrado_em": "2026-08-18T16:06:44+00:00"
   },
+  "linkedin__3c36e8a91f4c": {
+    "empresa": "Amazon",
+    "plataforma": "linkedin",
+    "registrado_em": "2026-08-18T21:54:04+00:00"
+  },
   "linkedin__50f4ca52ca32": {
     "empresa": "Iveco Group",
     "plataforma": "linkedin",
@@ -229,10 +274,20 @@
     "plataforma": "linkedin",
     "registrado_em": "2026-08-17T16:48:07+00:00"
   },
+  "linkedin__d8875ed88e5f": {
+    "empresa": "AeC",
+    "plataforma": "linkedin",
+    "registrado_em": "2026-08-18T21:54:04+00:00"
+  },
   "linkedin__e31c9216bf70": {
     "empresa": "Alsco Uniformes Brasil",
     "plataforma": "linkedin",
     "registrado_em": "2026-08-18T11:04:37+00:00"
+  },
+  "linkedin__f3f6fce51702": {
+    "empresa": "Amazon",
+    "plataforma": "linkedin",
+    "registrado_em": "2026-08-18T21:54:04+00:00"
   },
   "vagas-com__0d2aa2dcf8aa": {
     "empresa": "Confidencial",
