@@ -34,6 +34,11 @@
     "plataforma": "gupy",
     "registrado_em": "2026-08-02T22:14:52+00:00"
   },
+  "gupy__2b90ca3b9555": {
+    "empresa": "Monte Carlo Joias",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-18T16:06:44+00:00"
+  },
   "gupy__2e15de395a67": {
     "empresa": "Sicredi",
     "plataforma": "gupy",
@@ -89,10 +94,25 @@
     "plataforma": "gupy",
     "registrado_em": "2026-08-17T16:48:07+00:00"
   },
+  "gupy__95e4fd1ca10a": {
+    "empresa": "Martin Brower Brasil",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-18T16:06:44+00:00"
+  },
   "gupy__97bf308a77f3": {
     "empresa": "Unidas",
     "plataforma": "gupy",
     "registrado_em": "2026-08-09T19:10:53+00:00"
+  },
+  "gupy__b12fb5796bca": {
+    "empresa": "Vem Pra Vivo",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-18T16:06:44+00:00"
+  },
+  "gupy__b39d2e87b1e5": {
+    "empresa": "Dengo Chocolates",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-18T16:06:44+00:00"
   },
   "gupy__c8aaef4f0bfd": {
     "empresa": "Casa dos Ventos",
@@ -193,6 +213,11 @@
     "empresa": "Mediphacos",
     "plataforma": "linkedin",
     "registrado_em": "2026-08-18T11:04:37+00:00"
+  },
+  "linkedin__35aa3d9ec391": {
+    "empresa": "Klabin",
+    "plataforma": "linkedin",
+    "registrado_em": "2026-08-18T16:06:44+00:00"
   },
   "linkedin__50f4ca52ca32": {
     "empresa": "Iveco Group",
