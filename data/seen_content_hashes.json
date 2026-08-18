@@ -1,4 +1,8 @@
 {
+  "0601f305df00af6c": {
+    "ext_id": "linkedin__31bf5bf88429",
+    "plataforma": "linkedin"
+  },
   "16129c0d645348b0": {
     "ext_id": "linkedin__2abb29388690",
     "plataforma": "linkedin"
@@ -11,6 +15,10 @@
     "ext_id": "gupy__2e15de395a67",
     "plataforma": "gupy"
   },
+  "4b0d90fe04591dc4": {
+    "ext_id": "linkedin__33eca00834cb",
+    "plataforma": "linkedin"
+  },
   "4b10ee726752e436": {
     "ext_id": "gupy__dedaa284f35a",
     "plataforma": "gupy"
@@ -18,6 +26,18 @@
   "502ca68a2831fd21": {
     "ext_id": "vagas-com__7916f5c6cc8c",
     "plataforma": "vagas.com"
+  },
+  "6861d1814693cfdd": {
+    "ext_id": "gupy__725b58d0a8ac",
+    "plataforma": "gupy"
+  },
+  "72f9e55f62552363": {
+    "ext_id": "gupy__d8489419732b",
+    "plataforma": "gupy"
+  },
+  "7e4fdf3384fc8376": {
+    "ext_id": "linkedin__e31c9216bf70",
+    "plataforma": "linkedin"
   },
   "7fd01d3aae8a3ee1": {
     "ext_id": "gupy__3fc667e47c79",
@@ -31,8 +51,16 @@
     "ext_id": "vagas-com__0d2aa2dcf8aa",
     "plataforma": "vagas.com"
   },
+  "8af4c01a7a073a47": {
+    "ext_id": "gupy__58510e4f0673",
+    "plataforma": "gupy"
+  },
   "92ec0c6d6d2d3074": {
     "ext_id": "gupy__5edd51e9bb0d",
+    "plataforma": "gupy"
+  },
+  "c6b48d4b75900487": {
+    "ext_id": "gupy__8e76611e42ae",
     "plataforma": "gupy"
   },
   "ccf3f1e7a078b153": {
@@ -42,5 +70,9 @@
   "da6322567a61517e": {
     "ext_id": "gupy__c8aaef4f0bfd",
     "plataforma": "gupy"
+  },
+  "eda119ac356cf392": {
+    "ext_id": "linkedin__224aaa421bf7",
+    "plataforma": "linkedin"
   }
 }

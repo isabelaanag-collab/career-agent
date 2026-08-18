@@ -54,10 +54,20 @@
     "plataforma": "gupy",
     "registrado_em": "2026-07-31T15:18:24+00:00"
   },
+  "gupy__58510e4f0673": {
+    "empresa": "Raízen",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-18T11:04:37+00:00"
+  },
   "gupy__5edd51e9bb0d": {
     "empresa": "Hospital Felício Rocho",
     "plataforma": "gupy",
     "registrado_em": "2026-08-17T16:48:07+00:00"
+  },
+  "gupy__725b58d0a8ac": {
+    "empresa": "Daiichi Sankyo Brasil Farmacêutica",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-18T11:04:37+00:00"
   },
   "gupy__834b69768f53": {
     "empresa": "Santa Casa BH",
@@ -68,6 +78,11 @@
     "empresa": "Belgo Arames",
     "plataforma": "gupy",
     "registrado_em": "2026-07-31T15:18:24+00:00"
+  },
+  "gupy__8e76611e42ae": {
+    "empresa": "RD Saúde",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-18T11:04:37+00:00"
   },
   "gupy__93ad71979112": {
     "empresa": "Árvore",
@@ -88,6 +103,11 @@
     "empresa": "SELPE Gente & Gestão",
     "plataforma": "gupy",
     "registrado_em": "2026-07-31T15:18:24+00:00"
+  },
+  "gupy__d8489419732b": {
+    "empresa": "Daiichi Sankyo Brasil Farmacêutica",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-18T11:04:37+00:00"
   },
   "gupy__dedaa284f35a": {
     "empresa": "Rede Américas",
@@ -154,10 +174,25 @@
     "plataforma": "infojobs",
     "registrado_em": "2026-08-02T22:14:57+00:00"
   },
+  "linkedin__224aaa421bf7": {
+    "empresa": "Artesanal",
+    "plataforma": "linkedin",
+    "registrado_em": "2026-08-18T11:04:37+00:00"
+  },
   "linkedin__2abb29388690": {
     "empresa": "Indústria Santa Clara",
     "plataforma": "linkedin",
     "registrado_em": "2026-08-17T16:48:07+00:00"
+  },
+  "linkedin__31bf5bf88429": {
+    "empresa": "UMI SAN Hidrografia e Engenharia",
+    "plataforma": "linkedin",
+    "registrado_em": "2026-08-18T11:04:37+00:00"
+  },
+  "linkedin__33eca00834cb": {
+    "empresa": "Mediphacos",
+    "plataforma": "linkedin",
+    "registrado_em": "2026-08-18T11:04:37+00:00"
   },
   "linkedin__50f4ca52ca32": {
     "empresa": "Iveco Group",
@@ -168,6 +203,11 @@
     "empresa": "SNB Peças e Serviços",
     "plataforma": "linkedin",
     "registrado_em": "2026-08-17T16:48:07+00:00"
+  },
+  "linkedin__e31c9216bf70": {
+    "empresa": "Alsco Uniformes Brasil",
+    "plataforma": "linkedin",
+    "registrado_em": "2026-08-18T11:04:37+00:00"
   },
   "vagas-com__0d2aa2dcf8aa": {
     "empresa": "Confidencial",
