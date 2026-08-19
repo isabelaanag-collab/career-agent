@@ -15,6 +15,10 @@
     "ext_id": "linkedin__1715964a464e",
     "plataforma": "linkedin"
   },
+  "1d904493072e269b": {
+    "ext_id": "gupy__46f0c258a3d8",
+    "plataforma": "gupy"
+  },
   "1e9f4a357b0948d5": {
     "ext_id": "gupy__93ad71979112",
     "plataforma": "gupy"
@@ -23,9 +27,17 @@
     "ext_id": "gupy__2e15de395a67",
     "plataforma": "gupy"
   },
+  "357801ef92c0dcf9": {
+    "ext_id": "linkedin__e6404a394bc1",
+    "plataforma": "linkedin"
+  },
   "35e614c18bfb1e36": {
     "ext_id": "linkedin__f3f6fce51702",
     "plataforma": "linkedin"
+  },
+  "3de8b788f566264a": {
+    "ext_id": "gupy__81e9ce3ecd37",
+    "plataforma": "gupy"
   },
   "42188e34ce6f4863": {
     "ext_id": "linkedin__d8875ed88e5f",
@@ -79,6 +91,10 @@
     "ext_id": "gupy__3fc667e47c79",
     "plataforma": "gupy"
   },
+  "80230234ba286d7c": {
+    "ext_id": "linkedin__88187fcc88f6",
+    "plataforma": "linkedin"
+  },
   "81cd024651b08574": {
     "ext_id": "linkedin__3c36e8a91f4c",
     "plataforma": "linkedin"
@@ -123,6 +139,10 @@
     "ext_id": "gupy__6309874acd1d",
     "plataforma": "gupy"
   },
+  "afc4fed402e96381": {
+    "ext_id": "gupy__fe33ed64bf9d",
+    "plataforma": "gupy"
+  },
   "b7fa5e63be13f214": {
     "ext_id": "gupy__2ba483eabe72",
     "plataforma": "gupy"
@@ -133,6 +153,10 @@
   },
   "bf77af95ca66f594": {
     "ext_id": "gupy__e699b9c6394f",
+    "plataforma": "gupy"
+  },
+  "c4d9eee1e184d08e": {
+    "ext_id": "gupy__a5cbd393352c",
     "plataforma": "gupy"
   },
   "c6b48d4b75900487": {
@@ -151,8 +175,16 @@
     "ext_id": "gupy__c8aaef4f0bfd",
     "plataforma": "gupy"
   },
+  "dafd1e36671f2a7c": {
+    "ext_id": "gupy__fb0259b8e1d8",
+    "plataforma": "gupy"
+  },
   "eda119ac356cf392": {
     "ext_id": "linkedin__224aaa421bf7",
+    "plataforma": "linkedin"
+  },
+  "ef34101e5146d7d9": {
+    "ext_id": "linkedin__52278a300858",
     "plataforma": "linkedin"
   },
   "f4952685095a366f": {

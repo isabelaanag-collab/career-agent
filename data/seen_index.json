@@ -79,6 +79,11 @@
     "plataforma": "gupy",
     "registrado_em": "2026-07-31T15:18:24+00:00"
   },
+  "gupy__46f0c258a3d8": {
+    "empresa": "Grupo RBS",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-19T21:58:37+00:00"
+  },
   "gupy__58510e4f0673": {
     "empresa": "Raízen",
     "plataforma": "gupy",
@@ -103,6 +108,11 @@
     "empresa": "Daiichi Sankyo Brasil Farmacêutica",
     "plataforma": "gupy",
     "registrado_em": "2026-08-18T11:04:37+00:00"
+  },
+  "gupy__81e9ce3ecd37": {
+    "empresa": "Vem Pra Vivo",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-19T21:58:37+00:00"
   },
   "gupy__834b69768f53": {
     "empresa": "Santa Casa BH",
@@ -133,6 +143,11 @@
     "empresa": "Unidas",
     "plataforma": "gupy",
     "registrado_em": "2026-08-09T19:10:53+00:00"
+  },
+  "gupy__a5cbd393352c": {
+    "empresa": "GrupoSC Distribuidora de Medicamentos",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-19T21:58:37+00:00"
   },
   "gupy__b12fb5796bca": {
     "empresa": "Vem Pra Vivo",
@@ -188,6 +203,16 @@
     "empresa": "Grupo Boticário",
     "plataforma": "gupy",
     "registrado_em": "2026-08-19T16:06:51+00:00"
+  },
+  "gupy__fb0259b8e1d8": {
+    "empresa": "Oportunidade de Vaga - Confidencial",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-19T21:58:37+00:00"
+  },
+  "gupy__fe33ed64bf9d": {
+    "empresa": "CJ Brasil",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-19T21:58:37+00:00"
   },
   "gupy__fed9b0458a37": {
     "empresa": "MRV&Co",
@@ -289,10 +314,20 @@
     "plataforma": "linkedin",
     "registrado_em": "2026-08-17T21:57:24+00:00"
   },
+  "linkedin__52278a300858": {
+    "empresa": "APVS Brasil®",
+    "plataforma": "linkedin",
+    "registrado_em": "2026-08-19T21:58:37+00:00"
+  },
   "linkedin__6b4abebcf2a4": {
     "empresa": "Hominus Desenvolvimento Humano",
     "plataforma": "linkedin",
     "registrado_em": "2026-08-19T16:06:51+00:00"
+  },
+  "linkedin__88187fcc88f6": {
+    "empresa": "APVS Brasil®",
+    "plataforma": "linkedin",
+    "registrado_em": "2026-08-19T21:58:37+00:00"
   },
   "linkedin__952dafb1d072": {
     "empresa": "SNB Peças e Serviços",
@@ -308,6 +343,11 @@
     "empresa": "Alsco Uniformes Brasil",
     "plataforma": "linkedin",
     "registrado_em": "2026-08-18T11:04:37+00:00"
+  },
+  "linkedin__e6404a394bc1": {
+    "empresa": "CONCEPT SOLUÇÕES RH",
+    "plataforma": "linkedin",
+    "registrado_em": "2026-08-19T21:58:37+00:00"
   },
   "linkedin__f3f6fce51702": {
     "empresa": "Amazon",
