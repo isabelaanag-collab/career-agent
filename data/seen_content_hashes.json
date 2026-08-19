@@ -7,6 +7,10 @@
     "ext_id": "linkedin__2abb29388690",
     "plataforma": "linkedin"
   },
+  "1723487a650ff49b": {
+    "ext_id": "linkedin__2e6749d908ed",
+    "plataforma": "linkedin"
+  },
   "19d7b3713464253a": {
     "ext_id": "linkedin__1715964a464e",
     "plataforma": "linkedin"
@@ -103,9 +107,17 @@
     "ext_id": "gupy__5edd51e9bb0d",
     "plataforma": "gupy"
   },
+  "9d85336cfdd334d8": {
+    "ext_id": "gupy__2ea017bd16e5",
+    "plataforma": "gupy"
+  },
   "a325a518c5d47213": {
     "ext_id": "gupy__95e4fd1ca10a",
     "plataforma": "gupy"
+  },
+  "ad0f859c58663d3c": {
+    "ext_id": "linkedin__6b4abebcf2a4",
+    "plataforma": "linkedin"
   },
   "ad6e1ba8239375b3": {
     "ext_id": "gupy__6309874acd1d",
@@ -142,5 +154,9 @@
   "eda119ac356cf392": {
     "ext_id": "linkedin__224aaa421bf7",
     "plataforma": "linkedin"
+  },
+  "f4952685095a366f": {
+    "ext_id": "gupy__ee14d59a3c3c",
+    "plataforma": "gupy"
   }
 }
