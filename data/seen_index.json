@@ -19,6 +19,11 @@
     "plataforma": "gupy",
     "registrado_em": "2026-07-31T15:18:24+00:00"
   },
+  "gupy__12910d3d6c94": {
+    "empresa": "Vigor Alimentos",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-20T22:01:52+00:00"
+  },
   "gupy__173633bf60e2": {
     "empresa": "Tecban",
     "plataforma": "gupy",
@@ -104,6 +109,11 @@
     "plataforma": "gupy",
     "registrado_em": "2026-08-17T16:48:07+00:00"
   },
+  "gupy__60641faf431c": {
+    "empresa": "Assertiva - Transformando dados em Direção",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-20T22:01:52+00:00"
+  },
   "gupy__6309874acd1d": {
     "empresa": "ALE Combustíveis",
     "plataforma": "gupy",
@@ -113,6 +123,16 @@
     "empresa": "Qualidados",
     "plataforma": "gupy",
     "registrado_em": "2026-08-18T21:54:04+00:00"
+  },
+  "gupy__6d6418cefd00": {
+    "empresa": "Rede Verbita de Educação",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-20T22:01:52+00:00"
+  },
+  "gupy__6d7e5a2a454e": {
+    "empresa": "Sem Parar Corpay",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-20T22:01:52+00:00"
   },
   "gupy__70464013cb0b": {
     "empresa": "Localiza&Co",
@@ -139,10 +159,20 @@
     "plataforma": "gupy",
     "registrado_em": "2026-07-31T15:18:24+00:00"
   },
+  "gupy__8836515989ad": {
+    "empresa": "Vigor Alimentos",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-20T22:01:52+00:00"
+  },
   "gupy__8e76611e42ae": {
     "empresa": "RD Saúde",
     "plataforma": "gupy",
     "registrado_em": "2026-08-18T11:04:37+00:00"
+  },
+  "gupy__935b702edc36": {
+    "empresa": "Vibra Energia",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-20T22:01:52+00:00"
   },
   "gupy__93ad71979112": {
     "empresa": "Árvore",
@@ -213,6 +243,11 @@
     "empresa": "Rede Américas",
     "plataforma": "gupy",
     "registrado_em": "2026-08-17T16:48:07+00:00"
+  },
+  "gupy__e23a30a03dcf": {
+    "empresa": "Sem Parar Corpay",
+    "plataforma": "gupy",
+    "registrado_em": "2026-08-20T22:01:52+00:00"
   },
   "gupy__e586c95e9817": {
     "empresa": "Votorantim Cimentos",
@@ -438,6 +473,16 @@
     "empresa": "Confidencial",
     "plataforma": "vagas.com",
     "registrado_em": "2026-08-17T16:48:07+00:00"
+  },
+  "vagas-com__0e7919a87c88": {
+    "empresa": "CODEME Engenharia",
+    "plataforma": "vagas.com",
+    "registrado_em": "2026-08-20T22:01:52+00:00"
+  },
+  "vagas-com__2d2ad9a6be4c": {
+    "empresa": "CODEME Engenharia",
+    "plataforma": "vagas.com",
+    "registrado_em": "2026-08-20T22:01:52+00:00"
   },
   "vagas-com__7916f5c6cc8c": {
     "empresa": "AeC",

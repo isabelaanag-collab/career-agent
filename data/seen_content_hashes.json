@@ -83,9 +83,17 @@
     "ext_id": "gupy__b12fb5796bca",
     "plataforma": "gupy"
   },
+  "61191ddf1107f99b": {
+    "ext_id": "gupy__6d6418cefd00",
+    "plataforma": "gupy"
+  },
   "611b976efe2627b7": {
     "ext_id": "linkedin__35aa3d9ec391",
     "plataforma": "linkedin"
+  },
+  "6184dd20fd4c3a0e": {
+    "ext_id": "gupy__935b702edc36",
+    "plataforma": "gupy"
   },
   "6422b00880bce910": {
     "ext_id": "linkedin__6b44b420b976",
@@ -97,6 +105,10 @@
   },
   "65c7c668d862b380": {
     "ext_id": "gupy__321d5c530fef",
+    "plataforma": "gupy"
+  },
+  "670b1f433dda0b0f": {
+    "ext_id": "gupy__8836515989ad",
     "plataforma": "gupy"
   },
   "6851a2c4374ce35f": {
@@ -131,6 +143,10 @@
     "ext_id": "linkedin__3c36e8a91f4c",
     "plataforma": "linkedin"
   },
+  "81eb2e294642b91c": {
+    "ext_id": "gupy__12910d3d6c94",
+    "plataforma": "gupy"
+  },
   "8214819c04047fbf": {
     "ext_id": "linkedin__50f4ca52ca32",
     "plataforma": "linkedin"
@@ -155,12 +171,20 @@
     "ext_id": "gupy__5edd51e9bb0d",
     "plataforma": "gupy"
   },
+  "98484573028519ff": {
+    "ext_id": "gupy__e23a30a03dcf",
+    "plataforma": "gupy"
+  },
   "9a60950a0c3eb5cd": {
     "ext_id": "gupy__d6f734f4b9f0",
     "plataforma": "gupy"
   },
   "9d85336cfdd334d8": {
     "ext_id": "gupy__2ea017bd16e5",
+    "plataforma": "gupy"
+  },
+  "a2dd5b5a5210155a": {
+    "ext_id": "gupy__6d7e5a2a454e",
     "plataforma": "gupy"
   },
   "a325a518c5d47213": {
@@ -170,6 +194,10 @@
   "a39bfaa0404217d0": {
     "ext_id": "gupy__e7fd45eb43b2",
     "plataforma": "gupy"
+  },
+  "a40baf4213aed85f": {
+    "ext_id": "vagas-com__0e7919a87c88",
+    "plataforma": "vagas.com"
   },
   "ad0f859c58663d3c": {
     "ext_id": "linkedin__6b4abebcf2a4",
@@ -253,6 +281,10 @@
   },
   "f4952685095a366f": {
     "ext_id": "gupy__ee14d59a3c3c",
+    "plataforma": "gupy"
+  },
+  "fe2922d85540234b": {
+    "ext_id": "gupy__60641faf431c",
     "plataforma": "gupy"
   }
 }
