@@ -3,6 +3,10 @@
     "ext_id": "linkedin__31bf5bf88429",
     "plataforma": "linkedin"
   },
+  "08cbabbad5cc3520": {
+    "ext_id": "gupy__a1ca31d34147",
+    "plataforma": "gupy"
+  },
   "16129c0d645348b0": {
     "ext_id": "linkedin__2abb29388690",
     "plataforma": "linkedin"
@@ -14,6 +18,10 @@
   "19d7b3713464253a": {
     "ext_id": "linkedin__1715964a464e",
     "plataforma": "linkedin"
+  },
+  "1bd52ae0fe1a71cb": {
+    "ext_id": "gupy__e9071e651e65",
+    "plataforma": "gupy"
   },
   "1d904493072e269b": {
     "ext_id": "gupy__46f0c258a3d8",
@@ -35,6 +43,10 @@
     "ext_id": "linkedin__f3f6fce51702",
     "plataforma": "linkedin"
   },
+  "372471b336a8110c": {
+    "ext_id": "gupy__f97c90fce55b",
+    "plataforma": "gupy"
+  },
   "3de8b788f566264a": {
     "ext_id": "gupy__81e9ce3ecd37",
     "plataforma": "gupy"
@@ -51,9 +63,17 @@
     "ext_id": "gupy__dedaa284f35a",
     "plataforma": "gupy"
   },
+  "4fc1485982cf980f": {
+    "ext_id": "linkedin__6c326ec97a1d",
+    "plataforma": "linkedin"
+  },
   "502ca68a2831fd21": {
     "ext_id": "vagas-com__7916f5c6cc8c",
     "plataforma": "vagas.com"
+  },
+  "51b22e64d88fa874": {
+    "ext_id": "gupy__f901d8626be6",
+    "plataforma": "gupy"
   },
   "5af517c476ac63f5": {
     "ext_id": "gupy__b39d2e87b1e5",
@@ -135,12 +155,20 @@
     "ext_id": "gupy__5edd51e9bb0d",
     "plataforma": "gupy"
   },
+  "9a60950a0c3eb5cd": {
+    "ext_id": "gupy__d6f734f4b9f0",
+    "plataforma": "gupy"
+  },
   "9d85336cfdd334d8": {
     "ext_id": "gupy__2ea017bd16e5",
     "plataforma": "gupy"
   },
   "a325a518c5d47213": {
     "ext_id": "gupy__95e4fd1ca10a",
+    "plataforma": "gupy"
+  },
+  "a39bfaa0404217d0": {
+    "ext_id": "gupy__e7fd45eb43b2",
     "plataforma": "gupy"
   },
   "ad0f859c58663d3c": {
@@ -153,6 +181,14 @@
   },
   "afc4fed402e96381": {
     "ext_id": "gupy__fe33ed64bf9d",
+    "plataforma": "gupy"
+  },
+  "b46493293f1bb2e1": {
+    "ext_id": "gupy__f0c11f2ee49e",
+    "plataforma": "gupy"
+  },
+  "b674493baba8e40b": {
+    "ext_id": "gupy__173633bf60e2",
     "plataforma": "gupy"
   },
   "b7fa5e63be13f214": {
@@ -185,6 +221,10 @@
   },
   "d3c74bb223e0388b": {
     "ext_id": "gupy__6af1bbd8ec74",
+    "plataforma": "gupy"
+  },
+  "d4d86436dac625f3": {
+    "ext_id": "gupy__d736d93431bf",
     "plataforma": "gupy"
   },
   "da6322567a61517e": {
