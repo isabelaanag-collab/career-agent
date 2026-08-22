@@ -243,6 +243,10 @@
     "ext_id": "vagas-com__0e7919a87c88",
     "plataforma": "vagas.com"
   },
+  "a65f59415038853c": {
+    "ext_id": "linkedin__5e48707efc1a",
+    "plataforma": "linkedin"
+  },
   "ad0f859c58663d3c": {
     "ext_id": "linkedin__6b4abebcf2a4",
     "plataforma": "linkedin"
@@ -254,6 +258,10 @@
   "ad6e1ba8239375b3": {
     "ext_id": "gupy__6309874acd1d",
     "plataforma": "gupy"
+  },
+  "af0e3b546e88d795": {
+    "ext_id": "linkedin__26afc64ca4e4",
+    "plataforma": "linkedin"
   },
   "afc4fed402e96381": {
     "ext_id": "gupy__fe33ed64bf9d",
@@ -357,6 +365,10 @@
   },
   "f4952685095a366f": {
     "ext_id": "gupy__ee14d59a3c3c",
+    "plataforma": "gupy"
+  },
+  "f964796e8a98b7b0": {
+    "ext_id": "gupy__b96439cae639",
     "plataforma": "gupy"
   },
   "fe2922d85540234b": {
